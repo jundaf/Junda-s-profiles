@@ -1,0 +1,13 @@
+﻿++ Two Two One Todo
+
++++ Todo
+
+    * Hide cursor in mutter
+    * TTS does't work
+    * Sysman does't work
+    * No shutdown picture
+
++++ Fixed
+
+    * Input method does't work (cannot input English or Chinese character)
+    * Replace syskogd with rsyslog

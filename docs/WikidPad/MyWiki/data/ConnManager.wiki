@@ -1,0 +1,13 @@
+﻿++ Conn Manager
+
+Name: connman
+Requires: dbus
+Requires: dhclient >= 3.0.2
+Requires: wpa_supplicant >= 0.6.9
+Requires: bluez
+
+
+%package xikang
+Requires: connman = %{version}-%{release}
+Requires: \ModemManager
+Requires: wvdial

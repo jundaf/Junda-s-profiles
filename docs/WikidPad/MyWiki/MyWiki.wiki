@@ -1,0 +1,35 @@
+[wiki_db]
+data_dir = data
+
+[main]
+footnotes_as_wikiwords = False
+last_wiki_word = MyWiki
+hotkey_showhide_bywiki = 
+log_window_autoshow = Gray
+export_default_dir = 
+filestorage_identity_filenamemustmatch = False
+tabs_maxcharacters = 0
+wiki_icon = 
+headingsasaliases_depth = 0
+wiki_name = MyWiki
+wikipagetitle_creationmode = 1
+wikipagetitleprefix = ++
+wikipagetitle_fromlinktitle = False
+first_wiki_word = 
+wikipagefiles_gracefuloutsideaddandremove = True
+versioning_storagelocation = 0
+tree_expandednodes_rememberduration = 2
+tree_expandednodes_descriptorpathes_main = wikipage/MyWiki,wikipage/XikangMeego,wikipage/MeegoInstall;wikipage/MyWiki,wikipage/XikangMeego;wikipage/MyWiki,wikipage/XikangMeego,wikipage/MeegoInstall,wikipage/MeegoTouchscreen12;wikipage/MyWiki,wikipage/XikangMeego,wikipage/TwoTwoOne;wikipage/MyWiki,wikipage/XikangNetwork;wikipage/MyWiki,wikipage/LinuxCommands;wikipage/MyWiki,helpernode/main/view,helpernode/main/funcpages;wikipage/MyWiki,wikipage/XikangMeego,wikipage/InstallSteps;wikipage/MyWiki,wikipage/XikangPrinting;wikipage/MyWiki,wikipage/XikangPlatform;wikipage/MyWiki;wikipage/MyWiki,wikipage/XikangPlatform,wikipage/DevelopmentEnv
+wiki_wikilanguage = wikidpad_default_2_0
+tree_force_scratchpad_visibility = True
+further_wiki_words = New000001;UpdateBug210
+tree_expandednodes_descriptorpathes_views = 
+tree_last_root_wiki_word = MyWiki
+db_pagefile_suffix = .wiki
+filestorage_identity_moddatemustmatch = False
+filestorage_identity_moddateisenough = False
+wiki_database_type = original_sqlite
+wikipagefiles_asciionly = False
+versioning_completesteps = 10
+wiki_readonly = False
+

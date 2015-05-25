@@ -1,0 +1,28 @@
+﻿++ Xikang Meego
+
+    * MeegoBuild
+    * MeegoInstall
+    * TwoTwoOne
+    * InstallSteps
+
+*Applications*
+
+    * MeegoAppHelp
+    * \AppBloodPressure
+
+*Services*
+
+    * MeegoDatamgr
+    * ConnManager
+    * \InputMethod
+    * \ConfMgr
+    * \SystemMgr
+    * \UpdateMgr
+    * VoiceManager
+    * \DevMgr
+
+*Prerequisites*
+
+    * \VirtualKeyboard
+    * InstallTouchscreen
+    * \AudioPlayer

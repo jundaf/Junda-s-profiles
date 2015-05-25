@@ -1,0 +1,288 @@
+* Modes
+
+** Insert Mode
+i a c o r s
+I A C O R S
+
+** Normal mode
+
+*** Moving Around
+H M L
+123G
+:123
+
+gg
+gj
+gk
+
+*** Traveling Without Moving
+zz
+zt
+zb
+
+:let &scrolloff=999-&scrolloff
+
+*** Instant Searches
+ *
+ #
+g*
+g#
+
+*** Completion
+
+<C-N>
+<C-P>
+<C-X><C-…>
+
+** Command mode
+
+** Visual mode
+
+Visual mode is a flexible and easy way to select a piece of text
+for an operator.
+
+- v for Visual - characterwise
+- V for Visual line - linewise
+- C-V for Visual block - rectanglewise
+
+*** Important Settings
+
+:set virtualedit=block
+:set selectmode=key,mouse
+:set keymodel=startsel,stopsel
+:set mouse=a
+
+*** Useful Help Topics
+
+:help visual-mode
+:help v_...
+:help v_b_...
+
+* Core Configuration
+
+** The Usual Suspects
+
+.vimrc
+.gvimrc
+~/.vim/
+
+** Extensions
+
+:filetype plugin indent on
+
+** Easier Searching
+
+:set incsearch
+:set hlsearch
+:set ignorecase
+:set smartcase
+
+** Controlling Whitespace
+
+:set tabstop=4
+:set softtabstop=4
+:set expandtab
+:set smarttab
+
+:set shiftwidth
+:set shiftround
+
+* Operators
+:help operator
+
+* Motions
+:help motion.txt
+
+* Text Objects
+:help text-objects
+
+* Ranges
+:help cmdline-ranges
+
+* Registers
+
+** Viewing Registers
+
+:registers
+:reg
+
+** Appending to Registers
+
+- Deletes and yanks overwrite registers
+- But they don’t have to
+- Uppercase the name to append instead
+
+** Accessing Registers
+
+Normal mode:
+"<register><operator>
+
+Visual mode:
+"<register><operator>
+
+Insert mode and command line:
+<C-R><register>
+<C-R><C-R><register>
+<C-R><C-O><register>
+<C-R><C-P><register>
+
+Ex commands and scripts:
+@<register>
+
+Execute in Normal mode:
+@<register>
+
+** Expression Register
+
+- Value is the result of an expression
+- Can be used interactively or in scripts
+- Accessed as "= or @= or \= depending on context
+
+** Tips & Tricks
+
+Copy to the OS clipboard:
+"*yy
+
+Paste from the OS clipboard:
+"*p
+
+Link unnamed register and OS clipboard:
+:set clipboard=unnamed
+
+Pre-load in .vimrc:
+:let @a = "123 Main Street"
+:let @p = "800-555-1212"
+
+“Search” for text without moving cursor:
+:let @/ = "stuff"
+
+Yank matching lines into a register:
+:g/pattern/y A
+(Note uppercase register name)
+
+** Register Help
+
+:help registers
+:help copy-move
+
+:help i_CTRL-R
+:help i_CTRL-R_CTRL-R
+:help i_CTRL-R_CTRL-O
+:help i_CTRL-R_CTRL-P
+
+* Vim as Language
+
+Verbs: d
+Operators & Commands
+
+Subjects: dj
+Motions & Text Objects
+
+Adjectives: d10j
+Ranges & Repetition
+
+Objects: "xd10j
+Registers
+
+* Key Mapping
+
+* Files
+
+** Loading Multiple Files
+
+vim *.sh
+vim foo.txt bar.txt baz.txt
+vim -o widget.c header.h
+vim -p widget.c header.h
+
+:edit foo.txt
+:args *.sh
+:args foo.txt bar.txt baz.txt
+
+* Buffers
+
+** Moving Among Buffers
+
+:set hidden
+:ls
+:b N
+:b name
+:bfirst :blast :bnext :bprev
+<C-^>
+
+** Closing Buffers
+
+:bdelete
+:bd N
+:bd name
+:bd!
+
+** Buffer Settings
+
+- hidden
+- switchbuf
+
+** Buffer Commands
+
+:ball
+:bufdo
+
+* Windows
+
+** Creating Windows
+
+:split
+:vsplit
+<C-W> s
+<C-W> v
+
+** Moving Between Windows
+
+<C-W> h
+<C-W> j
+<C-W> k
+<C-W> l
+<C-W> p
+<C-W> <C-W>
+
+** Closing Windows
+
+:q
+:hide
+:only
+
+** Window Help
+
+:help windows.txt
+:help ctrl-w
+
+* Tab pages
+A group of windows.
+Better names: layout, viewpot
+
+** Creating Tabs
+
+:tabnew
+:tabedit
+<C-W> T
+
+** Closing Tabs
+
+:q
+:tabclose
+:tabclose N
+:tabonly
+
+** Moving Between Tabs
+
+- gt
+- gT
+- Ngt
+
+** Tab Commands
+
+:tab
+:tabs
+:tabdo
+
+* Plugins

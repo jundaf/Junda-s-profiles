@@ -1,0 +1,24 @@
+﻿++ Meego Touchscreen12
+
+See InstallTouchscreen (Meego 1.1)
+
+(*) Linux driver installer for eGalaxTouch controller
+
+(I) Check user permission: root, you are the supervisor.
+(I) Begin to setup the eGalaxTouch driver.
+(I) Extract eGalaxTouch driver archive to /usr/local/eGalaxTouch32.
+(I) Create eGalaxTouch utility shortcut in /usr/bin.
+(I) Create <<TKCal>> tool shortcut in /usr/bin.
+(I) Check X window version: 1.9.x
+(I) Copy X module: x19/egalax_drv.so to /usr/lib/xorg/modules/input.
+
+(Q) Which interface controller do you use?
+(I) [1] RS232 [2] PS/2 [3] USB : 3
+(I) Using interface: USB
+(I) Found a HID compliant touch controller.
+
+(I) Copy udev rule: 50-egalax.conf to /usr/share/X11/xorg.conf.d.
+
+(I) Please reboot the system for some changes to take effect.
+(I) After booting, type "eGalaxTouch" to do calibration.
+

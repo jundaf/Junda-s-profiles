@@ -1,0 +1,21 @@
+﻿++ Xikang Dbus
+
+*Play click.wav*
+<<pre
+dbus-send --type=method_call --system --dest='sound.service.xk' / sound.service.xk.PlayWavByAction int32:0
+>>
+
+
+*Get Xikang Version*
+<<pre
+dbus-monitor --system "type='signal',sender='com.neusoft.update',interface='com.neusoft.update.interface'"
+
+dbus-send --type=method_call --system --dest='com.neusoft.update' /com/neusoft/update com.neusoft.update.interface.GetXkversionAsync 
+>>
+
+*Test Update Manager*
+<<pre
+dbus-send --type=method_call --session --dest='com.example.Yum' /com/example/Yum com.example.Yum.InstallPackage string:xikang
+
+dbus-send --type=method_call --session --dest='com.xikang.Yum' /com/xikang/Yum com.xikang.Yum.InstallPackages array:string:xkutility,xkprotocol int32:2
+>>

@@ -1,0 +1,247 @@
+<?xml version="1.0" ?><cherrytree><node name="Beginning PhoneGap" prog_lang="custom-colors" readonly="False" tags="" unique_id="2"><rich_text>Author: Thomas Myer
+</rich_text><node name="4. Events" prog_lang="custom-colors" readonly="False" tags="" unique_id="3"><rich_text scale="h2">UNDERSTANDING EVENTS</rich_text><rich_text>
+
+</rich_text><rich_text scale="h3">deviceready</rich_text><rich_text>
+
+Of all the events, deviceready is the most important one for you to consider. Without it, your
+application won’t know if PhoneGap has fully loaded. Once it has fired, you can safely call any
+PhoneGap function, which, in turn, can safely access the native API.
+
+To put it even more strongly, the first thing you should do on any PhoneGap project is to listen for the
+deviceready event. </rich_text><rich_text background="#ffffffff0000">Once it fires, you know two things: The DOM has loaded, and so has the PhoneGap
+API.</rich_text><rich_text> At that point, you can try to detect other events, or do anything else with your application.
+
+</rich_text><rich_text scale="h2">USING THE EVENTS LISTENER</rich_text><rich_text>
+
+In the preceding code, notice that you are attaching an event listener with document
+.addEventListener. Typically, when the event listener fires for deviceready, it means that the 
+HTML document’s DOM has loaded. You’ll want to use a separate listener for each event that you 
+want to detect and respond to.
+
+</rich_text><rich_text background="#ffffffff0000">All the other event listeners would be registered inside the onDeviceReady() function.</rich_text><rich_text> So, if you 
+wanted to detect a pauseor resumeevent, your code would look like this:
+
+</rich_text><rich_text scale="h2">UNDERSTANDING EVENT TYPES</rich_text><rich_text>
+
+• backbutton
+• deviceready
+• menubutton
+• pause
+• resume
+• searchbutton
+• online
+• offline
+
+2014/04/22 - 16:32</rich_text></node><node name="5. Device, Network and Notification" prog_lang="custom-colors" readonly="False" tags="" unique_id="4"><rich_text scale="h2">GETTING INFORMATION FROM THE DEVICE</rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">CHECKING FOR A NETWORK</rich_text><rich_text>
+
+The PhoneGap API includes a Connection object, which gives you access to the 
+device’s cellular and WiFi connection information.
+
+</rich_text><rich_text scale="h2">USING NOTIFICATIONS</rich_text><rich_text>
+
+• Alerts
+• Confirmation Dialogs
+• Beeps
+• Viberations
+
+2014/04/23 - 14:38</rich_text></node></node><node name="Node Up and Running" prog_lang="custom-colors" readonly="False" tags="" unique_id="1"><rich_text>Tom Hughes-Croucher and Mike Wilson
+
+O’Reilly</rich_text><node name="I. Up and Running" prog_lang="custom-colors" readonly="False" tags="" unique_id="5"><rich_text scale="h1">CHAPTER 1 A Very Brief Introduction to Node.js
+</rich_text><rich_text>
+</rich_text><rich_text scale="h2">Node REPL
+</rich_text><rich_text>
+Meta commands: .help .clear .exit
+
+</rich_text><rich_text scale="h2">A &quot;Hello World&quot; HTTP Server</rich_text><rich_text>
+
+var http = require(&quot;http&quot;);
+http.createServer(...).listen(8080, &quot;127.0.0.1&quot;);
+
+
+</rich_text><rich_text scale="h1">CHAPTER 2 Doing Interesting Things</rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">Building A Chat Server</rich_text><rich_text>
+
+Because JavaScript doesn’t have a good way to deal with binary data, Node added one. It’s called Buffer, and it lets the server represent binary data.
+
+</rich_text><rich_text link="node 8" scale="h2">Build Twitter (Express)</rich_text><rich_text>
+
+
+</rich_text><rich_text scale="h1">CHAPTER 3 Building Robust Node Applications</rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">The Event Loop
+</rich_text><rich_text>
+This means that you should follow two strategies when writing a Node.js server:
+
+    • Once setup has been completed, make all actions event-driven.
+    • If Node.js is required to process something that will take a long time, consider delegating it to web workers.
+
+</rich_text><rich_text link="node 13" scale="h2">I/O Pattern</rich_text><rich_text scale="h2">
+</rich_text><rich_text>
+    • Unordered parallel I/O
+    • Ordered serial I/O
+
+</rich_text><rich_text link="node 12" scale="h2">Writing Code for Production</rich_text><rich_text scale="h2">
+</rich_text><node name="Build Twitter (Express)" prog_lang="custom-colors" readonly="False" tags="" unique_id="8"><rich_text>This has immediately added two things that the http server didn’t have: </rich_text><rich_text background="#ffffffff0000">the ability to filter based on HTTP verbs, and the ability to filter based on specific URLs.</rich_text><rich_text>
+
+Express provides a convenience method on the  res (http.response) object call named  send(),  and  this  method  issues  both  the  HTTP  headers  as  well  as  a response.end() call.
+
+</rich_text><rich_text background="#ffffffff0000">If we give res.send() an object, it automatically serializes it as JSON and sends the correct HTTP headers.</rich_text><rich_text>
+
+</rich_text><rich_text scale="h3">Express middleware: express.bodyParser()
+</rich_text><rich_text>
+We use middleware to reuse code for common tasks such as authentication or logging.
+
+This function call actually returns another function. We use this standard style for middleware to allow you to pass configuration to the middleware if you want to.
+
+The  express.bodyParser adds a property to  req called  req.body. This property (if it exists) contains an object representing the POST data. The  express.bodyParser middleware  will  work  only  for  POST  requests  with  the  content-type HTTP  header  of
+application/x-www-form-urlencoded or  application/json.  Both  of  these  are  easy  to parse into key/value pairs as properties of the req.body object.
+</rich_text></node><node name="I/O Pattern" prog_lang="custom-colors" readonly="False" tags="" unique_id="13"><rich_text scale="h3">Ordered serial I/O</rich_text><rich_text>
+
+In Node, this means nesting callbacks so that the callback from each task starts the next task ... it also creates socalled “pyramid” code.
+
+</rich_text><rich_text scale="h3">Middleware
+</rich_text><rich_text>
+Sometimes there is code you want to reuse across many functions. </rich_text><rich_text background="#ffffffff0000">The general idea behind its implementation is that we pass around some variables that represent not only the state but also the methods of interacting with that state.</rich_text><rich_text>
+
+The basic idea is to take something that represents the state and pass it between all functions that need to act on that state. This means that all the things acting on the state need to have the same interface so they can pass between themselves.
+</rich_text></node><node name="Production Code" prog_lang="custom-colors" readonly="False" tags="" unique_id="12"><rich_text scale="h3">Error Handling
+</rich_text><rich_text>
+JavaScript includes try/catch functionality, but it’s appropriate only for errors that happen inline.
+
+We need to be able to provide error handling that works in asynchronous situations.
+
+We deal with this in Node by using the error event.
+
+</rich_text><rich_text scale="h3">Using Multiple Processors (cluster)
+</rich_text><rich_text>
+</rich_text><rich_text background="#ffffffff0000">Node provides a module called cluster that allows you to delegate work to child processes.</rich_text><rich_text> This means that Node creates a copy of its current program in another process (on Windows, it is actually another thread).
+
+When  you  listen() to a socket where  clusteris in use, many processes can listen to the same socket.
+
+cluster provides a cross-platform way to invoke several processes that share a socket.
+</rich_text></node></node><node name="II. Deep Dive" prog_lang="custom-colors" readonly="False" tags="" unique_id="6"><rich_text scale="h1">CHAPTER 4 Core APIs</rich_text><rich_text>
+
+</rich_text><rich_text link="node 11" scale="h2">Events</rich_text><rich_text scale="h2">
+</rich_text><rich_text>
+</rich_text><rich_text scale="h2">HTTP
+</rich_text><rich_text>
+</rich_text><rich_text scale="h3">HTTP Server
+</rich_text><rich_text>
+When a new TCP stream is created for a request, a connection event is emitted. This event passes the TCP stream for the request as a parameter. The stream is also available as a request.connection variable for each request that happens through it. However, only  one  connection event  will  be  emitted  for  each  stream.  This  means  that  many requests can happen from a client with only one connection event.
+
+</rich_text><rich_text scale="h2">I/O</rich_text><rich_text>
+
+</rich_text><rich_text link="node 10" scale="h3">Buffers
+</rich_text><rich_text>
+
+</rich_text><rich_text scale="h1">CHAPTER 5 Helper APIs
+</rich_text><rich_text>
+</rich_text><rich_text link="node 9" scale="h2">Processes</rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">Testing Through assert</rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">Virtual Machine</rich_text><rich_text>
+
+
+</rich_text><rich_text scale="h1">CHAPTER 7 Important External Modules
+</rich_text><rich_text>
+</rich_text><rich_text link="node 14" scale="h2">Express</rich_text><rich_text scale="h2">
+</rich_text><rich_text>
+</rich_text><rich_text scale="h2">Socket.IO
+</rich_text><node name="Events" prog_lang="custom-colors" readonly="False" tags="" unique_id="11"><rich_text>The DOM has a user-driven event model based on user interaction, with a set of interface elements arranged in a tree structure (HTML, XML, etc.). This means that when a user interacts with a particular part of the interface, there is an event and a context, which is the HTML/XML element on which the click or other activity took place.
+
+That context has a parent and potentially children. Because the context is within a tree, the model includes the concepts of bubbling and capturing, which allow elements either up or down the tree to receive the event that was called.
+
+</rich_text><rich_text scale="h3">EventEmitter
+</rich_text><rich_text>
+Because  the  event  model  is  tied  to  the  DOM  in  browsers,  Node  created  the  Event Emitter class to provide some basic event functionality. EventEmitter has a handful of methods, the main two  being  on and  emit.
+
+Because  EventEmitter is an interface pseudoclass, the class that inherits from  EventEmitter is expected to be invoked with the  new keyword. 
+
+It’s important to note that these events are instance-based. There are no  global events. When you call the  on method, you attach to a specific EventEmitter-based object.
+
+</rich_text><rich_text scale="h3">Callback Syntax
+</rich_text><rich_text>
+This means that the context in which the event listeners are called is the context of  EventEmitter—not their original context.
+</rich_text></node><node name="Buffers" prog_lang="custom-colors" readonly="False" tags="" unique_id="10"><rich_text>Buffers are actually a direct allocation of memory
+
+Once a  Bufferis created, it is a fixed size. If you want to add more data, you must clone the  Buffer into a larger  Buffer.
+
+Buffers can be created using three possible parameters: </rich_text><rich_text background="#ffffffff0000">the length of the  Buffer in bytes, an array of bytes to copy into the Buffer, or a string to copy into the Buffer.</rich_text><rich_text>
+
+However, because the Bufferis just getting an allocation of memory directly, it is  uninitialized and the contents are left over from whatever happened to occupy them before.
+
+</rich_text><rich_text background="#ffffffff0000">When we create a Bufferwith a string, as shown in Example 4-24, it defaults to UTF-8.</rich_text><rich_text> That is, if you don’t specify an encoding, it will be considered a UTF-8 string.
+
+Alternatively, you can use the Buffer.byteLength() method. This method takes a string and an encoding and returns the string’s length in bytes, rather than in characters as String.length does.
+
+There is a little more complexity to Buffer.write(), though. If possible, </rich_text><rich_text background="#ffffffff0000">when writing UTF-8, Buffer.write() will terminate the character string with a NUL character.</rich_text><rich_text> This is much more significant when writing into the middle of a larger Buffer.
+</rich_text></node><node name="Processes" prog_lang="custom-colors" readonly="False" tags="" unique_id="9"><rich_text background="#ffffffff0000">Unlike most modules, the  process module is global and is always available as the variable process.
+</rich_text><rich_text>
+process is an instance of EventEmitter, so it provides events based on systems calls to the Node process. Importantly, the event loop will not run after the  exit event, so only code without callbacks will be executed.
+
+</rich_text><rich_text background="#ffffffff0000">An extremely useful event provided by processis uncaughtException</rich_text><rich_text> (Example 5-15). After you’ve spent any time with Node, you’ll find that exceptions that hit the main event loop will kill your Node process.
+
+</rich_text><rich_text background="#ffffffff0000">So an uncaught exception in one callback will stop execution for all other callbacks on the same event.</rich_text><rich_text> However, an uncaught exception in one instance of an event won’t affect other events.
+
+When the process gets a signal, it is exposed to Node via events emitted by process.
+
+Because processis always available, the  process.stdin stream is always initialized in any Node process. But it starts out in a paused state, where Node can write to it but you can’t read from it. Before attempting to read from stdin, call its resume() method
+
+When you write to stderr, Node guarantees that the write will happen. </rich_text><rich_text background="#ffffffff0000">However, unlike a regular stream, this is done as a blocking call.</rich_text><rich_text> This means that it is generally inadvisable to write a lot to stderr in a production system, because it may block real work.
+
+</rich_text><rich_text background="#ffffffff0000">One final thing to note is that process.stderr is always a UTF-8 stream.</rich_text><rich_text> Any data you write to  process.stderr will be interpreted as UTF-8 without you having to set an encoding.
+
+</rich_text><rich_text scale="h3">Child Process
+</rich_text><rich_text>
+The  child_process module allows you to create child processes of your main Node process.
+
+For example, you might do this to make use of more cores of your CPU...Or,you could use  child_processto launch other programs and let Node interact with them.
+
+There are two main methods in child_process. spawn() creates a child process with its own stdin, stdout, and stderr file descriptors.  exec() creates a child process and returns the result as a callback when the process is complete.
+</rich_text></node><node name="Express" prog_lang="custom-colors" readonly="False" tags="" unique_id="14"><rich_text>A typical Express program specifies a series of expressions, and Express matches the route in each incoming request against each expression in turn, executing the code associated with the first expression that matches.
+
+</rich_text><rich_text scale="h3">Setting Up Routes in Express</rich_text><rich_text>
+
+The routes consist of a simple string or a regex and can contain variable declarations, wildcards, and optional key flags.
+
+Another important thing to note is that routes are ordered. Multiple routes can match a given URL, but only the first one that matches will trigger the associated activity. </rich_text><rich_text background="#ffffffff0000">This means that the order in which routes are defined is very significant.</rich_text><rich_text>
+
+</rich_text><rich_text scale="h3">Template Engines
+</rich_text><rich_text>
+Express is minimalist and does not come with built-in template engines, opting instead for community-supported modules. Some of the more popular engines are </rich_text><rich_text background="#ffffffff0000">Haml, Jade, Embedded  Javascript  (EJS),  CoffeeKup  (a  CoffeeScript-based  engine),  and  jQuery templates.</rich_text><rich_text>
+
+Express parses the  view  template’s  filename  and  uses  the  extension  (in  this  case,  the  jade from index.jade) to determine which view engine should be used. Therefore, it is possible to mix and match different view engines into the same project.
+
+</rich_text><rich_text background="#ffffffff0000" weight="heavy">Layouts</rich_text><rich_text background="#ffffffff0000"> allow views to share common structural elements in your site, providing an even greater separation of content and data.</rich_text><rich_text> By standardizing parts of the layout, such as navigation, header, and footer, you can focus your development efforts on the actual content for each view.
+
+When the layout option is set to  true (the default) in Express, the  render method works by parsing the contents of the first parameter and passing the rendered output to the layout as a variable called body.
+
+This is called a </rich_text><rich_text weight="heavy">partial view</rich_text><rich_text> because it does not contain the full content needed to generate a page, and it needs to be combined with a layout to become useful output.
+
+</rich_text><rich_text scale="h3">Middleware
+</rich_text><rich_text>
+Some of the examples up to this point have included a rather innocuous-looking function:  </rich_text><rich_text style="italic">app.use()</rich_text><rich_text>. This function invokes the Connect library and exposes many powerful tools that make it simple to add functionality.
+
+</rich_text><rich_text weight="heavy">Connect</rich_text><rich_text> provides the middleware functionality used by Express. Connect extends Node’s base  http module, giving it all of the base capabilities provided by  http, upon which it adds its own functionality.
+
+Connect is the middle layer between Express and the network
+</rich_text></node></node></node><node name="What's New In Python 3.4" prog_lang="custom-colors" readonly="False" tags="" unique_id="7"><rich_text></rich_text></node><node name="Node.js the Right Way" prog_lang="custom-colors" readonly="False" tags="" unique_id="15"><rich_text scale="h1" underline="single">2. Wrangling the File System</rich_text><rich_text scale="h1">
+</rich_text><rich_text>
+</rich_text><rich_text weight="heavy">ECMAScript Harmony</rich_text><rich_text> is the code name for the next version of ECMAScript, the standard behind the JavaScript language. Keep in mind that by using Harmony features (like let), your code will require the --harmony flag until these features become enabled by default.
+
+The program we just made begins with the string </rich_text><rich_text weight="heavy">&quot;use strict&quot;</rich_text><rich_text> at the top. Strict mode was introduced in ECMAScript version 5. Strict mode is also required to use certain ECMAScript Harmony features in Node, such as the let keyword.
+
+</rich_text><rich_text weight="heavy">A Buffer is Node’s way of representing binary data.</rich_text><rich_text> It points to a blob of memory allocated by Node’s native core, outside of the JavaScript engine. Buffers can’t be resized and they require encoding and decoding to convert to and from JavaScript strings. Calling toString() explicitly converts the buffer’s contents to a JavaScript string using Node’s default encoding (UTF-8).
+
+</rich_text><rich_text scale="h2">The Two Phases of a Node Program</rich_text><rich_text>
+
+The only time you should consider synchronous file access is during the initialization phase of your program. As a rule of thumb, if your program couldn’t possibly succeed without the file, then it’s OK to use synchronous file access.
+
+</rich_text><rich_text underline="single">3. Networking with Sockets</rich_text><rich_text>
+
+</rich_text><rich_text underline="single">4. Robust Messaging Services
+</rich_text></node></cherrytree>

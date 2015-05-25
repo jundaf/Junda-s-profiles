@@ -1,0 +1,8 @@
+﻿++ Xikang Platform
+
+    * UpdateManager
+    * UpdateBug210
+    * UpdateBug300
+    * DevelopmentEnv
+    * ThirdPartyPackage
+    * NewUpdateManager

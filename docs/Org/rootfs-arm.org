@@ -1,0 +1,202 @@
+* Setup scratchbox
+** Install Scratchbox
+
+*** Install Subversion
+
+apt-get install subversion
+
+*** Install Scratchbox 2
+
+apt-get install scratchbox2
+apt-get install g++-arm-linux-gnueabi
+
+** Setup Scratchbox
+
+In the rootfs do:
+
+sb2-init -n -c /usr/bin/qemu-arm ARM /usr/bin/arm-linux-gnueabi-gcc
+
+** Use Scratchbox
+
+sb2 -eR
+
+*** Use emulation mode
+Avoid executing any host binaries except qemu.
+
+*** superuser  mode
+Execute commands in fakeroot environment (see fakeroot(1)  for  details).
+
+* Customize rootfs
+** DONE Delete some desktop files
+   CLOSED: [2013-07-29 一 15:07]
+
+*** config.mk
+  - Application/AppBloodPressure
+  - Application/AppOtherIndex
+  - Application/AppXinnonghe
+
+*** Application/AppControlPanel/Makefile
+  - app-lang.desktop
+
+** DONE Install dev packages
+   CLOSED: [2013-07-29 一 15:07]
+
+  - libjson-glib-dev
+  - liblua5.1-0-dev
+  - tmux
+
+** /etc/apt/sources.list.d
+  - Remove sources.list and sources.list.d/*
+  - Install sources.list.d/xikang.list
+
+** XXX.override
+Disable a job (XXX) from automatically start.
+
+** Shutdown App and daemon
+  - run acorn-shutdown.sh from xinitrc
+
+** Downgrade pulseaudio 2.0 to 1.1
+
+root@P201102037706:~# apt-get remove --purge libpulse-mainloop-glib0 libpulse0 libpulsedsp pulseaudio pulseaudio-utils
+正在读取软件包列表... 完成
+正在分析软件包的依赖关系树
+正在读取状态信息... 完成
+下列软件包是自动安装的并且现在不需要了：
+  libplist1 libts-0.0-0 libtalloc2 libcaca-dev linphone-common bind9-host usbmuxd libxvidcore4 libsrtp0 libdiscid0 libbluray1 liblircclient0 libdca0
+  libdns81 libpostproc52 esound-common libass4 libavahi-client-dev libgpod4 libavformat53 libsmbclient libisccc80 libsamplerate0-dev libdirectfb-1.2-9
+  libenca0 liblwres80 libesd0 libimobiledevice2 libbind9-80 libaudiofile1 libdvdnav4 libwbclient0 libdvdread4 libgmtk0-data libusbmuxd1 libgeoip1
+  libisccfg82 libslang2-dev libvdpau1 tsconf libsrtp0-dev host libortp-dev libisc83 libavahi-common-dev libaudio2 libortp8 libmusicbrainz3-6 libfaad2
+使用'apt-get autoremove'来卸载它们
+下列软件包将被【卸载】：
+  gnome-mplayer* libasound2-plugins* libgmlib0* libgmtk0* liblinphone-dev* liblinphone3* libmediastreamer-dev* libmediastreamer0* libpulse-dev*
+  libpulse-mainloop-glib0* libpulse0* libpulsedsp* libsdl1.2-dev* libsdl1.2debian* linaro-alip* linphone* linphone-nox* mplayer2* pulseaudio*
+  pulseaudio-utils*
+升级了 0 个软件包，新安装了 0 个软件包，要卸载 20 个软件包，有 0 个软件包未被升级。
+解压缩后将会空出 13.8 MB 的空间。
+您希望继续执行吗？[Y/n]
+
+* Top Makefile
+** DONE Bluetooth weight scales
+   CLOSED: [2013-08-19 周一 16:08]
+Added Application/AppBtWeight as default apps.
+
+** DONE Install gtk theme
+   CLOSED: [2013-08-19 周一 16:08]
+Added Application/theme to config.mk
+
+* xikang-system-update package
+
+** DONE Update ld.so.cache
+   CLOSED: [2013-09-09 周一 14:11]
+run ldconfig
+
+** DONE Log configuration
+   CLOSED: [2013-09-09 周一 14:27]
+ - /etc/rsyslog.d/acorn.conf
+ - /etc/logrotate.d/acorn
+
+* xikang731
+based on xikang_base_ubuntu1204_compiler_20130730.tgz
+
+** Prepare rootfs
+*** Qemu-arm-static
+cp /usr/bin/qemu-arm-static xikang731/usr/bin
+mkdir xikang731/root/src
+
+*** Install packages
+  - python-pycurl
+  - python-gobject
+  - python-gtk2
+  - gtk2-engines-pixbuf
+
+** Customize /etc
+ - Install arm/init
+ - Install arm/kernel
+
+*** /etc/init
+copy acon*.conf from init.orig
+*** /etc/rc.local
+chmod +x rc.local
+
+modprobe vivante
+modprobe galcore
+
+*** /etc/X11/xinit/acorn
+#Start acorn-shutdown
+/usr/local/acorn/app/bin/acorn-shutdown.sh &
+*** Modify /etc/scim/global
+/DefaultPanelProgram = scim-panel-vkb-gtk
+
+** Build and Install
+*** Modify Makefile
+ - Service/ConnMgr/Makefile (Make and install connman-0.62)
+ - Service/InputMethod/Makefile (Not making handwriting)
+
+*** Define ACORN_DEVEL_ROOT
+export ACORN_DEVEL_ROOT=$PWD
+
+*** DONE Install gtk theme
+    CLOSED: [2013-08-20 周二 16:25]
+Added Application/theme to config.mk
+
+*** DONE Delete app-lang.desktop
+    CLOSED: [2013-08-02 五 10:53]
+Not installing app/desktop/app-lang.desktop.
+Committed by Guoyang.
+
+*** DONE Sensor Manager
+   CLOSED: [2013-08-20 周二 16:45]
+Modify Makefile of sensormgr.
+cp -af $(ACORN_DEVEL_ROOT)/Service/SensorMgr/conf/*.conf /etc/dbus-1/system.d
+
+*** Build and Install xikang-system-update
+This should be the last step.
+
+* xk0905
+based on xikang_base_ubuntu1204_compiler_20130905.tgz
+
+** TODO DBus activation
+Check uid and gid of messagebus.
+
+** Install acorn-system/arm
+*** devel/lxde/acorn-system/arm/init
+mv /etc/init /etc/init.orig
+make install
+chmod +x rc.local
+
+*** Trunk/acorn-system/arm/kernel
+make install
+
+** Make and install Trunk
+export ACORN_DEVEL_ROOT=$PWD
+make config
+make
+
+*** Statusbar/plugin/notification				      :Fixed:
+make -C./plugin/notification -f Makefile
+make[2]: 正在进入目录 `/root/src/Trunk/Application/StatusBar/plugin/notification'
+make -f *.mk
+make[3]: 正在进入目录 `/root/src/Trunk/Application/StatusBar/plugin/notification'
+gcc -shared -Wl,-soname,libxknotificationplugin.so.1 -o libxknotificationplugin.so.1 src/xk-notification-plugin.o -L/usr/local/acorn/lib -L/usr/local/acorn/service/lib -L/usr/local/acorn/app/lib -L../../lib/ -L lib/
+/usr/bin/ld: error: libxknotificationplugin.so.1 uses VFP register arguments, src/xk-notification-plugin.o does not
+/usr/bin/ld: failed to merge target specific data of file src/xk-notification-plugin.o
+collect2: ld 返回 1
+make[3]: *** [libxknotificationplugin.so.1] 错误 1
+
+Fixed:
+make clean; make
+
+*** AppMemberSelect install					      :Fixed:
+make -C Application/AppMemberSelect install
+make[1]: 正在进入目录 `/root/src/Trunk/Application/AppMemberSelect'
+mkdir -p /usr/local/acorn
+mkdir -p
+/bin/mkdir: 缺少操作数
+请尝试执行"/bin/mkdir --help"来获取更多信息。
+make[1]: *** [install] 错误 1
+make[1]:正在离开目录 `/root/src/Trunk/Application/AppMemberSelect'
+make: *** [Application/AppMemberSelect] 错误 2
+
+Fixed typo: ACRON
+
+** Build and install x-s-u

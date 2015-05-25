@@ -1,0 +1,361 @@
+* Tutorials
+** DONE Shell programming with bash
+   CLOSED: [2014-02-14 ÖÜÎå 09:52]
+
+*** Variables/Arrays
+If you want to assign a value which contains spaces, be sure to quote it:
+
+#+BEGIN_SRC sh
+  # wrong:
+  foo=x y z # sets foo to x; will try to execute y on z
+  # right:
+  foo="x y z" # sets foo to "x y z"
+#+END_SRC
+
+**** Operations on variables
+     - String replacement
+       - Bash can replace a string with another string: ${foo/cat/dog}
+       - To replace all instances of a string: ${foo//cat/dog}
+       - The ${name#pattern} operation removes the shortest prefix of
+         ${name} matching pattern, while ## removes the longest
+       - The operator % is the same, except for suffixes instead of prefixes
+**** String/array manipulation
+     - the prefix operator # counts the number of characters in a
+       string or the number of elements in an array.
+       - ${#ARRAY} is the same as ${#ARRAY[0]}
+       - ${#ARRAY[@]}
+**** Existence testing
+     - Operator '-' and ':-' (variable is set and not empty)
+     - Operator '=' and ':='
+     - Operator '+' (opposite to '-')
+**** Indirect look-up
+     - Bash allows indirect variable/array look-up with the ! prefix operator.
+     - That is, ${!expr} behaves like ${${expr}}
+**** Array quirks: * versus @
+     - they have subtly different behavior when quoted
+     - "$*" combines all arguments into a single string
+     - "$@" requotes the individual arguments
+     - if the variable IFS (internal field separator) is set, then the
+       contents of this variable are spliced between elements in "$*".
+
+*** Expressions and arithmetic
+The (( assignable = expression )) assignment notation is more forgiving:
+
+ (( x = 3 + 12 )); echo $x    # prints 15
+ (( x = 3 * 12 )); echo $x    # prints 36
+
+If you want the result of an arithmetic expression without assigning it, you can use $((expression)):
+
+ echo $(( 3 + 12 ))   # prints 15
+ echo $(( 3 * 12 ))   # prints 36
+
+*** Pipes
+ Some program accept a filename from which to read instead of reading from STDIN.
+
+For these programs, or programs which accept multiple filenames, there is a way to create a temporary file that contains the output of a command, the <(command) form.
+
+The expression <(command) expands into the name of a temporary file that contains the output of running command.
+
+This is called process substitution.
+
+ # appends uptime, date and last line of event.log onto main.log:
+ cat <(uptime) <(date) <(tail -1 event.log) >> main.log
+
+*** Globs and patterns
+{string1,string2,...,stringN} expands to string1 or string2 or ...
+
+It is possible to create a "bash bomb": a pattern that grows
+exponentially in size under expansion:
+
+ echo {0,1}              # prints 0 1
+
+ echo {0,1}{0,1}         # prints 00 01 10 11
+
+ echo {0,1}{0,1}{0,1}    # prints 000 001 010 011 100 101 110 111
+
+** DONE Dependency Injection Pattern (Martin Fowler)
+   CLOSED: [2014-02-14 ÖÜÎå 13:53]
+*** Inversion of Control
+    - The question, is what aspect of control are they inverting?
+    - the inversion is about how they lookup a plugin implementation.
+*** Forms of Dependency Injection
+    - The basic idea of the Dependency Injection is to have a
+      separate object, an assembler, that populates a field in the
+      lister class with an appropriate implementation for the finder
+      interface
+    - There are three main styles of dependency injection.
+      - Constructor Injection, PicoContainer
+      - Setter Injection, Spring
+      - Interface Injection.
+*** Using a Service Locator
+    - The basic idea behind a service locator is to have an object
+      that knows how to get hold of all of the services that an
+      application might need.
+*** Deciding which option to use
+    - both implementations provide the fundamental decoupling
+    - The important difference between the two patterns is about how
+      that implementation is provided to the application class.
+    - Using dependency injection can help make it easier to see what
+      the component dependencies are.
+    - A common reason people give for preferring dependency injection
+      is that it makes testing easier.
+**** Constructor versus Setter Injection
+     - The advantage of injection is primarily that it requires very
+       simple conventions - at least for the constructor and setter
+       injections.
+     - should you fill fields in a constructor or with setters.
+       - My long running default with objects is as much as possible,
+	 to create valid objects at construction time.
+       - Another advantage with constructor initialization is that it
+	 allows you to clearly hide any fields that are immutable by
+	 simply not providing a setter.
+     - Despite the disadvantages my preference is to start with
+       constructor injection, but be ready to switch to setter
+       injection as soon as the problems I've outlined above start to
+       become a problem.
+**** Code or configuration files
+     - My advice here is to always provide a way to do all configuration
+       easily with a programmatic interface, and then treat a separate
+       configuration file as an optional feature.
+**** Separating Configuration from Use
+     - The important issue in all of this is to ensure that the
+       configuration of services is separated from their use.
+     - Indeed this is a fundamental design principle that sits with
+       the separation of interfaces from implementation.
+
+** TODO Python Design patterns (Alex Martelli)
+
+
+* Getting Things Done
+** Tools and Utilities
+*** DONE Learning Org-Mode
+    CLOSED: [2014-01-28 ÖÜ¶þ 16:18]
+*** DONE Learning Fiddler2
+    CLOSED: [2014-02-12 ÖÜÈý 10:30]
+    - Key Features
+    - Fiddler Tutorial by TankXiao
+*** DONE TiddlyWiki + Node.js
+    CLOSED: [2014-02-21 ÖÜÎå 15:43]
+    npm -g install tiddlywiki
+    tiddlywiki --server
+
+*** DONE Get familar with Cmder
+    CLOSED: [2014-02-24 ÖÜÒ» 17:13]
+*** DONE Get familar with AutoHotkey
+    CLOSED: [2014-03-03 ÖÜÒ» 15:46]
+*** Sublime Text Editor
+*** Python Jedi
+*** Anaconda Python
+**** Spyder IDE
+**** IPython Notebook
+** Android Exercises
+*** Opensource Launcher
+
+** Cloud drive
+   - Ubuntu One
+   - Baidu Yun Pan
+*** Huawei Cloud Drive [2/2]
+    - [X] Install HiCloud app to gain 2T space
+    - [X] Sync phone data
+*** SkyDrive (OneDrive) [100%]
+    - [X] Setup OneDrive desktop client
+    - [X] Upload photos to gain more space
+*** 115 Cloud Drive
+    - [X] Upgrade to 8T capacity
+    - [X] Login in 5 days successively
+
+
+* Weekly Reports
+** Week 2 Januray 2014
+*** Programming Android
+    [[Programming Android, Second Edition][Programming Android, Second Edition]]
+*** A Quick Introduction to Bash Programming
+    [[A Quick Introduction to Bash Programming]]
+    <2014-01-09 ÖÜËÄ>
+** Week 3 Januray 2014
+*** Programming Android
+    <2014-01-13 ÖÜÒ»> P4 [[Ch 7. Fragments][Fragments]]
+    <2014-01-15 ÖÜÈý> P4 [[Drawing 2D and 3D Graphics]]
+*** Eloquent JavaScript
+    <2014-01-13 ÖÜÒ»> P4 [[Basic JavaScript][Basic JavaScript]]
+    <2014-01-14 ÖÜ¶þ> P4 [[Objects and Arrays][Objects and Arrays]]
+    <2014-01-15 ÖÜÈý> P3 [[Functional Programming][Functional Programming]]
+    <2014-01-16 ÖÜËÄ> P2 [[Object-oriented Programming]]
+    <2014-01-17 ÖÜÎå> P4 [[Regular Expressions]]
+** Week 4 Januray 2014
+*** Programming Android
+    <2014-01-20 ÖÜÒ»> P4 [[The SQL Language]]
+*** Beginning PhoneGap
+    <2014-01-22 ÖÜÈý> P1 [[Cross-Platform Mobile Application Development]]
+*** JavaScript: The Good Parts
+    <2014-01-21 ÖÜ¶þ> P4 [[Ch2 Grammar]] [[Ch3 Objects]]
+    <2014-01-22 ÖÜÈý> P3 [[Ch4 Funtions]]
+    <2014-01-23 ÖÜËÄ> P4 [[Ch5 Inheritance]]
+    <2014-01-24 ÖÜÎå> P3 [[Global Variables]]
+*** Bugfix: acpid-1.0.10-19.xikang.src.rpm
+    <2014-01-20 ÖÜÒ»> P2
+** Week 5 Januray 2014
+*** PhoneGap Android Platform Guide
+*** Bugfix: YTJJGBV15-1384
+    [[http://10.10.18.116:8080/browse/YTJJGBV15-1384][YTJJGBV15-1384]]
+*** Launch PhoneGap Android Example (1.9.0)
+    - Getting start with PhoneGap in Eclipse for Android
+    - Run Cordova Example
+*** The Node Beginnger Book
+    <2014-01-27 ÖÜÒ»> P2
+*** [[Learning Org-Mode]]
+    <2014-01-28 ÖÜ¶þ> P4
+** Week 6-7 February 2014
+*** Bugfix: [[http://10.10.18.116:8080/browse/YTJJGBV15-1384][YTJJGBV15-1384]]
+    <2014-02-10 ÖÜÒ»> Coding
+    <2014-02-11 ÖÜ¶þ> Debug
+*** Shell programming with bash
+    <2014-02-13 ÖÜËÄ>
+    <2014-02-14 ÖÜÎå> P2
+*** Dependency Injection Pattern
+    <2014-02-14 ÖÜÎå> P3
+** Week 8 February 2014
+*** Script to generate RPM spec file
+    <2014-02-17 ÖÜÒ»>
+    <2014-02-18 ÖÜ¶þ>
+*** Dependency Injection
+    <2014-02-19 ÖÜÈý>
+*** Build Trunk.arm on MeeGo
+    <2014-02-21 ÖÜÎå>
+** Week 9 February 2014
+*** AutoHotkey Tutorial
+    - Creating and installing a script
+      - ScriptName.ahk
+    - Launching a program or document
+      - Run Program/Document/URL/Shortcut
+      - The names of commands and variables are not case sensitive.
+    - Sending keystrokes and mouse clicks
+      - Send command
+      - hotstrings
+    - Activating and manipulating windows
+      - WinActivate
+      - WinWait
+      - WinClose
+    - Getting input from the user
+      - MsgBox,
+      - InputBox,
+      - the first comma of any command may be omitted
+    - Using variables and the clipboard
+      - With the exception of local variables in functions, all
+       	variables are global
+      - variables are not declared; they come into existence simply by
+       	using them (and each variable starts off empty/blank).
+      - The parentheses signify that the if-statement contains an
+       	*expression*.
+      - The variable named Clipboard is special because it contains the
+       	current text on the Windows clipboard.
+      - In the above, `r and `n (accent followed by the letter "r" or
+       	"n") are used to indicate two special characters: carriage
+       	return and linefeed.
+    - Repeating a series of actions over and over
+      - Loop
+      - While
+    - Manipulating files and folders
+      - FileAppend
+      - FileDelete
+      - FileRead
+
+*** Reading: Programming Android
+    <2014-02-25 ÖÜ¶þ> P3 [[Ch 10. A Framework for a Well-Behaved Application]]
+    <2014-02-27 ÖÜËÄ> P2 [[Ch 11. Building a User Interface]]
+    <2014-02-27 ÖÜËÄ> P4 [[Ch 12. Using Content Providers]]
+    <2014-02-28 ÖÜÎå> P4 [[Ch 13. A Content Provider as a Facade]]
+** Week 10 March 2014
+*** NodeJs in 7 Days
+    1. Overview
+    2. Package and NPM
+    3. File System
+    4. Network
+    5. Process
+    6. Asynchronous Model
+    7. Example Server
+*** Best Practices for Performance				    :Android:
+    - How to manage memory
+    - Performance Tips
+*** Content Providers						    :Android:
+    - Content Provider Basics
+    - Creating a Content Provider
+*** Compare Two Trunk
+    - CommonLib
+      - Only Makefiles are different
+    - Applications (With code difference)
+      - AppBloodOxygen
+      - AppBloodPressureBase
+      - AppControlPanel
+      - AppElectrocardio
+      - AppEvaluate
+      - AppHeightWeight
+      - AppManager
+      - AppWebBrowser
+      - StatusBar (Many files are different)
+    - Service
+      - SystemMgr
+      - UpdateMgr
+      - VoiceMgr
+*** Using Sublime Text
+** Week 11 March 2014
+*** Best Practices for Performance
+    <2014-03-10 ÖÜÒ»>
+    - Optimizing Battery Life
+    - Sending Operations to Multiple Threads
+*** Content Providers
+    <2014-03-11 ÖÜ¶þ>
+    - Calendar Provider
+    - SampleSyncAdapter
+*** SQLite/ContentProvider Tutorial
+SQLite supports the data types TEXT (similar to String in Java),
+INTEGER (similar to long in Java) and REAL (similar to double in
+Java).
+**** DONE Modify ContactActivity to use ListView
+     CLOSED: [2014-03-17 ÖÜÒ» 15:19]
+*** Activity Loaders
+    <2014-03-13 ÖÜËÄ>
+**** DONE LoaderCursor/LoaderThrottle Example			   :APIDemos:
+     CLOSED: [2014-03-13 ÖÜËÄ 14:45]
+*** Design patterns in Python
+    <2014-03-12 ÖÜÈý>
+*** ListView Turorial
+**** Contextual action mode for ListViews
+**** Implementing undo for an action
+** Week 12 March 2014
+*** ListView Turorial
+    <2014-03-17 ÖÜÒ»>
+**** Review XkBloodOxygen
+**** How to change the default Locale of Emacs
+*** DONE Contextual action bar (CAB)
+    CLOSED: [2014-03-19 ���� 10:39]
+*** Programming Android: Advanced Topics
+*** Wireless Mouse (Jingdong/Amazon)
+    - M185 69.0/77.0
+    - M235 99.0/112.0
+    - M545 149.0/155.0
+    - MS Sculpt 129.0/?
+    - Rapoo 1090 ?/55.0
+    - Rapoo 7100P ?/86.0
+** Week 13 March 2014
+*** Read Lxc/Kvm/Docker articles in Pocket
+    - LXC networking explained
+    - KVM introduction
+      - libvirt
+    - Docker
+*** UpdateManager Next Development Plan
+    - Design
+    - Coding
+    - Testing
+    <2014-03-24 ��һ>
+** Week 14 April 2014
+*** DONE Clear up F:\Documents\HenryFeng
+    CLOSED: [2014-04-02 ���� 09:51]
+*** DONE Test UpdateManager (Ubuntu)
+    CLOSED: [2014-04-04 ���� 14:04]
+    - package.py
+    - remove.py
+    - install.py
+    - download.py
+** Week 15 April 2014
+*** TODO Refactoring BaseProcess			      :UpdateManager:

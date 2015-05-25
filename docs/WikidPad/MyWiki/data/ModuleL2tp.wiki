@@ -1,0 +1,23 @@
+﻿++ Module L2tp
+
+<<
+[root@xikang-desktop ~]# lsmod
+Module                  Size  Used by
+battery                 8862  0
+uvcvideo               50404  0
+joydev                  8205  0
+serio_raw               3821  0
+
+[root@xikang-desktop ~]# lsmod
+Module                  Size  Used by
+l2tp_ppp               11247  0
+pppox                   1959  1 l2tp_ppp
+ppp_generic            21349  2 l2tp_ppp,pppox
+slhc                    4062  1 ppp_generic
+l2tp_core              14426  1 l2tp_ppp
+vntwusb               172726  0
+joydev                  8205  0
+battery                 8862  0
+uvcvideo               50368  0
+serio_raw               3821  0
+>>

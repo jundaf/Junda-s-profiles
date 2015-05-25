@@ -1,0 +1,2 @@
+emacs.font: DejaVu Sans Mono-12
+emacs.geometry: 80x32

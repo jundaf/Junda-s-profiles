@@ -1,0 +1,7 @@
+﻿++ New Update Manager
+
+    1. Show download progress
+    2. Add download interface
+    3. Support update later
+    4. How to represent update exists
+    5. 

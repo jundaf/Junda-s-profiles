@@ -1,0 +1,1481 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file f:/Jundaf/Application/Emacs/Org/workflow.org
+
+
+* Programming Android, Second Edition
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-03-18 14:48
+  :ARCHIVE_FILE: f:/Jundaf/Application/Emacs/Org/workflow.org
+  :ARCHIVE_CATEGORY: workflow
+  :END:
+** Ch 2. Java for Android
+** Ch 3. The Ingredients of App
+** Ch 5. Eclipse for Android
+*** Java Coding in Eclipse
+    Productivity has three key aspects:
+    - creating new code efficiently,
+    - finding code you need to read or modify,
+    - and making changes to code that affect more than just the line of code
+    you are editing.
+
+    Code completion with "content assist"
+    Refactoring means making changes that preserve program behavior.
+    - the language should be statically typed
+    - the IDE should have a compiled model of the program
+*** DONE Learn Eclipse Keyboard Shortcuts
+    CLOSED: [2014-03-17 16:15]
+** Ch 6. Building a View
+*** Model-View-Controller (MVC)
+    - The Model is all about data.
+    - The View is visualization of the Model.
+    - The Controller is implemented as an EVENT QUEUE.
+
+    UI component objects implement both View and Controller methods.
+    But they don't interact directly.
+
+    Android UI framework is SINGLE THREADED.
+    - Avoid synchronized blocks.
+    - UI callbacks are atomic.
+    - Long-running tasks should delegate to other thread.
+*** Wirting Up the Controller
+    - Listening to the Model
+    - Listening for Touch Events (Tap and Move)
+      - MotionEvent
+      - View.OnTouchListener
+      - getAction(): ACTION_DOWN, ACTION_MOVE
+      - getHistoricalX(), getHistoricalY()
+    - Multiple Pointers and Gestures (Multitouch)
+      - MotionEvent.ACTION_MASK
+      - gesture detectors
+    - Listening for Key Events
+      - KeyEvent
+      - View.OnKeyListener
+    - Choosing an Event Handler
+      - A listener exists and return ture.
+      - A listener exists and return false.
+    - Focus and Threading
+      - focusable
+      - View.OnFocusChangeListener
+      - android.os.Handler
+
+    A *Handler* object is associated with the thread on which it is
+    created and provides safe, concurrent access to the canonical event queue
+    for that thread.
+
+    The *Fragment*, *AsyncTask*, and *Handler* classes all allow a developer
+    to avoid this danger by delegating slow or long-running tasks
+    to other threads so that the main thread can continue to service the UI.
+*** The Menu and the Action Bar
+    - Menu and Action Bar
+      - onCreateOptionsMenu
+      - onOptionsItemSelected
+    - Context Menu
+*** View Debugging and Optimization
+    - Android Lint
+    - Hierarchy Viewer
+** Ch 7. Fragments and Multiplatform Support
+*** Fragments Life Cycle
+    Rotating the screen causes an application to be destroyed and re-created.
+    Pressing Ctrl-F11 rotates the emulator 90 degrees.
+*** The Fragment Manager
+    - getFragmentManager()
+    - tagging and location, findFragmentByTag()
+    - transaction
+    - back stack
+*** Fragment Transactions
+    Android Developer Documentation recommends that fragment subclasses not
+    have explicit constructors.
+
+    The Fragment class supports two methods, *setArguments* and *getArguments*,
+    to store a *Bundle* in the fragment and the fragment to recover that bundle
+    at some later time.
+
+    When you push the back button, an entire transaction is removed,
+    revealing the entire state from the previous transaction.
+*** Fragments and Layout
+    - Configuration qualifiers
+      - screen orientation
+      - pixel density
+      - aspect ratio
+      - absolute size
+      - language and region
+      - docking mode
+      - night/day display
+
+    Configuration qualifiers are of particular interest to UIs that use
+    fragments, because they allow natural adaptation between landscape
+    and portrait orientations.
+*** DONE Review Master Detail Template
+    CLOSED: [2014-03-18 10:16]
+** Ch 8. Drawing 2D and 3D Graphics
+*** Rolling Your Own Widgets
+    - finding space on the screen: *onMeasure*
+    - drawing in that space: *onDraw*
+
+    - Layout/Container views
+    - requestLayout method
+      - measuring child views
+      - arranging them in their new positions
+
+**** Canvas Drawing
+     - painter's algorithm
+     - Android's single-threaded MVC design pattern
+       - Drawing code should be inside the *onDraw* method.
+       - A widget should draw itself as quickly as possible when
+         *onDraw* is invoked.
+     - android.graphics.Canvas
+       - drawColor
+       - drawLine
+       - drawRect
+       - drawCircle
+     - android.graphics.Paint
+       - It controls the color, transparency, and brush size for
+         objects painted on the canvas. It also controls font, size,
+         and style when drawing text.
+     - android.graphics.Bitmap
+     - android.graphics.drawable.Drawable
+       - A Drawable is an object that knows how to render itself on a
+         Canvas.
+
+*** Effects and Animation
+    - Transition animation :: tweened animations
+      - subclasses of android.view.animation.Animation: RotateAnimation,
+        TranslateAnima tion, ScaleAnimation, and so on.
+      - These animations are used as transitions between pairs of views.
+      - it is actually likely to compose two animations: the previous
+        screen must be animated out and the next one animated in.
+    - Background animation :: Frame-by-frame animation
+      - subclasses of AnimationDrawable, can be put into the background
+        of any widget to provide a wide variety of effects.
+      - a set of frames, played in order at regular intervals.
+    - Surface view animation
+      - The SurfaceView provides a node in the view tree and,
+        therefore, space on the display on which any process at all
+        can draw.
+
+** Ch 9. Handling and Persisting Data
+   - SQLite
+     - a self-contained, transactional database engine that requires
+       no separate server process.
+     - Reliability is a key feature of SQLite.
+
+*** The SQL Language
+    Statements in the SQL language fall into two distinct categories:
+    - those used to create and modify tables
+    - and those used to create, read, update, and delete the data in those tables.
+
+**** SQL Data Definition Commands
+     - CREATE TABLE
+       - Table names must be unique among tables in the database.
+       - Each column has a unique name within the table and a type.
+       - The column may also specify other attributes
+	 - whether values have to be unique
+	 - whether there is a default value when a row is inserted
+	 - whether NULL is allowed in the column.
+     - DROP TABLE
+     - ALTER TABLE
+
+     SQLite types:
+     - TEXT
+       - A text string, stored using the database encoding (UTF-8,
+         UTF-16BE, or UTF-16LE).
+     - REAL
+       - 8-byte IEEE floating-point number
+     - BLOB
+     - INTEGER
+       - A signed integer, stored in 1, 2, 3, 4, 6, or 8 bytes
+         depending on the magnitude of the value.
+
+     Database constraints:
+     - PRIMARY KEY
+     - FOREIGN KEY
+       - the foreign key constraint in SQLite is optional, and is
+         turned off in Android.
+     - UNIQUE
+     - NOT NULL
+       - Note that a primary key is both UNIQUE and NOT NULL.
+     - CHECK
+       - Takes a Boolean-valued expression and requires that the
+         expression return true for any value inserted in the column.
+
+**** SQL Data Manipulation Commands
+     - SELECT
+     - INSERT
+       - If you don't specify values for all columns, SQLite will
+         fill in a default value for each unspecified column, if you
+         defined one for that column in your CREATE TABLE statement.
+       - If you don't provide a default, SQLite uses a default of NULL.
+     - UPDATE
+       - The WHERE clause is critical; if the clause is omitted, the
+         statement will affect every row in the table.
+
+**** Additional Database Concepts
+     - Inner join
+       - An inner join selects data across two or more tables where
+         data is related by a foreign key.
+     - Compound query
+     - Triggers
+
+**** Database Transactions
+     Database transactions make sequences of SQL statements atomic:
+     either all statements succeed or none of them have any effect on
+     the database.
+
+**** Database Manipulation Using sqlite3
+     - The table contains a primary key called _id.
+     - Android requires the use of this exact name in order for the
+       table to work with its cursor system.
+     - The keyword LIKE, combined with the wildcard percent sign
+       character (%), allows you to match parts of strings.
+
+*** Database-Centric Data Model
+    - One fundamental difference between mobile phone apps and desktop
+      apps is how they handle persistence.
+    - Traditional  desktop-based  applications
+      - document centric form of the MVC pattern
+      - you explicitly open and save documents in order to make the
+        data model persist between program invocations.
+    - Mobile phone applications
+      - Database-Centric Data Model
+
+*** The Android Database Classes
+    - SQLiteDatabase
+    - Cursor
+      - A container for the results of a database query that supports
+        an MVC-style observation system.
+      - Cursors are similar to JDBC result sets and are the return
+        value of a database query in Android.
+      - Cursors are at the heart of the basis for Android MVC
+    - SQLiteOpenHelper
+      - Provides a life cycle framework for creating and upgrading
+        your application database.
+    - SQLiteQueryBuilder
+
+*** Database Design for Android Applications
+    - SQLiteOpenHelper
+      - onCreate
+      - onUpgrade
+
+*** DONE Using the Database API: MJAndroid
+    CLOSED: [2014-03-17 16:15]
+
+** Ch 10. A Framework for a Well-Behaved Application
+
+*** Visualizing the Activity Life Cycle
+**** Memory recovery and life cycles
+     - Destroying an activity
+       - *Discard* means that the Android system will set its
+         references to the Activity instance to null.
+       - unless your code is holding a reference to this Activity, the
+         Activity will, by and by, get garbage-collected.
+     - Killing a process
+       - That means that in low-memory conditions, Android finds
+         processes that do not have components that are in use and
+         kills them.
+       - In extremis, Android will also kill processes that do have
+         components that are being used.
+	 - For simple applications, their process becomes a candidate
+           for being killed after ~onPause~ has been called.
+	 - That is, all the other Activity life cycle methods that can
+           be called after ~onPause~ have no guarantee they will be
+           called
+**** Life cycle methods of the Activity class
+     - The ~onCreate~ method is called after an Activity instance has
+       been created.
+       - reading in the layouts and creating View instances, binding to
+         data, and so on.
+       - if this Activity instance has not been destroyed, nor the
+         process killed, this is not called again.
+     - The ~onDestroy~ method is called when an Activity instance is
+       going to be destroyed -- that is no longer used.
+       - If this method is being called as the result of a call to
+         ~finish~, a call to ~isFinishing~ will return true.
+**** Saving and restoring instance state
+     - Memory recovery and the component life cycle is why your
+       Activity subclasses need to save state.
+     - The Bundle class exists to hold serialized data in the form of
+       key¨Cvalue pairs.
+     - Instance state should be state that is not persisted with an
+       application's data model, such as the state of an indicator
+       or other state that is only part of the Activity object.
+     - Not for App data model
+**** Configuration changes and the activity life cycle
+     - There is another way to force Android to use a new
+       Activity instance: change the configuration of the system.
+       - The most common configuration change applications encounter
+         is a change in *screen orientation*.
+       - changes in whether a hard keyboard is accessible or not,
+         changes in locale, changes in font size, and more.
+     - You will see in the log that the ~onDestroy~ method is called
+       since the Activity instance is discarded as part of changing
+       configurations.
+     - You will also notice that across new instances of the Activity
+       object the process ID stays the same.
+**** Minor life cycle methods of the Activity class
+     - onRetainNonConfigurationInstance
+     - getLastNonConfigurationInstance
+
+*** Visualizing the Fragment Life Cycle
+    - onAttach
+      - This does not mean the Activity is fully initialized.
+    - onCreateView
+      - Fragment has an unusual role in an Activity: it behaves
+        somewhat like a ViewGroup, but it isn't part of the View class
+        hierarchy.
+      - Fragment objects are not components. You can think of them as
+        a way of breaking up an Activity object into multiple objects
+        contained within an Activity.
+
+*** The Activity Class and Well-Behaved Applications
+    - In fact, if your application is well designed for the mobile
+      environment in general, it will need less code in application
+      life cycle management:
+      - If the data used by an activity is always up-to-date and in a
+	database, you will not have to explicitly store it in the code
+	in an application life cycle method.
+      - If your user interface has minimal state, you won't have to
+	save much, if any, state in an activity life cycle method.
+
+*** Life Cycle Methods of the Application Class
+    - The life cycle methods of the Application class are, and should
+      be, infrequently used in simple applications.
+      - Is is easy to bloat Application class overrides with data that
+        hangs around in memory across multiple activities.
+      - This defeats Android's ability to manage resources on a
+        per-component basis.
+
+** Ch 11. Building a User Interface
+*** Top-Level Design
+    Design Goals:
+    - It works on tablets and on handsets, by delegating as much of
+      the user interface code as possible to ~Fragment~ classes
+    - It works in both orientations, using a different layout in
+      landscape and portrait mode to maintain clarity in presentation
+    - It shows how ~Fragment~ objects can be added and removed from an
+      ~Activity~ object
+    - It shows how the *Action Bar* and the items in it can be combined
+      or split up, and how to use tabs
+
+** Ch 12. Using Content Providers
+   - When Android applications share data, they rely on the content
+     provider API to expose data within their database.
+   - The content provider API enables client applications to query the
+     OS for relevant data using a Uniform Resource Identifier (URI)
+   - The content provider API enables full create, read, update, and
+     delete access to shared content.
+   - This means applications can use URI-oriented requests to:
+     - Create new records
+     - Retrieve one, all, or a limited set of records
+     - Update records
+     - Delete records
+
+*** Understanding Content Providers
+    - Content providers encapsulate *data management* so that other
+      parts of an application, such as the view and controller, do not
+      need to participate in persisting application data.
+**** Implementing a Content Provider
+     1. Create a content provider public API
+     2. Implement your content provider
+     3. Update the AndroidManifest.xml file to declare your <provider>.
+
+*** Defining a Provider Public API
+**** Defining the CONTENT_URI
+     Thus, the CONTENT_URI defines the type of URIs your content
+     provider can process.
+     - The ~content://~ prefix
+     - The authority
+       - This string uniquely identifies the content provider and
+         consists of up to two sections:
+	 - the organizational section
+	 - the provider identifier section.
+       - For content providers that are built into Android, the
+         organizational section is omitted.
+	 - ~content://contacts/people/1~
+       - the best solution for picking the authority section of your
+         CONTENT_URIis to use the *fully qualified class name* of the
+         class implementing the content provider.
+     - The path
+       - If the content provider can return multiple data types, the
+         URI must be constructed so that some part of the path
+         specifies the type of data to return.
+       - The content provider must be capable of returning either one
+         item or a set of item identifiers.
+     The CONTENT_URI must be of type ~public static final Uri~.
+
+**** DONE What is the MIME data type
+     CLOSED: [2014-03-11 13:51]
+
+*** Writing and Integrating a Content Provider
+**** Extending ContentProvider
+     - ~onCreate~
+     - String ~getType~ (Uri uri)
+       - This method, given a URI, returns the MIME type of the data
+         that this content provider provides at the given URI.
+     - ~insert~ (Uri uri, ContentValues values)
+     - Cursor ~query~ (Uri uri, String[] projection, String selection,
+       String[] selectionArgs, String sortOrder)
+     - ~update~ (Uri uri, ContentValues values, String selection,
+       String[] selectionArgs)
+     - ~delete~ (Uri uri, String selection, String[] selectionArgs)
+
+**** DONE Content Provider API Demos
+     CLOSED: [2014-03-11 13:52]
+
+*** File Management and Binary Data
+    - A content provider can serve files through content provider URIs
+      in a way that encapsulates the location of actual physical files
+      so that clients can be agnostic about that information.
+    - Android application should not read or write files that another
+      application has created, a content provider must be used to
+      access the relevant bytes.
+    - ~ContentResolver.openInputStream~
+*** Android MVC and Content Observation
+    - the View delivers user input events to the Controller;
+    - the Controller makes modifications to the Model, and the Model
+      sends update events to the View and to any other observer that
+      registers interest in the Model;
+    - the View renders the contents of the Model, usually without
+      directly engaging in application logic, and ideally, just simply
+      iterates over the data in the Model.
+
+    MVC In Android:
+    - The Model consists of a content provider and the cursors it
+      returns from its querymethod, as well as the data it holds in
+      its SQLite tables.
+    - Content providers should be written to send notification events
+      whenever they change data by calling
+      ContentResolver.notifyChange.
+    - Notifications are delivered to a UI component, often a ListView,
+      through observation of Cursorobjects that are bound to content
+      provider URIs.
+
+*** A Complete Content Provider
+    The SimpleFinchVideoContentProvider Code
+
+**** The SimpleFinchVideoContentProvider Class
+     - UriMatcher
+     - The projection map used by the query method. This HashMap maps
+       the content provider's column names to database column names.
+**** Implementing the Provider API
+     - query
+       - the Android content provider mechanism automatically supports
+         the use of cursor instances across processes, which permits
+         our provider query method to simply return the cursor as a
+         normal return value to make it available to clients that
+         might reside in another process.
+       - When the database query completes, our provider then calls
+	 ~Cursor.setNotificationUri~ to set the URI that the provider
+	 infrastructure will use to decide which provider update events
+	 get delivered to the newly created cursor.
+
+** Ch 13. A Content Provider as a Facade
+   for a RESTful Web Service
+   - Historically, Java UI programmers, both enterprise and mobile,
+     have written mobile and desktop-based applications in a rather
+     brittle way,
+     - and sometimes did run network requests directly on the UI thread,
+     - often without caching data obtained from those requests.
+
+   - We suggest using the content provider API as an asynchronous
+     model of the network,
+   - and as a cache of network state so that your application View and
+     Controller do not need their own mechanisms for opening
+     connections or accessing a database.
+
+*** Developing RESTful Android Applications
+    Three patterns for using content providers to integrate RESTful
+    web services into Android applications:
+    - Activity->Service->ContentProvider
+    - Activity->ContentProvider->Service
+    - Activity->ContentProvider->SyncAdapter
+
+*** Network MVC
+    - the content provider itself pulls data from the network and then
+      pumps it into the regular Android MVC.
+    - the provider should always respond quickly to a request by
+      initially avoiding a network invocation that might be needed to
+      fulfill the request by using whatever data is already available
+      in the local database.
+**** Summary of Benefits
+     - Increased perceived *performance* overall, and increased actual
+       performance from caching, are among the main benefits of this
+       pattern.
+     - *Storing data in memory is not a good idea*, as you do not know
+       when Android will remove your activity from memory. This
+       pattern emphasizes storing data in the content provider as
+       quickly as possible.
+     - Most potential UI *thread-safety* violations cannot
+       happen. Android View components have already been written to
+       dynamically update to reflect current cursor contents.
+     - This approach leverages the *cursor management system* and the
+       user interface's built-in capabilities for dynamic updates in
+       response to content observation events.
+     - As with any correct request for network resources, it's not
+       possible for the UI thread to hang on the network.
+     - Delivery of network events happens without requiring the
+       presence of a user interface. Even if a particular activity is
+       not present when a network event arrives, the content provider
+       will still be around to handle it.
+     - *Elements of the application are encapsulated* and have a special
+       purpose, because the content provider handles all network and
+       SQLite interactions. The View and Controller just use a
+       provider as a generic system for data managemen
+
+* Eloquent JavaScript
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-03-18 15:16
+  :ARCHIVE_FILE: f:/Jundaf/Application/Emacs/Org/workflow.org
+  :ARCHIVE_CATEGORY: workflow
+  :END:
+
+** Basic JavaScript
+
+*** Basic types
+    There are six *basic types* of values:
+    Numbers, strings, booleans, objects, functions, and undefined values.
+
+    The number above has 64 bits. Numbers in JavaScript always do.
+
+    Whenever a backslash ('\') is found inside quoted text, it indicates
+    that the character after it has a special meaning.
+
+    The way strings are ordered is more or less alphabetic.  The actual
+    way in which the comparison is done is based on the Unicode
+    standard.
+
+    In practice, one can usually get by with knowing that of the
+    operators we have seen so far, /|| has the lowest precedence, then
+    comes &&, then the comparison operators (>, ==, etcetera)/, and then
+    the rest.
+
+    /A piece of code that produces a value is called an expression./
+
+    *Variable names* can be almost every word, but they may not include
+    spaces. Digits can be part of variable names, catch22 is a valid
+    name, but the name must not start with a digit. The characters '$'
+    and '_' can be used in names as if they were letters, so $_$ is a
+    correct variable name.
+
+    The collection of variables and their values that exist at a given
+    time is called the environment.
+
+*** Expressions evaluate to false
+    When you ask for the value of an empty place, you get a special
+    value named *undefined*.  There is also a similar value, *null*, whose
+    meaning is 'this variable is defined, but it does not have a
+    value'.
+
+    The rules for converting strings and numbers to boolean values
+    state that 0 and the empty string count as false, while all the
+    other values count as true.
+
+    This means that the number 0, the empty string "", ~null~, ~undefined~,
+    and of course ~false~, will all count as false.
+
+*** Automatic type conversions
+    If you add a non-string value to a string, the value is
+    automatically converted to a string before it is concatenated. If
+    you multiply a number and a string, JavaScript tries to make a
+    number out of the string.
+
+    In my own code, I use + to combine strings and non-strings a lot,
+    but make it a point not to use * and the other numeric operators on
+    string values. Converting a number to a string is always possible
+    and straightforward, but converting a string to a number may not
+    even work.
+
+*** Boolean operators
+    Boolean operators (&& and ||) return one of their arguments.
+    The expression to their right is only evaluated when necessary.
+
+** Functions
+   - Pure functions
+     + They always return the same value when given the same
+       arguments, and never have side effects.
+   - return undefined
+     + A return statement without an expression after it will cause
+       the function to return undefined.
+     + If no return statement is encountered, the function returns
+       undefined.
+   - Lexical scoping
+   - Clouser
+   - Anonymous function
+
+   The basic rule, which has been repeated by many programmers and
+   with which I wholeheartedly agree, is to not worry about efficiency
+   until your program is provably too slow.
+** Objects and Arrays
+   - Properties
+     - The properties of a string value can not be changed.
+     - Properties whose names are not valid variable names have to be
+       quoted when creating the object, and approached using brackets.
+     - The operator *in* can be used to test whether an object has a
+       certain property.
+   - Objects
+     - With objects, there is a difference between having two
+       references to the same object and having two different objects
+       that contain the same properties.
+     - Collections of things are what objects are used for.
+   - Arrays
+   - Constructors
+
+   Whenever a function is called, a special variable named *arguments*
+   is added to the environment in which the function body runs.
+** Functional Programming
+   - Functions that operate on other functions are called
+     *higher-order functions*.
+     - taking a function as an argument
+     - producing a new function
+   - Being able to write ~what we want to do~ instead of ~how we do it~
+     means we are working at a higher level of abstraction.
+   - Functions have a method called *apply*.
+   - Fundamental Algorithms
+     - reduce/fold
+     - map
+   - Functional Tricks
+     - partial application
+     - function composition
+*** TODO Recluse Writer Example
+** TODO Searching
+   This chapter does not introduce any new JavaScript-specific
+   concepts. Instead, we will go through the solution to two
+   problems, discussing some interesting algorithms and techniques
+   along the way.
+** Object-oriented Programming
+   - Functions also have a *call* method, which is similar to *apply*, but
+     you can give the arguments for the function separately instead of
+     as an array.
+   - New and Object Constructor
+     - When a function is called with the word *new* in front of it, its
+       *this* variable will point at a new object, which it will
+       automatically return.
+     - by convention, JavaScript constructor names start with capital letter.
+*** Prototypes
+    - Every object is based on a prototype, which gives it a set of
+      inherent properties.
+    - In fact, typing ~{}~ is equivalent to typing ~new Object()~.
+
+    - When looking up the value of a property, JavaScript first looks
+      at the properties that the object itself has. If there is a
+      property that has the name we are looking for, that is the value
+      we get. If there is no such property, it continues searching the
+      prototype of the object, and then the prototype of the
+      prototype, and so on. If no property is found, the value
+      undefined is given.
+
+    - On the other hand, when setting the value of a property,
+      JavaScript never goes to the prototype, but always sets the
+      property in the object itself.
+
+    - This does mean that the prototype can be used at any time to add
+      new properties and methods to all objects based on it.
+
+    - it can often be practical to extend the prototypes of standard
+      constructors such as Object and Array with new useful functions.
+
+    - Every object has a method called *hasOwnProperty*, which tells us
+      whether the object has a property with a given name. not form
+      its prototype.
+
+    - To prevent wasting your time, it is advisable to document your
+      interfaces only after they have been used in a few real
+      situations and proven themselves to be practical.
+
+*** TODO Terrarium Example
+
+*** Inheritance in JavaScript
+    - Inheritance
+    - Multiple Inheritance, though extremely useful in some
+      situations, can be safely ignored most of the time.
+    - Mixin
+
+** Modularity
+   - It is a good idea to make sure dependencies never form a circle.
+   - Browsers load JavaScript files when they find a <script> tag with
+     an src attribute in the HTML of the web-page.
+   - In most cases, the practical solution is to just manage
+     dependencies by hand: Put the script tags in your HTML documents
+     in the right order.
+
+   - In JavaScript, 'top-level' variables all live together in a
+     single place. In browsers, this place is an object that can be
+     found under the name *window*.
+     - The proliferation of top-level variables is called name-space
+       pollution
+
+   - Not being able to define any internal functions and variables at
+     all in your modules is, of course, not very
+     practical. Fortunately, there is a trick to get around this. We
+     write all the code for the module inside a function, and then
+     finally add the variables that are part of the module's interface
+     to the window object. Because they were created in the same
+     parent function, all the functions of the module can see each
+     other, but code outside of the module can not.
+
+   - There are cases where a module will export so many variables that
+     it is a bad idea to put them all into the top-level
+     environment. In cases like this, you can do what the standard
+     *Math* object does, and /represent the module as a single object
+     whose properties are the functions and values it exports/.
+
+   - Sometimes the solution is to provide two interfaces, a detailed
+     'low-level' one for complicated things, and a simple 'high-level'
+     one for straightforward situations. The second one can usually be
+     built very easily using the tools provided by the first one.
+
+   - There are functions which require a lot of arguments.
+     - Typically, some of these arguments have a sensible 'default'
+       value.
+     - We can make passing arguments to this function more
+       comprehensive by wrapping them in an object.
+
+   - lightweight libraries
+     - jQuery
+   - full libraries
+     - YUI
+     - Dojo
+
+** Regular Expressions
+   - Just like strings get written between quotes, regular expression
+     patterns get written between slashes (/).
+   - The ~search~ method resembles ~indexOf~, but it searches for a
+     regular expression instead of a string.
+   - The dot (.) can be used to mean 'any character that is not a
+     newline', an escaped 'd' (\d) means 'any digit', an escaped 'w'
+     (\w) matches any alphanumeric character (including underscores,
+     for some reason), and an escaped 's' (\s) matches any white-space
+     (tab, newline, space) character.
+   - The escaped 'd', 'w', and 's' can be replaced by their capital
+     letter to mean their opposite. For example, \S matches any
+     character that is not white-space.
+   - Note that regular expressions are objects, and have
+     methods. Their ~test~ method returns a boolean indicating whether
+     the given string matches the expression.
+   - The code \b matches a 'word boundary', which can be punctuation,
+     white-space, or the start or end of the string.
+   - Putting an asterisk (*) after an element allows it to be repeated
+     any number of times, including zero. A plus (+) does the same,
+     but requires the pattern to occur at least one time. A question
+     mark (?) makes an element 'optional' ¨D it can occur zero or one
+     times.
+   - When necessary, braces can be used to be more precise about the
+     amount of times an element may occur.
+   - Part of a regular expression can be grouped together with
+     parentheses. This allows us to use * and such on more than one
+     character.
+   - After the closing slash, 'options' may be added to a regular
+     expression. An i, here, means the expression is case-insensitive
+   - A pipe character (|) is used to allow a pattern to make a choice
+     between two elements.
+   - When a string is matched against a regular expression, the result
+     will be null if the match failed, or an array of matched strings
+     if it succeeded.
+   - The ~replace~ method of string values, which we saw in chapter 6,
+     can be given a regular expression as its first argument.
+   - Notice the g character after the regular expression. It stands
+     for 'global', and means that every part of the string that
+     matches the pattern should be replaced.
+   - When the second argument given to the ~replace~ method is a
+     function value instead of a string, this function is called every
+     time a match is found, and the matched text is replaced by
+     whatever the function returns.
+   - The first argument to the RegExp constructor is a string
+     containing the pattern, the second argument can be used to add
+     case-insensitivity or globalness.
+
+** Web programming: A crash course
+   - Client-side web programming is what JavaScript was invented for.
+   - To solve this dilemma, browsers severely limit the things a
+     JavaScript program may do.
+     - It is not allowed to look at your files, or to modify anything
+       not related to the web-page it came with. Isolating a programming
+       environment like this is called *sand-boxing*.
+   - The value returned by ~window.open~ is a new window. This is the
+     global object for the script running in that window, and contains
+     all the standard things like the ~Object~ constructor and the ~Math~
+     object.
+   - Other kinds of sub-documents, such as frames
+     (documents-within-a-document), are also windows from the
+     perspective of a JavaScript program, and have their own
+     JavaScript environment.
+   - Every window object has a *document* property, which contains an
+     object representing the document shown in that window.
+     - This object contains, for example, a property *location*, with
+       information about the URL of the document.
+     - Setting ~document.location.href~ to a new URL can be used to make
+       the browser load another document.
+     - Another application of the document object is its *write* method.
+       - When it is used on a fully loaded document, it will replace
+         the whole document by the given HTML
+
+*** Forms
+    - JavaScript provides functions ~encodeURIComponent~ and
+      ~decodeURIComponent~ to add these codes to strings and remove them
+      again.
+    - Traditionally, *get* requests are used for requests that just ask
+      the server for some document, while *post* requests are used to
+      take an action that changes something on the server.
+    - When a URL does not contain a server name, it is called a
+      relative URL. Relative URLs are interpreted by the browser to
+      refer to files on the same server as the current
+      document.
+    - Unless they start with a slash, the path (or directory) of the
+      current document is also retained, and the given path is
+      appended to it.
+    - Every HTML tag shown in a document has a JavaScript object
+      associated with it.
+    - The document object has a property named *forms*, which contains
+      links to all the forms in the document
+      - The object for the form tag has a property *elements*, which
+        refers to an object containing the fields of the form
+
+
+
+* JavaScript: The Good Parts
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-03-18 15:16
+  :ARCHIVE_FILE: f:/Jundaf/Application/Emacs/Org/workflow.org
+  :ARCHIVE_CATEGORY: workflow
+  :END:
+
+** Ch2 Grammar
+*** Whitespace
+    - In JavaScript, those pairs (/* */) can also occur in regular
+      expression literals, so block comments are not safe for
+      commenting out blocks of code.
+    - So, it is recommended that /* */ comments be avoided and //
+      comments be used instead.
+
+*** Names
+    - A name is a letter optionally followed by one or more letters,
+      digits, or underbars.
+    - Worse, it is not permitted to use a reserved word as the name of
+      an object property in an object literal or following a dot in a
+      refinement.
+
+*** Numbers
+    - JavaScript has a single number type. Internally, it is
+      represented as 64-bit floating point, the same as Java'sdouble.
+    - The value NaN is a number value that is the result of an
+      operation that cannot produce a normal result.
+    - NaN is not equal to any value, including itself.
+    - You can detect NaN with the isNaN(number) function.
+
+**** Lua number types
+     The number type represents a floating point (fractional)
+     number. There is no separate integer (non-fractional) type.
+
+*** Strings
+    - A string literal can be wrapped in single quotes or double quotes.
+    - The \(backslash) is the escape character.
+    - all characters in JavaScript are 16 bits wide.
+    - JavaScript does not have a character type. To represent a
+      character, make a string with just one character in it.
+
+*** Statements
+    - The switch, while, for, and do statements are allowed to have an
+      optional ~label~ prefix that interacts with the ~break~ statement.
+    - A block is a set of statements wrapped in curly braces.
+      - Unlike many other languages, blocks in JavaScript do not
+        create a new scope, so variables should be defined at the top
+        of the function, not in blocks.
+
+    Here are the falsy values:
+    + false
+    + null
+    + undefined
+    + The empty string ''
+    + The number 0
+    + The number NaN
+
+    The for statement comes in two forms.
+    - The other form (called for in) enumerates the property names (or
+      keys) of an object. On each iteration, another property name
+      string from the object is assigned to the variable.
+    - It is usually necessary to test ~object.hasOwnProperty(variable)~ to
+      determine whether the property name is truly a member of the
+      object or was found instead on the prototype chain.
+
+    Throw statement:
+    - The exception is usually an object literal containing
+      a ~name~ property and a ~message~ property.
+
+    An expression statement can either assign values to one or more
+    variables or members, invoke a method, delete a property from an
+    object.
+
+*** Expressions
+    - The values produced by typeof are 'number', 'string', 'boolean',
+      'undefined', 'function', and 'object'.
+    - If the operand is an array or null, then the result is 'object',
+      which is wrong.
+    - The && operator produces the value of its first operand if the
+      first operand is falsy. Otherwise, it produces the value of the
+      second operand.
+    - The || operator produces the value of its first operand if the
+      first operand is truthy. Otherwise, it produces the value of the
+      second operand.
+
+*** Literals
+    - Object literals are a convenient notation for specifying new objects.
+      - The names of the properties can be specified as names or as strings.
+    - Array literals
+    - Expression literals
+
+** Ch3 Objects
+   - The simple types of JavaScript are numbers, strings, booleans
+     (true and false), null, and undefined. All other values are objects.
+   - Numbers, strings, and booleans are object-like in that they have
+     methods, but they are immutable.
+   - Objects in JavaScript are mutable keyed collections. In
+     JavaScript, arrays are objects, functions are objects, regular
+     expressions are objects
+   - An object is a container of properties
+     - A property name can be any string, including the empty string.
+     - A property value can be any JavaScript value except for undefined.
+   - JavaScript includes a prototype linkage feature that allows one
+     object to inherit the properties of another.
+   - Objects are passed around by reference. They are never copied
+
+*** Object Literals
+    - An object literal can appear anywhere an expression can appear
+    - A propertys name can be any string, including the empty string.
+    - The quotes around a propertys name in an object literal are
+      optional if the name would be a legal JavaScript name and not a
+      reserved word.
+
+*** Retrieval
+    - The undefined value is produced if an attempt is made to retrieve
+      a nonexistent member
+
+    The || operator can be used to fill in default values:
+#+BEGIN_SRC
+    var middle = stooge["middle-name"] || "(none)";
+    var status = flight.status || "unknown";
+#+END_SRC
+
+    Attempting to retrieve values from undefined will throw
+    a TypeError exception. This can be guarded against with
+    the && operator
+#+BEGIN_SRC
+    flight.equipment // undefined
+    flight.equipment.model // throw "TypeError"
+    flight.equipment && flight.equipment.model // undefined
+#+END_SRC
+
+*** Prototype
+    - Every object is linked to a prototype object from which it can
+      inherit properties.
+    - All objects created from object literals are linked to
+      ~Object.prototype~
+    - The prototype link has no effect on updating. The prototype link
+      is used only in retrieval.
+
+*** Enumeration
+    - The for in statement can loop over all of the property names in an
+      object.
+    - There is no guarantee on the order of the names, so be prepared
+      for the names to appear in any order.
+    - The most common filters are the ~hasOwnProperty~ method and using
+      ~typeof~ to exclude functions
+    - If you want to assure that the properties appear in a particular
+      order, it is best to avoid the for in statement entirely and
+      instead /make an array containing the names of the properties in
+      the correct order/
+
+** Ch4 Funtions
+   - The best thing about JavaScript is its implementation of
+     functions. It got almost everything right.
+   - Functions are the fundamental modular unit of JavaScript.
+   - They are used for code reuse, information hiding, and composition.
+   - Functions are used to specify the behavior of objects.
+
+*** Function Objects
+    - Function objects are linked to Function.prototype (which is
+      itself linked to Object.prototype).
+    - Every function is also created with two additional hidden properties:
+      - the function's context
+      - the code that implements the function's behavior.
+    - Every function object is also created with a ~prototype~ property.
+      - Its value is an object with a constructor property whose value
+        is the function.
+    - Functions can be stored in variables, objects, and arrays.
+    - Functions can be passed as arguments to functions, and functions
+      can be returned from functions.
+
+*** Invocation
+    - In addition to the declared parameters, every function receives
+      two additional parameters: ~this~ and ~arguments~.
+    - There are four patterns of invocation in JavaScript:
+      - the method invocation pattern,
+      - the function invocation pattern,
+      - the constructor invocation pattern,
+      - and the apply invocation pattern.
+    - There is no runtime error when the number of arguments and the
+      number of parameters do not match.
+    - There is no type checking on the argument values: any type of
+      value can be passed to any parameter.
+
+    The *Method Invocation* Pattern
+    - A method can use ~this~ to access the object so that it can
+      retrieve values from the object or modify the object.
+
+    The *Function Invocation* Pattern
+    - When a function is invoked with this pattern, ~this~ is bound to the
+      global object.
+    - A consequence of this error is that a method cannot employ an
+      inner function to help it do its work because the inner function
+      does not share the method's access to the object as its ~this~ is
+      bound to the wrong value.
+
+    The *Constructor Invocation* Pattern
+    - JavaScript is a prototypal inheritance language. That means that
+      objects can inherit properties directly from other objects. The
+      language is class-free.
+    - If a function is invoked with the ~new~ prefix, then a new object
+      will be created with a hidden link to the value of the
+      function's ~prototype~ member, and ~this~ will be bound to that new
+      object.
+    - Functions that are intended to be used with the ~new~ prefix are
+      called ~constructors~. By convention, they are kept in variables
+      with a capitalized name.
+
+    The *Apply Invocation* Pattern
+    - The ~apply~ method lets us construct an array of arguments to use to
+      invoke a function. It also lets us choose the value of ~this~.
+
+*** Arguments
+    - This makes it possible to write functions that take an
+      unspecified number of parameters
+    - Because of a design error, ~arguments~ is not really an array. It is
+      an array-like object. ~arguments~ has a ~length~ property, but it lacks
+      all of the array methods.
+
+*** Return
+    If the function was invoked with the new prefix and the return value
+    is not an object, then this (the new object) is returned instead.
+
+*** Exceptions
+    - A try statement has a single catch block that will catch all exceptions.
+    - If your handling depends on the type of the exception, then the
+      exception handler will have to inspect the name to determine the
+      type of the exception.
+
+*** Augmenting Types
+    JavaScript allows the basic types of the language to be augmented.
+
+*** Recursion
+    - Recursion is a powerful programming technique in which a problem
+      is divided into a set of similar subproblems, each solved with a
+      trivial solution.
+    - Recursive functions can be very effective in manipulating tree
+      structures such as the browser's Document Object Model (DOM).
+    - *tail recursion optimization*
+      - This means that if a function returns the result of invoking
+        itself recursively, then the invocation is replaced with a
+        loop, which can significantly speed things up.
+
+*** Scope
+    - Most languages with C syntax have *block scope*. All variables
+      defined in a block are not visible from outside of the block.
+    - Unfortunately, JavaScript does not have block scope
+    - JavaScript does have *function scope*.
+      - That means that the parameters and variables defined in a
+        function are not visible outside of the function,
+      - and that a variable defined anywhere within a function is
+        visible everywhere within the function.
+    - So instead, it is best to declare all of the variables used in a
+      function at the top of the function body.
+
+*** Closure
+    - The good news about scope is that inner functions get access to
+      the parameters and variables of the functions they are defined
+      within (with the exception of this and arguments).
+    - Using closure to hide private data.
+
+*** Module
+    - By using functions to produce modules, we can almost completely
+      eliminate our use of global variables, thereby mitigating one of
+      JavaScript's worst features.
+    - The general pattern of a module is a function that defines
+      private variables and functions; creates privileged functions
+      which, through closure, will have access to the private
+      variables and functions; and that returns the privileged
+      functions or stores them in an accessible place.
+
+*** Cascade
+    - Some methods do not have a return value. For example, it is
+      typical for methods that set or change the state of an object to
+      return nothing.
+    - If we have those methods return ~this~ instead of
+      ~undefined~, we can enable cascades.
+    - In a cascade, we can call many methods on the same object in
+      sequence in a single statement.
+
+*** Currying
+    - Currying allows us to produce a new function by combining a
+      function and an argument
+
+** Ch5 Inheritance
+   - In the classical languages (such as Java), inheritance
+     (or extends) provides two useful services.
+     - First, it is a form of code reuse.
+     - The other benefit of classical inheritance is that it includes
+       the specification of a system of types.
+   - In classical languages, objects are instances of classes, and a
+     class can inherit from another class.
+   - JavaScript is a prototypal language, which means that objects
+     inherit directly from other objects.
+
+*** Pseudoclassical
+    - When a function object is created, the Function constructor that
+      produces the function object runs some code like this:
+
+#+BEGIN_SRC
+    this.prototype = {constructor: this};
+#+END_SRC
+
+    - The new function object is given a prototype property whose
+      value is an object containing a constructor property whose value
+      is the new function object.
+    - The prototype object is the place where inherited traits are to
+      be deposited.
+    - Even worse, there is a serious hazard with the use of
+      constructor functions.
+      - If you forget to include the ~new~ prefix when calling a
+	constructor function, then ~this~ will be bound to the global
+	object, you will be clobbering global variables.
+      - To mitigate this problem, there is a convention that all
+        constructor functions are named with an initial capital, and
+        that nothing else is spelled with an initial capital.
+      - A much better alternative is to not use ~new~ at all.
+    - In classical languages, class inheritance is the only form of
+      code reuse. JavaScript has more and better options.
+
+*** Object Specifiers
+    - It sometimes happens that a constructor is given a very large
+      number of parameters.
+      - it can be much friendlier if we write the constructor to
+        accept a single object specifier instead.
+    - This can have a secondary benefit when working with JSON
+      - we can simply pass the JSON object to the constructor and it
+        will return a fully constituted object.
+
+*** Prototypal
+    - Prototypal inheritance is conceptually simpler than classical
+      inheritance:
+      - a new object can inherit the properties of an old object.
+      - You start by making a useful object. You can then make many
+        more objects that are like that one.
+
+*** Functional
+    - We start by making a function that will produce objects.
+      1. It creates a new object.
+      2. It optionally defines private instance variables and
+         methods. These are just ordinary vars of the function.
+      3. It augments that new object with methods. Those methods will
+         have privileged access to the parameters and the vars defined
+         in the second step.
+      4. It returns that new object.
+    - The ~spec~ object contains all of the information that the
+      constructor needs to make an instance.
+      - The contents of the ~spec~ could be copied into private variables
+      - or transformed by other functions.
+      - Or the methods can access information from ~spec~ as they need it.
+    - The ~my~ object is a container of secrets that are shared by the
+      constructors in the inheritance chain.
+      - The ~my~ object allows the other constructor to share the material
+        that we put into ~my~.
+    - The variables and inner functions of the constructor become the
+      private members of the instance.
+      - The inner functions have access to ~spec~ and ~my~ and ~that~
+        and the private variables.
+    - Next, we augment that, adding the privileged methods that make up
+      the object's interface.
+
+** Ch6 Arrays
+   - JavaScript provides an object that has some array-like characteristics.
+     - It converts array subscripts into strings that are used to make
+       properties.
+     - It is significantly slower than a real array, but it can be
+       more convenient to use.
+     - Retrieval and updating of properties work the same as with
+       objects, except that there is a special trick with integer
+       property names.
+
+*** Length
+    - Every array has a length property. Unlike most other languages,
+      JavaScript's array length is not an upper bound.
+    - The length property is the largest integer property name in the
+      array plus one. This is not necessarily the number of properties
+      in the array
+    - The[] postfix subscript operator converts its expression to a
+      string using the expression's toString method if it has one.
+    - The length can be set explicitly.
+      - Making the length larger does not allocate more space for the array.
+      - Making the length smaller will cause all properties with a
+        subscript that is greater than or equal to the new length to be
+        deleted.
+
+*** Splice
+    - JavaScript arrays have a splice method.
+      - The first argument is an ordinal in the array.
+      - The second argument is the number of elements to delete.
+      - Any additional arguments get inserted into the array at that point
+
+*** Enumeration
+    - Since JavaScript's arrays are really objects, the for
+      in statement can be used to iterate over all of the properties of
+      an array.
+      - Unfortunately, ~for in~ makes no guarantee about the order of the
+        properties,
+      - Fortunately, the conventional ~for~ statement avoids these problems.
+
+*** Confusion
+    - The rule is simple: when the property names are small sequential
+      integers, you should use an array. Otherwise, use an object.
+
+** Ch7 Regular Expressions
+   - Many of JavaScript's features were borrowed from other languages.
+     - The syntax came from Java,
+     - functions came from Scheme,
+     - and prototypal inheritance came from Self.
+     - JavaScript's Regular Expression feature was borrowed from Perl.
+   - The methods that work with regular expressions
+     are regexp.exec, regexp.test, string.match, string.replace,
+     string.search, and string.split.
+   - In a JavaScript program, the regular expression must be on a
+     single line.
+
+*** Construction
+    - There are two ways to make a RegExp object. The preferred way, as
+      we saw in the examples, is to use a regular expression literal.
+    - There are three flags that can be set on aRegExp.
+      - g :: Global (match multiple times)
+      - i :: Insensitive (ignore character case)
+      - m :: Multiline (^ and $ can match line-ending characters)
+    - The other way to make a regular expression is to use
+      the RegExp constructor. The constructor takes a string and
+      compiles it into a RegExp object.
+      - It is usually necessary to double the backslashes and escape
+        the quotes.
+      - The RegExp constructor is useful when a regular expression must
+        be generated at runtime using material that is not available
+        to the programmer.
+
+*** Methods
+    - regexp.exec(string)
+      - If it successfully matches theregexpand thestring, it returns
+        an array.
+      - The 0 element of the array will contain the substring that
+        matched the regexp.
+      - The 1 element is the text captured by group 1, the 2 element is
+	the text captured by group 2, and so on.
+      - If the match fails, it returns null.
+
+** APPENDIX A: Awful Parts
+*** Global Variables
+    - The worst of all of JavaScript's bad features is its dependence
+      on global variables.
+    - There are three ways to define global variables.
+      - The first is to place a var statement outside of any function
+      - The second is to add a property directly to the global object.
+	- In web browsers, the global object goes by the name window
+      - The third is to use a variable without declaring it. This is
+        called implied global
+
+*** Semicolon Insertion
+    - JavaScript has a mechanism that tries to correct faulty programs
+      by automatically inserting semicolons.
+    - Do not depend on this. It can mask more serious errors.
+      - If a return statement returns a value, that value expression must
+	begin on the same line as the return
+
+*** typeof null
+    - returns 'object' instead of 'null'
+    - typeof cannot distinguish between null and objects, but you can
+      because null is falsy and all objects are truthy
+
+*** parseInt
+    - parseInt is a function that converts a string into an integer.
+    - It stops when it sees a nondigit, so parseInt("16")
+      and parseInt("16 tons") produce the same result.
+    - If the first character of the string is 0, then the string is
+      evaluated in base 8 instead of base 10.
+    - Fortunately, parseInt can take a radix parameter, so
+      that parseInt("08",10) produces 8.
+
+*** NaN
+    - As we have seen, typeof does not distinguish between numbers
+      and NaN, and it turns out that NaN is not equal to itself.
+    - JavaScript provides an isNaN function that can distinguish between
+      numbers and NaN
+    - isFinite
+
+*** Phony Arrays
+    - JavaScript does not have real arrays.
+    - their performance can be considerably worse than real arrays.
+    - The typeof operator does not distinguish between arrays and objects.
+    - To determine that a value is an array, you also need to consult
+      its constructor property
+      - That test will give a false negative if an array was created
+        in a different frame or window.
+    - The arguments array is not an array; it is an object with a
+      length member.
+
+** APPENDIX B: Bad Parts
+   By simply avoiding these features, you make JavaScript a better
+   language, and yourself a better programmer.
+
+*** Avoide Using ==
+    - If the two operands are of the same type and have the same
+      value, then === produces true and !== produces false.
+*** with Statement
+*** eval Function
+    - The eval function passes a string to the JavaScript compiler and
+      executes the result.
+    - The eval function also compromises the security of your
+      application because it grants too much authority to the eval'd
+      text.
+    - The Function constructor is another form ofeval, and should
+      similarly be avoided.
+    - The browser provides setTimeout and setInterval functions that
+      can take string arguments or function arguments.
+      - The string argument form also should be avoided.
+
+*** The function Statement Versus the function Expression
+    - This means that regardless of where a functionis placed, it is
+      moved to the top of the scope in which it is defined.
+    - The first thing in a statement cannot be a function expression
+      because the official grammar assumes that a statement that
+      starts with the word function is a function statement.
+    - The workaround is to wrap the function expression in parentheses
+
+*** Typed Wrappers
+    - Don't use new Boolean or new Number or new String.
+    - Also avoid new Object and new Array. Use {} and [] instead.
+
+*** new Operator
+    - If youforget to use the new operator, you instead get an ordinary
+      function call, and this is bound to the global object instead of
+      to a new object.
+    - That means that your function will be clobbering global
+      variables when it attempts to initialize the new members.
+    - By convention, functions that are intended to be used with new
+      should be given names with initial capital letters, and names
+      with initial capital letters should be used only with
+      constructor functions.
+
+** TODO Learning JSLint and JSON
+
+
+
+* Beginning PhoneGap
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2014-03-18 15:21
+  :ARCHIVE_FILE: f:/Jundaf/Application/Emacs/Org/workflow.org
+  :ARCHIVE_CATEGORY: workflow
+  :END:
+  By Thomas Myer
+
+** Ch1 Introducing PhoneGap
+*** What PhoneGap Is Good/Bad At
+    - HTML, CSS, JavaScript
+    - PhoneGap API
+    - jQuery, Sencha Touch
+    - If you are working with multiple devices, you will need separate
+      environments for each wrapper.
+
+*** What You Can Build with PhoneGap
+    - Working with Contacts
+    - Working with the Camera
+      - The PhoneGap API provides two ways to capture images, and one
+        is giving access to the camera via the camera object.
+      - The second is by using the Media Capture API.
+    - Working with Geolocation
+      - Another hallmark of modern smartphones is their geolocation
+        capabilities.
+      - The PhoneGap GeolocationAPI lets you get a device's current
+        position (in longitude and latitude)
+    - Working with Media Files
+      - In PhoneGap, the Media Capture API isn't simply a good means
+        for capturing photos. You can also use it to capture audio and
+        video data as well.
+    - Working with Storage Options
+      - PhoneGap also supports Web SQL databases. As with HTML5,
+        you'll be working with SQLite locally
+
+*** Mobile Design Issues
+    - A good approach is to use HTML elements that bring semantic
+      structure to your content specifically, headers, lists, and
+      buttons, for starters and that you can easily style using CSS.
+    - Using a framework to create a usable UI will always be faster
+      than putting something together yourself, and then testing on
+      the different devices.
+    - One of the best practices is to try to keep as much
+      functionality as you can on one page, and then use JavaScript
+      functions to load information dynamically onto the page.
+
+
+** Cross-Platform Mobile Application Development
+*** Types of Mobile Applications
+    - Standalone mobile applications
+    - Service-backed mobile applications (PhoneGap)
+
+*** Understanding Web Services
+    - Web applications that are accessible via browsers
+    - Web services that are accessible via protocols like RESTful web services
+      - www.programmableweb.com
+
+*** Overview of Mobile Applications
+    - User Interaction
+      - Touch screen
+      - Accelerometer
+      - Compass
+    - Location Awareness
+      - GPS
+    - Push Notification
+
+*** Challenges
+    - OS Fragmentation
+    - Feature Fragmentation
+    - Development Environment Fragmentation
+    - Consistent User Experience
+    - Multiple Teams/Products
+
+*** PhoneGap's Strategy
+    - Browser Component As the Common Platform
+      - Think of all PhoneGap applications as having embedded browsers
+        and running these HTML5/CSS3-based applications.
+    - Mobile Application Webviews
+      - These embedded browsers are often referred as webviews.
+    - Native Hooks to Expose Device Capabilities
+      - This means, programmatically, that all these platforms allow
+	JavaScript code to call native Java/C++/Objective C code, and
+	vice versa.
+    - HTML5 and CSS3: The Standards for Writing Applications
+      - new markups for more robust multimedia support
+      - web worker for background processing
+      - CSS3 is the new standard for a seamless,rich User Interface (UI).
+    - Single Origin Policy Not Applicable
+      - This allows PhoneGap to be a platform for the easy development
+	of mashups, which can freely make Ajax calls to various other
+	sites.
+
+** Getting Started with PhoneGap
+   - Applications that are developed using PhoneGap are hybrid
+     applications. These applications are not purely HTML/JavaScript
+     based, nor are they native.
+   - PhoneGap provides a bridge from the JavaScript world to the
+     native world of the platform, which allows the JavaScript API to
+     access and control the device
+
+*** PhoneGap Architecture
+    - The PhoneGap framework is primarily a JavaScript Library that
+      allows HTML/JavaScript applications to access device features.
+    - The PhoneGap framework also has a native component, which works
+      behind the scene and does the actual work on the device
+
+

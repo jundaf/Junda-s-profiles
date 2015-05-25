@@ -1,0 +1,36 @@
+﻿++ New000001
+<<pre
+#!/bin/bash
+
+if [[ "x$ACORN_ROOT" == "x" ]]; then
+    ACORN_ROOT=/usr/local/acorn
+fi
+
+CONF_FILE=$ACORN_ROOT/conf/update_status
+REPO_PATH=$ACORN_ROOT/conf/install_dir
+
+PYTHONPATH=$ACORN_ROOT/app/lib/updatefix
+LANG=zh_CN.UTF-8
+
+export PYTHONPATH LANG
+
+if [[ -f $CONF_FILE ]]; then
+    /usr/bin/createrepo $REPO_PATH
+    /usr/bin/yum clean all
+
+    if python -m updatefix > /dev/null; then
+        echo done
+        /bin/rm -f $CONF_FILE
+    else
+        echo error
+        /bin/mv -f $CONF_FILE $(mktemp $CONF_FILE.XXXXXX)
+    fi
+
+    # reboot system
+    /sbin/shutdown -r now
+    exit
+fi
+
+/bin/rm -f $REPO_PATH/*.rpm
+/usr/bin/createrepo $REPO_PATH
+>>

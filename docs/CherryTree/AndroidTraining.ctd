@@ -1,0 +1,143 @@
+<?xml version="1.0" ?><cherrytree><node name="Buiding Apps" prog_lang="custom-colors" readonly="False" tags="" unique_id="2"><rich_text></rich_text></node><node name="Best Practices" prog_lang="custom-colors" readonly="False" tags="" unique_id="1"><rich_text></rich_text><node name="Performance" prog_lang="custom-colors" readonly="False" tags="" unique_id="3"><rich_text></rich_text><node name="Perfromance Tips" prog_lang="custom-colors" readonly="False" tags="" unique_id="4"><rich_text>There are two basic rules for writing efficient code:
+    • Don't do work that you don't need to do.
+    • Don't allocate memory if you can avoid it.
+
+</rich_text><rich_text scale="h2">Avoid Creating Unnecessary Objects</rich_text><rich_text>
+
+As you allocate more objects in your app, you will force a periodic garbage collection, creating little &quot;hiccups&quot; in the user experience. Generally speaking, avoid creating short-term temporary objects if you can.
+
+</rich_text><rich_text scale="h2">Prefer Static Over Virtual</rich_text><rich_text>
+
+If you don't need to access an object's fields, make your method static. Invocations will be about 15%-20% faster.It's also good practice, because you can tell from the method signature that calling the method can't alter the object's state.
+
+</rich_text><rich_text scale="h2">Use Static Final Constants</rich_text><rich_text>
+
+Which avoid instance field lookups When these values are referenced later on.
+
+This optimization applies only to primitive types and </rich_text><rich_text link="webs http://developer.android.com/reference/java/lang/String.html">String</rich_text><rich_text> constants, not arbitrary reference types. Still, it's good practice to declare constants static final whenever possible.
+
+</rich_text><rich_text scale="h2">Avoid Internal Getters/Setters</rich_text><rich_text>
+
+In native languages like C++ it's common practice to use getters(i = getCount()) instead of accessing the field directly (i= mCount). This is an excellent habit for C++ and is often practiced in other object oriented languages like C# and Java, because the compiler can usually inline the access, and if you need to restrict or debug field access you can add the code at any time.
+
+Note that if you're using </rich_text><rich_text link="webs http://developer.android.com/tools/help/proguard.html">ProGuard</rich_text><rich_text>,you can have the best of both worlds because ProGuard can inline accessors for you.
+
+</rich_text><rich_text scale="h2">Use Enhanced For Loop</rich_text><rich_text>
+
+The enhanced for loop (also sometimes known as &quot;for-each&quot; loop) can be usedfor collections that implement the </rich_text><rich_text link="webs http://developer.android.com/reference/java/lang/Iterable.html">Iterable</rich_text><rich_text> interface and for arrays.
+
+</rich_text><rich_text scale="h2">Consider Package Instead of Private Access With Private Inner Class</rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">Know and Use The Libraries</rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">Use Native Methods Carefully</rich_text><rich_text>
+
+For one thing, there's a cost associated with the Java-native transition, and the JIT can't optimize across these boundaries. If you're allocating native resources (memory on the native heap, file descriptors, or whatever), it can be significantly more difficult to arrange timely collection of these resources. 
+
+Native code is primarily useful when you have an existing native codebase that you want to port to Android, not for &quot;speeding up&quot; parts of your Android app written with the Java language.
+
+</rich_text></node><node name="Optimizing Battery Life" prog_lang="custom-colors" readonly="False" tags="" unique_id="5"><rich_text>
+</rich_text><rich_text scale="h1">Monitoring the Battery Level and Charging State</rich_text><rich_text>
+
+The impact of performing updates while the device is charging over AC is negligible, so in most cases you can maximize your refresh rate whenever the device is connectedto a wall charger. Conversely, if the device is discharging, reducing your update rate helpsprolong the battery life.
+
+Typically you should maximize the rate of your background updates in the case where the device isconnected to an AC charger, reduce the rate if the charge is over USB, and lower itfurther if the battery is discharging.
+
+</rich_text><rich_text scale="h2">Determine the Current Charging State</rich_text><rich_text>
+
+The </rich_text><rich_text link="webs http://developer.android.com/reference/android/os/BatteryManager.html">BatteryManager</rich_text><rich_text> broadcasts all battery and charging details in a sticky </rich_text><rich_text link="webs http://developer.android.com/reference/android/content/Intent.html">Intent</rich_text><rich_text> that includes the charging status.
+
+Because it's a sticky intent, you don't need to register a </rich_text><rich_text link="webs http://developer.android.com/reference/android/content/BroadcastReceiver.html">BroadcastReceiver</rich_text><rich_text>—by simply calling registerReceiver passing in null as the receiver as shown in the next snippet, the current battery status intent is returned.
+
+</rich_text><rich_text family="monospace" foreground="#7f7f7f7f7f7f">IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+Intent batteryStatus = context.registerReceiver(null, ifilter);
+</rich_text><rich_text>
+</rich_text><rich_text scale="h2">Monitor Significant Changes in Battery Level</rich_text><rich_text>
+
+Generally speaking, the impact of constantly monitoring the battery level has a greater impact on the battery than your app's normal behavior, so it's good practice to only monitor significant changes in battery level—specifically when the device enters or exits a low battery state.
+
+    • </rich_text><rich_text link="webs http://developer.android.com/reference/android/content/Intent.html#ACTION_BATTERY_LOW">ACTION_BATTERY_LOW</rich_text><rich_text>
+    • </rich_text><rich_text link="webs http://developer.android.com/reference/android/content/Intent.html#ACTION_BATTERY_OKAY">ACTION_BATTERY_OKAY</rich_text><rich_text>
+
+</rich_text><rich_text scale="h1">Determining and Monitoring the Connectivity Status</rich_text><rich_text>
+
+</rich_text><rich_text family="monospace" foreground="#7f7f7f7f7f7f">ConnectivityManager cm =
+        (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+ 
+NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+boolean isConnected = activeNetwork != null &amp;&amp;
+                      activeNetwork.isConnectedOrConnecting();
+
+boolean isWiFi = activeNetwork.getType() == ConnectivityManager.TYPE_WIFI;
+</rich_text><rich_text>
+</rich_text><rich_text scale="h1">Manipulating Broadcast Receivers On Demand</rich_text><rich_text>
+
+The simplest way to monitor device state changes is to create a </rich_text><rich_text link="webs http://developer.android.com/reference/android/content/BroadcastReceiver.html">BroadcastReceiver</rich_text><rich_text> for each state you're monitoring and register each of them in your application manifest.
+
+A side-effect of this approach is that your app will wake the device each time any of these receivers is triggered—potentially much more frequently than required.
+
+A better approach is to disable or enable the broadcast receivers at runtime. That way you can use the receivers you declared in the manifest as passive alarms that are triggered by system events only when necessary.
+
+</rich_text><rich_text justification="left"></rich_text><rich_text>Use can use the </rich_text><rich_text link="webs http://developer.android.com/reference/android/content/pm/PackageManager.html">PackageManager</rich_text><rich_text> to toggle the enabled state on anycomponent defined in the manifest, including whichever broadcast receivers you wish to enable ordisable
+
+2014/03/10 - 09:39
+</rich_text><encoded_png anchor="Sticky Intent" char_offset="714">anchor</encoded_png><encoded_png anchor="PackageManager" char_offset="2461">anchor</encoded_png></node><node name="Sending Operations to Multiple Threads" prog_lang="custom-colors" readonly="False" tags="" unique_id="6"><rich_text link="webs http://developer.android.com/reference/java/lang/Thread.html">Thread</rich_text><rich_text> and </rich_text><rich_text link="webs http://developer.android.com/reference/java/lang/Runnable.html">Runnable</rich_text><rich_text> are the basis of powerful Android classes such as </rich_text><rich_text link="webs http://developer.android.com/reference/android/os/HandlerThread.html">HandlerThread</rich_text><rich_text>, </rich_text><rich_text link="webs http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</rich_text><rich_text>, and </rich_text><rich_text link="webs http://developer.android.com/reference/android/app/IntentService.html">IntentService</rich_text><rich_text>. </rich_text><rich_text link="webs http://developer.android.com/reference/java/lang/Thread.html">Thread</rich_text><rich_text> and </rich_text><rich_text link="webs http://developer.android.com/reference/java/lang/Runnable.html">Runnable</rich_text><rich_text> are also the basis of the class </rich_text><rich_text link="webs http://developer.android.com/reference/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</rich_text><rich_text>.
+
+In the class, the </rich_text><rich_text link="webs http://developer.android.com/reference/java/lang/Runnable.html#run%28%29">Runnable.run()</rich_text><rich_text> method contains the code that's executed. </rich_text><rich_text background="#ffffffff0000">Remember, though, that the </rich_text><rich_text background="#ffffffff0000" link="webs http://developer.android.com/reference/java/lang/Runnable.html">Runnable</rich_text><rich_text background="#ffffffff0000"> won't be running on the UI thread, so it can't directly modify UI objects such as </rich_text><rich_text background="#ffffffff0000" link="webs http://developer.android.com/reference/android/view/View.html">View</rich_text><rich_text background="#ffffffff0000"> objects.</rich_text><rich_text>
+
+At the beginning of the run() method, set the thread to use background priority by calling Process.setThreadPriority() with THREAD_PRIORITY_BACKGROUND. This approach reduces resource competition between the Runnable object's thread and the UI thread. 
+
+</rich_text><rich_text scale="h1" underline="single">Creating a Manager for Multiple Threads</rich_text><rich_text>
+
+If you want to run a task repeatedly on different sets of data, but you only need one execution running at a time, an </rich_text><rich_text link="webs http://developer.android.com/reference/android/app/IntentService.html">IntentService</rich_text><rich_text> suits your needs.
+
+To automatically run tasks as resources become available, or to allow multiple tasks to run at the same time (or both), you need to provide a managed collection of threads. To do this, use an instance of </rich_text><rich_text link="webs http://developer.android.com/reference/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</rich_text><rich_text>, which runs a task from a queue when a thread in its pool becomes free. To run a task, all you have to do is add it to the queue.
+
+A thread pool can run multiple parallel instances of a task, so you should ensure that your code is thread-safe. Enclose variables that can be accessed by more than one thread in a synchronized block.
+
+</rich_text><rich_text scale="h2">Define the Thread Pool Class</rich_text><rich_text>
+
+Instantiate </rich_text><rich_text link="webs http://developer.android.com/reference/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</rich_text><rich_text> in its own class. Within this class, do the following:
+
+• Use static variables for thread pools
+• Use a private constructor: Making the constructor private ensures that it is a singleton
+• Start your tasks by calling methods in the thread pool class.
+• Instantiate a </rich_text><rich_text link="webs http://developer.android.com/reference/android/os/Handler.html">Handler</rich_text><rich_text> in the constructor and attach it to your app's UI thread. A </rich_text><rich_text link="webs http://developer.android.com/reference/android/os/Handler.html">Handler</rich_text><rich_text> allows your app to safely call the methods of UI objects such as </rich_text><rich_text link="webs http://developer.android.com/reference/android/view/View.html">View</rich_text><rich_text> objects.
+
+</rich_text><rich_text scale="h2">Determine the Thread Pool Parameters</rich_text><rich_text>
+
+• Initial pool size and maximum pool size: </rich_text><rich_text style="italic">Runtime.getRuntime().availableProcessors()</rich_text><rich_text>
+• Keep alive time and time unit 
+• A queue of tasks: You provide this queue object when you create the thread pool, using any queue class that implements the </rich_text><rich_text link="webs http://developer.android.com/reference/java/util/concurrent/BlockingQueue.html">BlockingQueue</rich_text><rich_text> interface.
+
+</rich_text><rich_text scale="h1" underline="single">Running Code on a Thread Pool Thread</rich_text><rich_text>
+
+To start a task object on a thread in a particular thread pool, pass the </rich_text><rich_text link="webs http://developer.android.com/reference/java/lang/Runnable.html">Runnable</rich_text><rich_text> to </rich_text><rich_text link="webs http://developer.android.com/reference/java/util/concurrent/ThreadPoolExecutor.html#execute%28java.lang.Runnable%29">ThreadPoolExecutor.execute()</rich_text><rich_text>. This call adds the task to the thread pool's work queue.
+
+</rich_text><rich_text scale="h2">Interrupt Running Code</rich_text><rich_text>
+
+To interrupt a thread, call </rich_text><rich_text link="webs http://developer.android.com/reference/java/lang/Thread.html#interrupt%28%29">Thread.interrupt()</rich_text><rich_text>. Notice that </rich_text><rich_text link="webs http://developer.android.com/reference/java/lang/Thread.html">Thread</rich_text><rich_text> objects are controlled by the system, which can modify them outside of your app's process. For this reason, you need to lock access on a thread before you interrupt it, by placing the access in a synchronized block.
+
+In most cases, </rich_text><rich_text link="webs http://developer.android.com/reference/java/lang/Thread.html#interrupt%28%29">Thread.interrupt()</rich_text><rich_text> stops the thread immediately. However, </rich_text><rich_text background="#ffffffff0000">it only stops threads that are waiting, and will not interrupt CPU or network-intensive tasks.</rich_text><rich_text> To avoid slowing down or locking up the system, you should test for any pending interrupt requests before attempting an operation : 
+
+</rich_text><rich_text family="monospace" foreground="#7f7f7f7f7f7f">/*
+ * Before continuing, checks to see that the Thread hasn't
+ * been interrupted
+ */
+if (Thread.interrupted()) {
+    return;
+}
+</rich_text><rich_text>
+</rich_text><rich_text scale="h1" underline="single">Communicating with the UI Thread</rich_text><rich_text>
+
+Every app has its own special thread that runs UI objects such as </rich_text><rich_text link="webs http://developer.android.com/reference/android/view/View.html">View</rich_text><rich_text> objects; this thread is called the UI thread. To move data from a background thread to the UI thread, use a </rich_text><rich_text link="webs http://developer.android.com/reference/android/os/Handler.html">Handler</rich_text><rich_text> that's running on the UI thread.
+
+</rich_text><rich_text scale="h2">Define a Handler on the UI Thread</rich_text><rich_text>
+
+</rich_text><rich_text link="webs http://developer.android.com/reference/android/os/Handler.html">Handler</rich_text><rich_text> is part of the Android system's framework for managing threads. A </rich_text><rich_text link="webs http://developer.android.com/reference/android/os/Handler.html">Handler</rich_text><rich_text> object receives messages and runs code to handle the messages. When you connect a </rich_text><rich_text link="webs http://developer.android.com/reference/android/os/Handler.html">Handler</rich_text><rich_text> to your UI thread, the code that handles messages runs on the UI thread.
+
+Connect it to the UI    thread by instantiating it with the </rich_text><rich_text link="webs http://developer.android.com/reference/android/os/Handler.html#Handler%28android.os.Looper%29">Handler(Looper)</rich_text><rich_text> constructor. This constructor uses a </rich_text><rich_text link="webs http://developer.android.com/reference/android/os/Looper.html">Looper</rich_text><rich_text> object, which is another part of the Android system's thread management framework. 
+
+</rich_text><rich_text scale="h2">Move Data from a Task to the UI Thread</rich_text><rich_text>
+
+2014/03/10 - 11:07</rich_text></node></node></node><bookmarks list="5"/></cherrytree>

@@ -1,0 +1,9 @@
+﻿++ Meego Datamgr
+
+kernel depends on libconnmgrclient.so (connectmanager)
+
++++ Build dependences
+
+    * \CommonLib
+    * \ConfMgr
+    * \SystemMgr

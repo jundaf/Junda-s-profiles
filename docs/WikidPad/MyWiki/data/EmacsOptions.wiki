@@ -1,0 +1,5 @@
+﻿++ Emacs Options
+
+To hide the welcome screen of Emacs you need to paste this into your ~/.emacs:
+
+(setq inhibit-splash-screen t)

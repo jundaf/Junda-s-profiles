@@ -1,0 +1,25 @@
+﻿++ Xikang Server
+
+*Date Server*
+
+http://192.168.175.211:9098/TRMDataExchange/TRMDataExchange?type=dm
+https://trm.xikang.com/TRMDataExchange?type=dm
+http://ttrm.xikang.com/TRMDataExchange?type=dm
+
+Web GUI:
+http://192.168.175.211:9091/management
+http://www.xikang365.org/management/
+
+Username/Password: admin/1
+
+*Update Server* 
+
+http://192.168.175.211:9096/AppMartIX/HappixDX?type=dm
+https://apps.xikang.com/ix/HappixDX?type=dm
+http://tapps.xikang.com/ix/HappixDX?type=dm
+
+*Repo URL*
+
+http://192.168.175.211:9097/xk-pa/test_erqi
+http://apps.xikang.com/pa
+http://tapps.xikang.com/pa

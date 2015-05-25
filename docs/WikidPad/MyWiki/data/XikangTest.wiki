@@ -1,0 +1,10 @@
+﻿++ Xikang Test
+
+<<pre
+[root@Fedora14Devel xk100]# mv $XKROOT/root/rpmbuild/RPMS/i386/appResManager-0.5.14-2.0xikang.i386.rpm .
+[root@Fedora14Devel xk100]# mv $XKROOT/root/rpmbuild/RPMS/i386/xkutility-0.8.52-2.0xikang.i386.rpm .
+[root@Fedora14Devel xk100]# mv $XKROOT/root/rpmbuild/RPMS/i386/xkutility-devel-0.8.52-2.0xikang.i386.rpm .
+[root@Fedora14Devel xk100]# mv $XKROOT/root/rpmbuild/RPMS/i386/xkprotocol-0.8.52-2.0.xikang.i386.rpm .
+[root@Fedora14Devel xk100]# mv $XKROOT/root/rpmbuild/RPMS/i386/log-xikang-0.6.3-2.0.xikang.i386.rpm .
+[root@Fedora14Devel xk100]# mv $XKROOT/root/rpmbuild/RPMS/i386/log-xikang-devel-0.6.3-2.0.xikang.i386.rpm .
+>>

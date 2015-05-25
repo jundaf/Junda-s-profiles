@@ -1,0 +1,94 @@
+﻿++ Two Two One
+
+    * TwoTwoOneTodo
+    * file:///E:/Downloads/CODEMASH-BryanHunter-ErlangAnIntroductionforCDevelopers.pdf
+
++++ /etc
+
+inittab
+rc.d/rc.sysinit
+xdg/acorn/xinitrc (start-pulseaudio)
+dbus-1/system.d/voicemgr.conf
+
++++ <<BuildRequires>>: gtk-doc
+
+scim-panel-vkb-gtk-0.1.5/scim-panel-vkb-gtk.spec
+fvkbd-0.1.5/fvkbd.spec
+
++++ appOtherIndex
+
+Makefile:
+appOtherIndex.desktop ==> appotherIndex.desktop
+
++++ <<InputMethod>>
+
+fvkbd-0.1.5
+scim-panel-vkb-gtk-0.1.5
+
+configure.ac:
+po/Makefile.in.in:
+GETTEXT_VERSION 0.17 ==> 0.18
+
+*Delete .scim folder on failing to input character*
+
++++ Upgrade from 2.1.10
+
+appotherIndex >= 0.5.26
+chronicrecord >= 0.6.2
+datamanager >= 0.8.70
+<<AcornToolkit>> >= 0.13.32
+
++++ Build
+
+<<pre
+[root@Fedora14Devel xikang-meego-2.2.1]# svn stat
+M       Service/InputMethod/fvkbd-0.1.5/fvkbd.spec
+M       Service/InputMethod/fvkbd-0.1.5/configure.ac
+M       Service/InputMethod/fvkbd-0.1.5/po/Makefile.in.in
+M       Service/InputMethod/scim-panel-vkb-gtk-0.1.5/scim-panel-vkb-gtk.spec
+M       Service/InputMethod/scim-panel-vkb-gtk-0.1.5/configure.ac
+M       Service/InputMethod/scim-panel-vkb-gtk-0.1.5/po/Makefile.in.in
+M       Application/AppWebkitBrowser/Makefile
+M       Application/AppOtherIndex/Makefile
+M       acorn-system/xikang-system-update/xikang-system-update.spec
+M       config.mk
+>>
+
++++ config.mk
+
+Removed:
+
+    * acpid
+    * fastinit
+    * plymouth-lite
+
++++ xikang-system-update.spec
+
+#Requires:alsa-plugins >= 0.1.0
+#Requires:acpid >= 1.0.10-12.3.xikang
+#Requires:fastinit >= 1.14-3.6.xikang
+#Requires:plymouth-lite >= 0.6.0-11.2.xikang
+Requires:electrocardio >= 0.7.25
+
++++ Remove acpid
+
+/etc/acpi/actions/power.sh
+
++++ Remove plymouth-lite
+
+/usr/share/plymouth/splash.png
+/usr/share/plymouth/shutdown-1024x600.png
+/usr/share/plymouth/shutdown-1366x768.png
+
++++ <<AppWebkitBrowser>>
+
+LIB = -lwebkit-1.0
+LIB = -lwebkitgtk-1.0
+
++++ Removed App
+
+    * bloodcellcount
+    * appotherIndex
+    * app-urine
+    * app-weight
+    * app-addcellphone

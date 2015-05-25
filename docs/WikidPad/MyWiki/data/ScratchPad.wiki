@@ -1,0 +1,5 @@
+﻿++ Scratch Pad
+
+1. chkconfig --add cups
+2. edit /etc/gtk-2.0/gtkrc
+3. add printer (lpadmin)

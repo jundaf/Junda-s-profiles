@@ -1,0 +1,21 @@
+﻿++ Xikang Update Fix
+
++++ Case 1 INSTALLING_PACKAGE is empty
+
+<<
+[UPDATE]
+UPDATE_PACKAGE=update-test
+INSTALLING_PACKAGE=
+>>
+
++++ Case 2 INSTALLING_PACKAGE has unexpected suffix
+
+<<
+[UPDATE]
+UPDATE_PACKAGE=update-test
+INSTALLING_PACKAGE=app-video                                               8/16
+>>
+
++++ Case 3
+
+Delete update_status after system update done.

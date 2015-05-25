@@ -1,0 +1,26 @@
+﻿++ Ps Usage
+
+<<pre
+$ ps -ef | head
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 14:18 ?        00:00:01 init [5]
+root         2     0  0 14:18 ?        00:00:00 [kthreadd]
+root         3     2  0 14:18 ?        00:00:02 [ksoftirqd/0]
+root         4     2  0 14:18 ?        00:00:00 [migration/0]
+root         5     2  0 14:18 ?        00:00:00 [watchdog/0]
+root         6     2  0 14:18 ?        00:00:00 [migration/1]
+root         7     2  0 14:18 ?        00:00:03 [ksoftirqd/1]
+root         8     2  0 14:18 ?        00:00:00 [watchdog/1]
+root         9     2  0 14:18 ?        00:00:00 [events/0]
+$ ps aux | head
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.0   2100   480 ?        Ss   14:18   0:01 init [5]
+root         2  0.0  0.0      0     0 ?        S    14:18   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    14:18   0:02 [ksoftirqd/0]
+root         4  0.0  0.0      0     0 ?        S    14:18   0:00 [migration/0]
+root         5  0.0  0.0      0     0 ?        S    14:18   0:00 [watchdog/0]
+root         6  0.0  0.0      0     0 ?        S    14:18   0:00 [migration/1]
+root         7  0.0  0.0      0     0 ?        S    14:18   0:03 [ksoftirqd/1]
+root         8  0.0  0.0      0     0 ?        S    14:18   0:00 [watchdog/1]
+root         9  0.0  0.0      0     0 ?        S    14:18   0:00 [events/0]
+>>

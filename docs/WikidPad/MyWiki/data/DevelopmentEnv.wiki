@@ -1,0 +1,10 @@
+﻿++ Development Env
+
+    1. Copy image file into flash card
+    2. Add local user
+    3. Setup local connection (IP/Gateway)
+    4. Setup .ssh/authorized_keys
+    5. Setup .bashrc (XikangBashrc)
+    6. Modify /etc/gconf/2/path
+    7. Modify <</System/DataServer>> with gconftool-2 (XikangGconftool)
+    8. Install expect and tcl

@@ -1,0 +1,277 @@
+#+TITLE: Org Guide
+
+* Document Structure
+
+** Visibility cycling
+   + TAB :: Subtree cycling
+   + C-u TAB :: Global cycling
+   + C-u C-u C-u TAB :: Show all
+
+** Structure editing
+   + M-RET ::
+   + M-S-RET :: Insert new TODO entry
+
+** Sparse trees
+   + the entire document is folded as much as possible, but the
+     selected information is made visible along with the headline
+     structure above it.
+   + C-c / :: This prompts for an extra key to select a sparse-tree
+              creating command.
+
+** Plain lists
+   + Items belonging to the same list must have the same indentation on
+     the first line.
+   + An item ends before the next line that is indented like its
+     bullet/number, or less.
+   + It also ends before two blank lines. In that case, all items are
+     closed.
+   + M-RET :: With a prefix argument, force a new heading
+   + M-S-RET :: Insert a new item with a checkbox
+   + C-c C-c :: Toggle the state of the checkbox
+   + C-c * :: Turn a plain list item into a headline
+   + S-LEFT/RIGHT :: This command cycles bullet styles
+
+* Hyperlinks
+  + Link format
+  + Internal links
+    + Entries with CUSTOM_ID property
+    + Based on text search
+  + External links
+
+** Handling links
+   + C-c l :: Store a link to the current location.
+   + C-c C-l :: Insert a link.
+   + C-c & :: Jump back to a recorded position.
+     + A position is recorded by the commands following internal
+       links, and by C-c %.
+
+* TODO Items
+  + M-S-RET :: Insert new TODO entry
+  + C-c C-t :: Rotate the TODO state of the current item
+  + S-RIGHT/LEFT :: Select the following/preceding TODO state
+  + C-c / t :: View TODO items in a sparse tree
+  + C-c a t :: Show the global TODO list.
+
+** Priorities
+   Prioritizing can be done by placing a priority cookie into the
+   headline of a TODO item
+   + S-UP/DOWN :: Increase/decrease priority of current headline
+
+** Subtasks
+   + To keep the overview over the fraction of subtasks that are
+     already completed, insert either [/] or [%] anywhere in
+     the headline.
+   + These cookies will be updated each time the TODO status of a
+     child changes, or when pressing C-c C-c on the cookie.
+
+* Tags
+  + Every headline can contain a list of tags; they occur at the end
+    of the headline.
+  + Tags are normal words containing letters, numbers, _, and @.
+  + Tags must be preceded and followed by a single colon, like :work:.
+
+** Tag inheritance
+   + If a heading has a certain tag, all subheadings will inherit
+     the tag as well.
+   + You can also set tags that all entries in a file should inherit.
+
+** Setting tags
+   + Tags can simply be typed into the buffer at the end of a headline.
+   + C-c C-q :: Enter new tags for the current headline.
+   + C-c C-c :: When the cursor is in a headline, this does the same
+		as C-c C-q.
+   + Org will support tag insertion based on a list of tags. By
+     default this list is constructed dynamically
+   + Fast tag selection
+
+** Tag searches
+   + C-c \
+   + C-c / m :: Create a sparse tree with all headlines matching a
+		tags search.
+   + C-c a m :: Create a global list of tag matches from all agenda files.
+   + These commands all prompt for a match string which allows basic
+     Boolean logic
+     + And :: +boss+urgent-email
+     + Or :: Kathy|Sally
+
+* Properties
+  + Properties are key-value pairs associated with an entry.
+  + They live in a special drawer with the name PROPERTIES.
+  + Each property is specified on a single line, with the key
+    (surrounded by colons) first, and the value after it
+  + C-c C-x p :: Set a property.
+    + This prompts for a property name and a value.
+
+* Dates and Times
+  + Plain timestamp; Event; Appointment
+    + <2006-11-02 Thu 20:00-22:00>
+  + Timestamp with repeater interval
+    + A timestamp may contain a repeater interval
+    + days (d), weeks (w), months (m), or years (y).
+    + <2007-05-16 Wed 12:30 +1w>
+  + Diary-style sexp entries
+  + Time/Date range
+    + Two timestamps connected by -- denote a range.
+    + <2004-08-23 Mon>--<2004-08-26 Thu>
+  + Inactive timestamp
+    + with square brackets instead of angular ones.
+    + they do not trigger an entry to show up in the agenda.
+    + [2006-11-01 Wed]
+
+** Creating timestamps
+   + C-c . :: Prompt for a date and insert a corresponding timestamp.
+     + When this command is used twice in succession, a time range is
+       inserted.
+   + C-c ! :: insert an inactive timestamp that will not cause an
+              agenda entry.
+   + S-LEFT/RIGHT :: Change date at cursor by one day.
+   + S-UP/DOWN :: Change the item under the cursor in a timestamp.
+
+** Deadlines and scheduling
+   A timestamp may be preceded by special keywords to facilitate planning:
+   + DEADLINE :: Meaning: the task (most likely a TODO item, though
+                 not necessarily) is supposed to be finished on that
+                 date.
+   + C-c C-d :: Insert DEADLINE keyword along with a stamp, in the
+                line following the headline.
+   + SCHEDULED :: Meaning: you are planning to start working on that
+                  task on the given date.
+   + C-c C-s :: Insert SCHEDULED keyword along with a stamp, in the
+                line following the headline.
+
+* Capture - Refile - Archive
+** Setting up a capture location
+   org-default-notes-file
+
+** Using capture
+   + C-c c :: Start a capture process.
+     + You will be placed into a narrowed indirect buffer to edit the item.
+   + C-c C-c :: return you to the window configuration before the
+                capture process,
+   + C-c C-k :: Abort the capture process and return to the previous state
+
+** Refile and copy
+   + C-c C-w :: Refile the entry or region at point.
+
+* Agenda Views
+  + TODO items, time-stamped items, and tagged headlines can be
+    scattered throughout a file or even a number of files.
+  + The extracted information is displayed in a special ~agenda buffer~.
+
+** Agenda files
+   + the files listed in the variable org-agenda-files.
+   + C-c [ :: add current file to the list of agenda files.
+   + C-c ] :: Remove current file from the list of agenda files.
+
+** The agenda dispatcher
+   + After pressing C-c a, an additional letter is required to
+     execute a command:
+     + a ::      The calendar-like agenda
+     + t / T ::  A list of all TODO items
+     + m / M ::  A list of headlines matching a TAGS expression
+     + L ::      The timeline view for the current buffer
+     + s ::      A list of entries selected by a boolean expression
+
+** The built-in agenda views
+   + The weekly/daily agenda
+     + showing all the tasks for the current week or day.
+   + The global TODO list
+     + contains all unfinished TODO items
+   + Matching tags and properties
+     + The match syntax described here also applies when creating
+       sparse trees with C-c / m.
+     + Match syntax
+       + A search string can use Boolean operators & for AND
+       + and | for OR. & binds more strongly than |.
+       + Each element may be preceded by -, to select against it,
+	 and + is syntactic sugar for positive selection.
+       + The AND operator & is optional when + or - is present.
+   + Timeline for a single file
+   + Search view
+     + This agenda view is a general text search facility for Org
+       mode entries.
+
+** Commands in the agenda buffer
+   + Entries in the agenda buffer are linked back to the Org file
+   + Commands are provided to show and jump to the original entry location,
+   + and to edit the Org files remotely from the agenda buffer.
+
+* Markup for rich export
+** Structural markup elements
+   + Document title
+   + Headings and sections
+     + only the first three outline levels will be used as headings.
+     + Deeper levels will become itemized lists.
+   + Table of contents
+   + Paragraphs, line breaks, and quoting
+     + Paragraphs are separated by at least one empty line.
+     + If you need to enforce a line break within a paragraph,
+       use \\ at the end of a line.
+     + BEGIN_VERSE/END_VERSE
+     + BEGIN_QUOTE/END_QUOTE
+   + Emphasis and monospace
+     + You can make words *bold*, /italic/, underlined , =code= and
+       ~verbatim~, and, if you must, +strike-through+.
+     + To insert a horizontal rules, use a line consisting of only
+       dashes, and at least 5 of them.
+   + Comment lines
+     + Lines starting with zero or more whitespace characters
+       followed by # are treated as comments and will never be
+       exported.
+     + Also entire subtrees starting with the word COMMENT will
+       never be exported.
+     + Finally, regions surrounded by #+BEGIN_COMMENT
+       ... #+END_COMMENT will not be exported.
+     + C-c ; :: Toggle the COMMENT keyword
+
+** Literal examples
+   + Such examples will be typeset in monospace, so this is well
+     suited for source code and similar examples.
+   + BEGIN_EXAMPLE/END_EXAMPLE
+
+* Exporting
+  + ASCII export for inclusion into emails,
+  + HTML to publish on the web,
+  + LATEX/PDF for beautiful printed documents
+  + DocBook
+  + iCalendar
+
+** Export options
+   + The exporter recognizes special lines in the buffer which
+     provide additional information.
+   + The whole set of lines can be inserted into the buffer with
+     + C-c C-e t
+
+** The export dispatcher
+   + Normally the entire file is exported, but if there is an active
+     region that contains one outline tree, the first heading is used
+     as document title and the subtrees are exported.
+   + C-c C-e :: Dispatcher for export and publishing commands
+   + C-c C-e a :: Export as ASCII file.
+   + C-c C-e u
+   + C-c C-e U :: Use UTF-8 encoding.
+   + C-c C-e h :: Export as HTML file
+   + To insert HTML that should be copied verbatim to the exported file
+     + HTML
+     + BEGIN_HTML/END_HTML
+
+* Working with source code
+  + editing of code blocks in their native major-mode,
+  + evaluation of code blocks,
+  + tangling of code blocks,
+  + and exporting code blocks in several formats.
+
+** Structure of Code Blocks
+   + NAME
+   + BEGIN_SRC/END_SRC
+
+** Editing source code
+   + C-c '
+
+* Miscellaneous
+** A cleaner outline view
+   + org-indent-mode
+     + You can turn on org-indent-mode for all files by customizing
+       the variable org-startup-indented
+     + or you can turn it on for individual files using
+       STARTUP: indent

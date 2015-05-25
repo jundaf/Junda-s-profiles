@@ -1,0 +1,1278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>MyWiki</title>
+        <link type="text/css" rel="stylesheet" href="appbase.css">
+    </head>
+    <body>
+<span class="wiki-name-ref">[<a name="MyWiki">MyWiki</a>]</span><br /><br /><span class="parent-nodes">parent nodes: </span><br /><a name="MyWiki#.h0"></a><h2>My Wiki</h2>
+<ul>
+<li /><span class="wiki-link"><a href="#EmacsOptions">EmacsOptions</a></span>
+<li /><span class="wiki-link"><a href="#WikiSettings">WikiSettings</a></span>
+<li /><span class="wiki-link"><a href="#LinuxCommands">LinuxCommands</a></span>
+<li /><span class="wiki-link"><a href="#VimSettings">VimSettings</a></span><br />
+</ul>
+<a name="MyWiki#.h89"></a><h3>Xikang</h3>
+<ul>
+<li /><span class="wiki-link"><a href="#XikangPrinting">XikangPrinting</a></span>
+<li /><span class="wiki-link"><a href="#XikangMeego">XikangMeego</a></span>
+<li /><span class="wiki-link"><a href="#XikangSvn">XikangSvn</a></span>
+<li /><span class="wiki-link"><a href="#XikangUxlaunch">XikangUxlaunch</a></span>
+<li /><span class="wiki-link"><a href="#XikangUpdateFix">XikangUpdateFix</a></span>
+<li /><span class="wiki-link"><a href="#XikangNetwork">XikangNetwork</a></span>
+<li /><span class="wiki-link"><a href="#XikangPlatform">XikangPlatform</a></span>
+<li /><span class="wiki-link"><a href="#XikangDbus">XikangDbus</a></span>
+<li /><span class="wiki-link"><a href="#XikangTest">XikangTest</a></span></ul>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="EmacsOptions">EmacsOptions</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span></span><br /><a name="EmacsOptions#.h0"></a><h2>Emacs Options</h2>
+To hide the welcome screen of Emacs you need to paste this into your ~/.emacs:<br />
+<br />
+(setq inhibit-splash-screen t)<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="LinuxCommands">LinuxCommands</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span></span><br /><a name="LinuxCommands#.h0"></a><h2>Linux Commands</h2>
+<ul>
+<li /><span class="wiki-link"><a href="#PsUsage">PsUsage</a></span>
+<li /><span class="wiki-link"><a href="#MountUsbDrive">MountUsbDrive</a></span>
+<li /><span class="wiki-link"><a href="#IfconfigRoute">IfconfigRoute</a></span></ul>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="IfconfigRoute">IfconfigRoute</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#LinuxCommands">LinuxCommands</a></span> | <span class="parent-node"><a href="#XikangNetwork">XikangNetwork</a></span></span><br /><a name="IfconfigRoute#.h0"></a><h2>Ifconfig Route</h2>
+ifconfig eth0 192.168.176.155 netmask 255.255.255.192<br />
+<br />
+route add default gw 192.168.176.129<br />
+<br />
+<a name="IfconfigRoute#.h112"></a><h3>DNS</h3>
+vi /etc/resolv.conf<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="MountUsbDrive">MountUsbDrive</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#LinuxCommands">LinuxCommands</a></span></span><br /><a name="MountUsbDrive#.h0"></a><h2>Mount Usb Drive</h2>
+<pre># fdisk -l 
+# mkdir /mnt/usbdrive
+# mount /dev/sdb1 /mnt/usbdrive
+</pre>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="PsUsage">PsUsage</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#LinuxCommands">LinuxCommands</a></span></span><br /><a name="PsUsage#.h0"></a><h2>Ps Usage</h2>
+<pre>$ ps -ef | head
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 14:18 ?        00:00:01 init [5]
+root         2     0  0 14:18 ?        00:00:00 [kthreadd]
+root         3     2  0 14:18 ?        00:00:02 [ksoftirqd/0]
+root         4     2  0 14:18 ?        00:00:00 [migration/0]
+root         5     2  0 14:18 ?        00:00:00 [watchdog/0]
+root         6     2  0 14:18 ?        00:00:00 [migration/1]
+root         7     2  0 14:18 ?        00:00:03 [ksoftirqd/1]
+root         8     2  0 14:18 ?        00:00:00 [watchdog/1]
+root         9     2  0 14:18 ?        00:00:00 [events/0]
+$ ps aux | head
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.0   2100   480 ?        Ss   14:18   0:01 init [5]
+root         2  0.0  0.0      0     0 ?        S    14:18   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    14:18   0:02 [ksoftirqd/0]
+root         4  0.0  0.0      0     0 ?        S    14:18   0:00 [migration/0]
+root         5  0.0  0.0      0     0 ?        S    14:18   0:00 [watchdog/0]
+root         6  0.0  0.0      0     0 ?        S    14:18   0:00 [migration/1]
+root         7  0.0  0.0      0     0 ?        S    14:18   0:03 [ksoftirqd/1]
+root         8  0.0  0.0      0     0 ?        S    14:18   0:00 [watchdog/1]
+root         9  0.0  0.0      0     0 ?        S    14:18   0:00 [events/0]
+</pre>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="VimSettings">VimSettings</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span></span><br /><a name="VimSettings#.h0"></a><h2>Vim Settings</h2>
+set autoindent <br />
+set shiftwidth=4<br />
+set tabstop=4<br />
+set expandtab<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="WikiSettings">WikiSettings</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span> | <span class="parent-node"><a href="#WikiSettings">WikiSettings</a></span></span><br /><a name="WikiSettings#.h0"></a><h2><span class="wiki-link"><a href="#WikiSettings">WikiSettings</a></span></h2>
+<span class="property">[global.importance.low.color: grey]</span><br />
+<span class="property">[global.importance.high.bold: true]</span><br />
+<span class="property">[global.contact.icon: contact]</span><br />
+<span class="property">[global.wrap: 70]</span><br />
+<span class="property">[global.font: DejaVu Sans Mono]</span><br />
+<br />
+<span class="property">[icon: cog]</span><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="XikangDbus">XikangDbus</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span></span><br /><a name="XikangDbus#.h0"></a><h2>Xikang Dbus</h2>
+<b>Play click.wav</b><pre>dbus-send --type=method_call --system --dest='sound.service.xk' / sound.service.xk.PlayWavByAction int32:0
+</pre>
+<br />
+<b>Get Xikang Version</b><pre>dbus-monitor --system "type='signal',sender='com.neusoft.update',interface='com.neusoft.update.interface'"
+
+dbus-send --type=method_call --system --dest='com.neusoft.update' /com/neusoft/update com.neusoft.update.interface.GetXkversionAsync 
+</pre>
+<b>Test Update Manager</b><pre>dbus-send --type=method_call --session --dest='com.example.Yum' /com/example/Yum com.example.Yum.InstallPackage string:xikang
+
+dbus-send --type=method_call --session --dest='com.xikang.Yum' /com/xikang/Yum com.xikang.Yum.InstallPackages array:string:xkutility,xkprotocol int32:2
+</pre>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="XikangMeego">XikangMeego</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span></span><br /><a name="XikangMeego#.h0"></a><h2>Xikang Meego</h2>
+<ul>
+<li /><span class="wiki-link"><a href="#MeegoBuild">MeegoBuild</a></span>
+<li /><span class="wiki-link"><a href="#MeegoInstall">MeegoInstall</a></span>
+<li /><span class="wiki-link"><a href="#TwoTwoOne">TwoTwoOne</a></span>
+<li /><span class="wiki-link"><a href="#InstallSteps">InstallSteps</a></span><br />
+</ul>
+<b>Applications</b><br />
+<ul>
+<li /><span class="wiki-link"><a href="#MeegoAppHelp">MeegoAppHelp</a></span>
+<li />AppBloodPressure<br />
+</ul>
+<b>Services</b><br />
+<ul>
+<li /><span class="wiki-link"><a href="#MeegoDatamgr">MeegoDatamgr</a></span>
+<li /><span class="wiki-link"><a href="#ConnManager">ConnManager</a></span>
+<li />InputMethod
+<li />ConfMgr
+<li />SystemMgr
+<li />UpdateMgr
+<li /><span class="wiki-link"><a href="#VoiceManager">VoiceManager</a></span>
+<li />DevMgr<br />
+</ul>
+<b>Prerequisites</b><br />
+<ul>
+<li />VirtualKeyboard
+<li /><span class="wiki-link"><a href="#InstallTouchscreen">InstallTouchscreen</a></span>
+<li />AudioPlayer</ul>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="ConnManager">ConnManager</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangMeego">XikangMeego</a></span></span><br /><a name="ConnManager#.h0"></a><h2>Conn Manager</h2>
+Name: connman<br />
+Requires: dbus<br />
+Requires: dhclient &gt;= 3.0.2<br />
+Requires: wpa_supplicant &gt;= 0.6.9<br />
+Requires: bluez<br />
+<br />
+<br />
+%package xikang<br />
+Requires: connman = %{version}-%{release}<br />
+Requires: ModemManager<br />
+Requires: wvdial<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="InstallSteps">InstallSteps</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangMeego">XikangMeego</a></span></span><br /><a name="InstallSteps#.h0"></a><h2>Install Steps</h2>
+<a name="InstallSteps#.h18"></a><h3>Prepare</h3>
+<ol>
+<li />Install Meego 1.2 (netbook image)
+<li />Create user (xikang/1415926)
+<li />Install dependencies (zypper refresh; zypper install)
+<li />Update kernel (2.6.37.6)
+<li />Modify /boot/extlinux/extlinux.conf
+<li />Replace /usr/share/plymouth/*.png
+<li />Install Wifi driver
+<li />Install l2tp <span class="wiki-link"><a href="#ModuleL2tp">ModuleL2tp</a></span>
+<li />Install wvdial
+<li />Install touchscreen driver
+<li /><span class="wiki-link"><a href="#InstallRsyslog">InstallRsyslog</a></span><br />
+</ol>
+<a name="InstallSteps#.h424"></a><h3>Install Xikang Packages</h3>
+<ol>
+<li />skip debuginfo and devel packages
+<li />skip acpid, plymouth-lite
+<li />skip fastinit
+<li />failed to install SpO2, app-bloodpressure, app-bloodpressurebase</ol>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="InstallRsyslog">InstallRsyslog</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#InstallSteps">InstallSteps</a></span></span><br /><a name="InstallRsyslog#.h0"></a><h2>Install Rsyslog</h2>
+[root@xikang-desktop ~]# rpm -e --nodeps sysklogd<br />
+[root@xikang-desktop ~]# rpm -Uvh rsyslog-4.4.2-4.7.i586.rpm<br />
+<br />
+<a name="InstallRsyslog#.h138"></a><h3>rsyslog.conf</h3>
+## for Acorn log<br />
+local3.*                                                 /dev/tty5<br />
+local3.*                                                 /var/log/Acorn_log<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="ModuleL2tp">ModuleL2tp</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#InstallSteps">InstallSteps</a></span></span><br /><a name="ModuleL2tp#.h0"></a><h2>Module L2tp</h2>
+[root@xikang-desktop ~]# lsmod<br />
+Module                  Size  Used by<br />
+battery                 8862  0<br />
+uvcvideo               50404  0<br />
+joydev                  8205  0<br />
+serio_raw               3821  0<br />
+<br />
+[root@xikang-desktop ~]# lsmod<br />
+Module                  Size  Used by<br />
+l2tp_ppp               11247  0<br />
+pppox                   1959  1 l2tp_ppp<br />
+ppp_generic            21349  2 l2tp_ppp,pppox<br />
+slhc                    4062  1 ppp_generic<br />
+l2tp_core              14426  1 l2tp_ppp<br />
+vntwusb               172726  0<br />
+joydev                  8205  0<br />
+battery                 8862  0<br />
+uvcvideo               50368  0<br />
+serio_raw               3821  0<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="InstallTouchscreen">InstallTouchscreen</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MeegoTouchscreen12">MeegoTouchscreen12</a></span> | <span class="parent-node"><a href="#XikangMeego">XikangMeego</a></span></span><br /><a name="InstallTouchscreen#.h0"></a><h2>Install Touchscreen</h2>
+(*) Linux driver installer for eGalaxTouch controller<br />
+<br />
+(I) Check user permission: root, you are the supervisor.<br />
+(I) Begin to setup the eGalaxTouch driver.<br />
+(I) Extract eGalaxTouch driver archive to /usr/local/eGalaxTouch32.<br />
+(I) Create eGalaxTouch utility shortcut in /usr/bin.<br />
+(I) Create TKCal tool shortcut in /usr/bin.<br />
+(I) Check X window version: 1.9.x<br />
+(I) Copy X module: x19/egalax_drv.so to /usr/lib/xorg/modules/input.<br />
+(I) Check Linux distribution: Meego 1.1<br />
+(I) Copy udev rule: 69-eeti_hiddev.rules to /etc/udev/rules.d.<br />
+<br />
+(Q) Which interface controller do you use?<br />
+(I) <a name="InstallTouchscreen#.f1"></a>[1] RS232 <a name="InstallTouchscreen#.f2"></a>[2] PS/2 <a name="InstallTouchscreen#.f3"></a>[3] USB : 3<br />
+(I) Using interface: USB<br />
+(I) Found a HID compliant touch controller.<br />
+<br />
+(I) Copy udev rule: 50-egalax.conf to /etc/X11/xorg.conf.d.<br />
+<br />
+(I) Please reboot the system for some changes to take effect.<br />
+(I) After booting, type "eGalaxTouch" to do calibration.<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="MeegoAppHelp">MeegoAppHelp</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangMeego">XikangMeego</a></span></span><br /><a name="MeegoAppHelp#.h0"></a><h2>Meego App Help</h2>
+<a name="MeegoAppHelp#.h19"></a><h3>Build App Help</h3>
+<b>Build dependences</b><br />
+<ol>
+<li />webkitbrowser
+<li />appResManager
+<li />acornControl
+<li />DataMgr
+<li />AppCommon
+<li />AppDraw<br />
+</ol>
+<b>Problems</b><br />
+<ol>
+<li />too many warnings when building acornControl
+<li />too many warnings in AppCommon
+<li />too many warnings in AppDraw<br />
+</ol>
+<a name="MeegoAppHelp#.h314"></a><h3>Build RPM</h3>
+<a name="MeegoAppHelp#.h329"></a><h3>Fix dependences</h3>
+acornControl depends on<br />
+<ul>
+<li />libvoicemgr.so (voicemanager)
+<li />libkeyboard</ul>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="MeegoBuild">MeegoBuild</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangMeego">XikangMeego</a></span></span><br /><a name="MeegoBuild#.h0"></a><h2>Meego Build</h2>
+<a name="MeegoBuild#.h16"></a><h3>Set up chroot environment</h3>
+<ul>
+<li />mic-chroot meego-1.2.raw
+<li />export http_proxy=<span class="url-link"><a href="http://proxy.neusoft.com:8080">http://proxy.neusoft.com:8080</a></span> (for zypper)
+<li />rpm --import RPM-GPG-KEY-meego02<br />
+</ul>
+<a name="MeegoBuild#.h185"></a><h3>Install development packages</h3>
+<ul>
+<li />glib2-devel
+<li />dbus-devel
+<li />dbus-glib-devel
+<li />libxml2-devel (zlib-devel)
+<li />libfakekey-devel (libfakekey)
+<li />gtk2-devel
+<li />scim-devel
+<li />libcurl-devel
+<li />libgdbus-devel (libgdbus)
+<li />ppp-devel
+<li />GConf-dbus-devel
+<li />sqlite-devel
+<li />libusb-devel
+<li />bluez-libs-devel
+<li />alsa-lib-devel
+<li />ncurses-devel
+<li />WebKit-gtk-devel (WebKit-gtk)
+<li />openldap-devel (for building GConf-dbus)
+<li />clutter-gtk-devel (clutter-devel, for building fvkdb)
+<li />libpcap-devel (for building xl2tpd)<br />
+</ul>
+<a name="MeegoBuild#.h770"></a><h3>Compile source package</h3>
+<ul>
+<li />Bump gettext 0.17 to 0.18
+<li />fix scim-panel-vkb-gtk-0.1.5/po Makefile.in.in
+<li />fix fvkbd-0.1.5/po Makefile.in.in
+<li />fix Application/AcornControl/inc/GtkEntryIm.h (XTest.h not exist)<br />
+</ul>
+<a name="MeegoBuild#.h1000"></a><h3>Lack of gtk-doc</h3>
+<ul>
+<li />BuildRequires: gtk-doc
+<li />scim-panel-vkb-gtk
+<li />fvkdb</ul>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="MeegoDatamgr">MeegoDatamgr</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangMeego">XikangMeego</a></span></span><br /><a name="MeegoDatamgr#.h0"></a><h2>Meego Datamgr</h2>
+kernel depends on libconnmgrclient.so (connectmanager)<br />
+<br />
+<a name="MeegoDatamgr#.h74"></a><h3>Build dependences</h3>
+<ul>
+<li />CommonLib
+<li />ConfMgr
+<li />SystemMgr</ul>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="MeegoInstall">MeegoInstall</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangMeego">XikangMeego</a></span></span><br /><a name="MeegoInstall#.h0"></a><h2>Meego Install</h2>
+<ul>
+<li />Remove /etc/xdg/autostart
+<li />Remove mutter plugins (/usr/lib/mutter/plugins)<br />
+</ul>
+<a name="MeegoInstall#.h105"></a><h3>Install dependences</h3>
+<ul>
+<li />libgdbus
+<li />libfakekey
+<li />yum (1.6M)
+<li />yum-utils
+<li />createrepo
+<li />alsa-utils (1.3M)
+<li />ppp
+<li />dmidecode<br />
+</ul>
+Note: scim-pinyin need be removed.<br />
+Note: Pre-installed scim-pinyin is ok.<br />
+<br />
+Optional:<br />
+<ul>
+<li />man (2.2M)
+<li /><b>rsyslog</b> (has problem?)<br />
+</ul>
+<a name="MeegoInstall#.h398"></a><h3>Not Installed RPM</h3>
+<ul>
+<li />xikang-system-update
+<li />fastinit
+<li />GConf-dbus<br />
+</ul>
+<a name="MeegoInstall#.h485"></a><h3>Connman problems</h3>
+Cannot find these packages in the Meego repositories.<br />
+<ul>
+<li />dhclient 
+<li />ModemManager
+<li /><b>wvdial</b> (Use moblin version) need compile with MeeGo 1.2<br />
+</ul>
+Installing these packages for 3G and ADSL<br />
+<ul>
+<li />wvdial
+<li />rp-pppoe<br />
+</ul>
+<a name="MeegoInstall#.h742"></a><h3>Touchscreen</h3>
+<ul>
+<li /><span class="wiki-link"><a href="#MeegoTouchscreen12">MeegoTouchscreen12</a></span>
+<li /><span class="wiki-link"><a href="#TouchscreenNewDriver">TouchscreenNewDriver</a></span><br />
+</ul>
+<a name="MeegoInstall#.h812"></a><h3>Acorn Log</h3>
+<pre>## for Acorn log
+local3.*                                                 /dev/tty5
+local3.*                                                 /var/log/Acorn_log
+</pre>
+<a name="MeegoInstall#.h997"></a><h3>D-Bus</h3>
+<ul>
+<li />sysman.conf
+<li />voicemgr.conf<br />
+</ul>
+<pre>    &lt;policy context="default"&gt;
+        &lt;allow send_type="method_call"/&gt;
+    &lt;/policy&gt;
+</pre>
+<a name="MeegoInstall#.h1143"></a><h3>Udev</h3>
+Copy 60-persistent-serial.rules into /lib/udev/rules.d<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="MeegoTouchscreen12">MeegoTouchscreen12</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MeegoInstall">MeegoInstall</a></span></span><br /><a name="MeegoTouchscreen12#.h0"></a><h2>Meego Touchscreen12</h2>
+See <span class="wiki-link"><a href="#InstallTouchscreen">InstallTouchscreen</a></span> (Meego 1.1)<br />
+<br />
+(*) Linux driver installer for eGalaxTouch controller<br />
+<br />
+(I) Check user permission: root, you are the supervisor.<br />
+(I) Begin to setup the eGalaxTouch driver.<br />
+(I) Extract eGalaxTouch driver archive to /usr/local/eGalaxTouch32.<br />
+(I) Create eGalaxTouch utility shortcut in /usr/bin.<br />
+(I) Create TKCal tool shortcut in /usr/bin.<br />
+(I) Check X window version: 1.9.x<br />
+(I) Copy X module: x19/egalax_drv.so to /usr/lib/xorg/modules/input.<br />
+<br />
+(Q) Which interface controller do you use?<br />
+(I) <a name="MeegoTouchscreen12#.f1"></a>[1] RS232 <a name="MeegoTouchscreen12#.f2"></a>[2] PS/2 <a name="MeegoTouchscreen12#.f3"></a>[3] USB : 3<br />
+(I) Using interface: USB<br />
+(I) Found a HID compliant touch controller.<br />
+<br />
+(I) Copy udev rule: 50-egalax.conf to /usr/share/X11/xorg.conf.d.<br />
+<br />
+(I) Please reboot the system for some changes to take effect.<br />
+(I) After booting, type "eGalaxTouch" to do calibration.<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="TouchscreenNewDriver">TouchscreenNewDriver</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MeegoInstall">MeegoInstall</a></span></span><br /><a name="TouchscreenNewDriver#.h0"></a><h2>Touchscreen New Driver</h2>
+(*) Linux driver installer for eGalaxTouch controller<br />
+<br />
+(I) Check user permission: root, you are the supervisor.<br />
+(I) Begin to setup the eGalaxTouch driver.<br />
+(I) Found and removed previous eGalaxTouch driver.<br />
+(I) Extract eGalaxTouch driver archive to /usr/local/eGalaxTouch32.<br />
+(I) Create eGalaxTouch utility shortcut in /usr/bin.<br />
+(I) Create TKCal tool shortcut in /usr/bin.<br />
+(I) Check X window version: 1.9.x<br />
+(I) Copy X module: x19/egalax_drv.so to /usr/lib/xorg/modules/input.<br />
+(I) Check Linux distribution: Meego 1.2<br />
+(I) Copy udev rule: 69-eeti_hiddev.rules to /etc/udev/rules.d.<br />
+<br />
+(Q) Which interface controller do you use?<br />
+(I) <a name="TouchscreenNewDriver#.f1"></a>[1] RS232 <a name="TouchscreenNewDriver#.f2"></a>[2] PS/2 <a name="TouchscreenNewDriver#.f3"></a>[3] USB : 3<br />
+(I) Using interface: USB<br />
+(I) Found a HID compliant touch controller.<br />
+<br />
+(I) Copy udev rule: 52-egalax.conf to /etc/X11/xorg.conf.d.<br />
+(I) Create eGalaxTouch utility shortcut.<br />
+<br />
+(I) Please reboot the system for some changes to take effect.<br />
+(I) After booting, type "eGalaxTouch" to do calibration.<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="TwoTwoOne">TwoTwoOne</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangMeego">XikangMeego</a></span></span><br /><a name="TwoTwoOne#.h0"></a><h2>Two Two One</h2>
+<ul>
+<li /><span class="wiki-link"><a href="#TwoTwoOneTodo">TwoTwoOneTodo</a></span>
+<li /><span class="url-link"><a href="file:///E:/Downloads/CODEMASH-BryanHunter-ErlangAnIntroductionforCDevelopers.pdf">file:///E:/Downloads/CODEMASH-BryanHunter-ErlangAnIntroductionforCDevelopers.pdf</a></span><br />
+</ul>
+<a name="TwoTwoOne#.h124"></a><h3>/etc</h3>
+inittab<br />
+rc.d/rc.sysinit<br />
+xdg/acorn/xinitrc (start-pulseaudio)<br />
+dbus-1/system.d/voicemgr.conf<br />
+<br />
+<a name="TwoTwoOne#.h226"></a><h3>BuildRequires: gtk-doc</h3>
+scim-panel-vkb-gtk-0.1.5/scim-panel-vkb-gtk.spec<br />
+fvkbd-0.1.5/fvkbd.spec<br />
+<br />
+<a name="TwoTwoOne#.h331"></a><h3>appOtherIndex</h3>
+Makefile:<br />
+appOtherIndex.desktop ==&gt; appotherIndex.desktop<br />
+<br />
+<a name="TwoTwoOne#.h409"></a><h3>InputMethod</h3>
+fvkbd-0.1.5<br />
+scim-panel-vkb-gtk-0.1.5<br />
+<br />
+configure.ac:<br />
+po/Makefile.in.in:<br />
+GETTEXT_VERSION 0.17 ==&gt; 0.18<br />
+<br />
+<b>Delete .scim folder on failing to input character</b><br />
+<br />
+<a name="TwoTwoOne#.h585"></a><h3>Upgrade from 2.1.10</h3>
+appotherIndex &gt;= 0.5.26<br />
+chronicrecord &gt;= 0.6.2<br />
+datamanager &gt;= 0.8.70<br />
+AcornToolkit &gt;= 0.13.32<br />
+<br />
+<a name="TwoTwoOne#.h708"></a><h3>Build</h3>
+<pre>[root@Fedora14Devel xikang-meego-2.2.1]# svn stat
+M       Service/InputMethod/fvkbd-0.1.5/fvkbd.spec
+M       Service/InputMethod/fvkbd-0.1.5/configure.ac
+M       Service/InputMethod/fvkbd-0.1.5/po/Makefile.in.in
+M       Service/InputMethod/scim-panel-vkb-gtk-0.1.5/scim-panel-vkb-gtk.spec
+M       Service/InputMethod/scim-panel-vkb-gtk-0.1.5/configure.ac
+M       Service/InputMethod/scim-panel-vkb-gtk-0.1.5/po/Makefile.in.in
+M       Application/AppWebkitBrowser/Makefile
+M       Application/AppOtherIndex/Makefile
+M       acorn-system/xikang-system-update/xikang-system-update.spec
+M       config.mk
+</pre>
+<a name="TwoTwoOne#.h1330"></a><h3>config.mk</h3>
+Removed:<br />
+<ul>
+<li />acpid
+<li />fastinit
+<li />plymouth-lite<br />
+</ul>
+<a name="TwoTwoOne#.h1403"></a><h3>xikang-system-update.spec</h3>
+#Requires:alsa-plugins &gt;= 0.1.0<br />
+#Requires:acpid &gt;= 1.0.10-12.3.xikang<br />
+#Requires:fastinit &gt;= 1.14-3.6.xikang<br />
+#Requires:plymouth-lite &gt;= 0.6.0-11.2.xikang<br />
+Requires:electrocardio &gt;= 0.7.25<br />
+<br />
+<a name="TwoTwoOne#.h1621"></a><h3>Remove acpid</h3>
+/etc/acpi/actions/power.sh<br />
+<br />
+<a name="TwoTwoOne#.h1667"></a><h3>Remove plymouth-lite</h3>
+/usr/share/plymouth/splash.png<br />
+/usr/share/plymouth/shutdown-1024x600.png<br />
+/usr/share/plymouth/shutdown-1366x768.png<br />
+<br />
+<a name="TwoTwoOne#.h1809"></a><h3>AppWebkitBrowser</h3>
+LIB = -lwebkit-1.0<br />
+LIB = -lwebkitgtk-1.0<br />
+<br />
+<a name="TwoTwoOne#.h1877"></a><h3>Removed App</h3>
+<ul>
+<li />bloodcellcount
+<li />appotherIndex
+<li />app-urine
+<li />app-weight
+<li />app-addcellphone</ul>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="TwoTwoOneTodo">TwoTwoOneTodo</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#TwoTwoOne">TwoTwoOne</a></span></span><br /><a name="TwoTwoOneTodo#.h0"></a><h2>Two Two One Todo</h2>
+<a name="TwoTwoOneTodo#.h21"></a><h3>Todo</h3>
+<ul>
+<li />Hide cursor in mutter
+<li />TTS does't work
+<li />Sysman does't work
+<li />No shutdown picture<br />
+</ul>
+<a name="TwoTwoOneTodo#.h133"></a><h3>Fixed</h3>
+<ul>
+<li />Input method does't work (cannot input English or Chinese character)
+<li />Replace syskogd with rsyslog</ul>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="VoiceManager">VoiceManager</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangMeego">XikangMeego</a></span></span><br /><a name="VoiceManager#.h0"></a><h2>Voice Manager</h2>
+Modified voice_manager.<br />
+Deleting code of starting pulseaudio.<br />
+<pre>dbus-send --type=method_call --system --dest='sound.service.xk' / sound.service.xk.PlayWavByAction int32:0
+</pre>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="XikangNetwork">XikangNetwork</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span></span><br /><a name="XikangNetwork#.h0"></a><h2>Xikang Network</h2>
+<ul>
+<li /><span class="wiki-link"><a href="#IntranetConnection">IntranetConnection</a></span>
+<li /><span class="wiki-link"><a href="#IfconfigRoute">IfconfigRoute</a></span>
+<li /><span class="wiki-link"><a href="#XikangServer">XikangServer</a></span></ul>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="IntranetConnection">IntranetConnection</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangNetwork">XikangNetwork</a></span></span><br /><a name="IntranetConnection#.h0"></a><h2>Intranet Connection</h2>
+<b>Local 1</b><br />
+<br />
+IP: 192.168.22.152<br />
+Mask: 255.255.255.128<br />
+GW: 192.168.22.129<br />
+<br />
+<b>Local 2</b><br />
+<br />
+IP: 192.168.176.155<br />
+Mask: 255.255.255.192<br />
+GW: 192.168.176.129<br />
+<br />
+<b>DNS</b><br />
+<br />
+202.107.117.11<br />
+<br />
+<b>FTP</b><br />
+192.168.84.2<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="XikangServer">XikangServer</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangNetwork">XikangNetwork</a></span></span><br /><a name="XikangServer#.h0"></a><h2>Xikang Server</h2>
+<b>Date Server</b><br />
+<br />
+<span class="url-link"><a href="http://192.168.175.211:9098/TRMDataExchange/TRMDataExchange?type=dm">http://192.168.175.211:9098/TRMDataExchange/TRMDataExchange?type=dm</a></span><br />
+<span class="url-link"><a href="https://trm.xikang.com/TRMDataExchange?type=dm">https://trm.xikang.com/TRMDataExchange?type=dm</a></span><br />
+<span class="url-link"><a href="http://ttrm.xikang.com/TRMDataExchange?type=dm">http://ttrm.xikang.com/TRMDataExchange?type=dm</a></span><br />
+<br />
+Web GUI:<br />
+<span class="url-link"><a href="http://192.168.175.211:9091/management">http://192.168.175.211:9091/management</a></span><br />
+<span class="url-link"><a href="http://www.xikang365.org/management/">http://www.xikang365.org/management/</a></span><br />
+<br />
+Username/Password: admin/1<br />
+<br />
+<b>Update Server</b> <br />
+<br />
+<span class="url-link"><a href="http://192.168.175.211:9096/AppMartIX/HappixDX?type=dm">http://192.168.175.211:9096/AppMartIX/HappixDX?type=dm</a></span><br />
+<span class="url-link"><a href="https://apps.xikang.com/ix/HappixDX?type=dm">https://apps.xikang.com/ix/HappixDX?type=dm</a></span><br />
+<span class="url-link"><a href="http://tapps.xikang.com/ix/HappixDX?type=dm">http://tapps.xikang.com/ix/HappixDX?type=dm</a></span><br />
+<br />
+<b>Repo URL</b><br />
+<br />
+<span class="url-link"><a href="http://192.168.175.211:9097/xk-pa/test_erqi">http://192.168.175.211:9097/xk-pa/test_erqi</a></span><br />
+<span class="url-link"><a href="http://apps.xikang.com/pa">http://apps.xikang.com/pa</a></span><br />
+<span class="url-link"><a href="http://tapps.xikang.com/pa">http://tapps.xikang.com/pa</a></span><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="XikangPlatform">XikangPlatform</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span></span><br /><a name="XikangPlatform#.h0"></a><h2>Xikang Platform</h2>
+<ul>
+<li /><span class="wiki-link"><a href="#UpdateManager">UpdateManager</a></span>
+<li /><span class="wiki-link"><a href="#UpdateBug210">UpdateBug210</a></span>
+<li /><span class="wiki-link"><a href="#UpdateBug300">UpdateBug300</a></span>
+<li /><span class="wiki-link"><a href="#DevelopmentEnv">DevelopmentEnv</a></span>
+<li /><span class="wiki-link"><a href="#ThirdPartyPackage">ThirdPartyPackage</a></span>
+<li /><span class="wiki-link"><a href="#NewUpdateManager">NewUpdateManager</a></span></ul>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="DevelopmentEnv">DevelopmentEnv</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangPlatform">XikangPlatform</a></span></span><br /><a name="DevelopmentEnv#.h0"></a><h2>Development Env</h2>
+<ol>
+<li />Copy image file into flash card
+<li />Add local user
+<li />Setup local connection (IP/Gateway)
+<li />Setup .ssh/authorized_keys
+<li />Setup .bashrc (<span class="wiki-link"><a href="#XikangBashrc">XikangBashrc</a></span>)
+<li />Modify /etc/gconf/2/path
+<li />Modify /System/DataServer with gconftool-2 (<span class="wiki-link"><a href="#XikangGconftool">XikangGconftool</a></span>)
+<li />Install expect and tcl</ol>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="XikangBashrc">XikangBashrc</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#DevelopmentEnv">DevelopmentEnv</a></span></span><br /><a name="XikangBashrc#.h0"></a><h2>Xikang Bashrc</h2>
+<pre># Junda added
+export ACORN_ROOT=/usr/local/acorn
+export PATH=$ACORN_ROOT/app/bin:$ACORN_ROOT/service/bin:$PATH
+export DISPLAY=:0
+alias vi=vim
+alias cdacorn="cd $ACORN_ROOT"
+</pre>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="XikangGconftool">XikangGconftool</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#DevelopmentEnv">DevelopmentEnv</a></span></span><br /><a name="XikangGconftool#.h0"></a><h2>Xikang Gconftool</h2>
+<pre>[root@Neusoft-desktop ~]# gconftool-2 -R /System
+ /System/Business:
+  /System/Business/fetal:
+   Max = 120
+   Min = 80
+  /System/Business/bloodsugar: ...
+
+[root@Neusoft-desktop ~]# gconftool-2 -a /System/upgrade
+ upgrade_term = 1
+ serveraddress = https://apps.xikang.com/ix/HappixDX?type=dm
+ update_time = 2011-12-05 10:00:00
+ auto_upgrade = true
+
+[root@Neusoft-desktop ~]# gconftool-2 -s -t string /System/DataServer/address 'http://192.168.175.211:9098/TRMDataExchange/TRMDataExchange?type=dm'
+
+[root@Neusoft-desktop ~]# gconftool-2 -g /System/DataServer/address
+http://192.168.175.211:9098/TRMDataExchange/TRMDataExchange?type=dm
+
+[root@Neusoft-desktop ~]# gconftool-2 -s -t string /System/upgrade/serveraddress 'http://192.168.175.211:9096/AppMartIX/HappixDX?type=dm'
+
+[root@Neusoft-desktop ~]# gconftool-2 -g /System/upgrade/serveraddress
+http://192.168.175.211:9096/AppMartIX/HappixDX?type=dm
+</pre>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="NewUpdateManager">NewUpdateManager</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangPlatform">XikangPlatform</a></span></span><br /><a name="NewUpdateManager#.h0"></a><h2>New Update Manager</h2>
+<ol>
+<li />Show download progress
+<li />Add download interface
+<li />Support update later
+<li />How to represent update exists
+<li /></ol>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="ThirdPartyPackage">ThirdPartyPackage</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangPlatform">XikangPlatform</a></span></span><br /><a name="ThirdPartyPackage#.h0"></a><h2>Third Party Package</h2>
+<a name="ThirdPartyPackage#.h24"></a><h3>Moblin</h3>
+plymouth-lite-0.6.0-11.2.xikang.i386<br />
+connman-0.62.14-1.0.xikang.i386<br />
+fastinit-1.14-3.6.xikang.i386<br />
+mutter-2.27.5_0.0-9.4.xikang.i386<br />
+scim-pinyin-0.5.91-1.0.xikang.i386<br />
+GConf-dbus-2.26.2ross2-3.2.xikang.i386<br />
+fvkbd-0.1.5.8-1.0.xikang.i386<br />
+WebKit-gtk-1.1.10-2.0.xikang.i386<br />
+acpid-1.0.10-12.3.xikang.i386<br />
+scim-panel-vkb-gtk-0.1.5.3-1.0.xikang.i386<br />
+<br />
+<a name="ThirdPartyPackage#.h381"></a><h3>MeeGo</h3>
+plymouth-lite-0.6.0-18.15<br />
+connman-0.69.4-1.5<br />
+fastinit-1.28-5.4<br />
+mutter-2.31.5_1.1-3.12<br />
+scim-pinyin-0.5.91-3.52<br />
+GConf-dbus-2.29.1-1.10<br />
+fvkbd-0.2.2-2.66<br />
+WebKit-gtk-1.3.10-1.18<br />
+acpid-1.0.10-18.2<br />
+scim-panel-vkb-gtk-0.1.8-2.58<br />
+<br />
+<b>Missing</b><br />
+wvdial<br />
+ttf-wqy-zenhei<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="UpdateBug210">UpdateBug210</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangPlatform">XikangPlatform</a></span></span><br /><a name="UpdateBug210#.h0"></a><h2>Update Bug210</h2>
+<span class="property">[font: 微软雅黑]</span><br />
+<br />
+<a name="UpdateBug210#.h32"></a><h3>Submitted Bugs</h3>
+<a name="UpdateBug210#.h52"></a><h3>Reopened Bugs</h3>
+<a name="UpdateBug210#.h71"></a><h3>Fixed Bugs</h3>
+<b>859</b><br />
+体脂测量：断电后应用丢失<br />
+（物理文件损坏，无法修正）<br />
+<br />
+<b>846</b><br />
+软件商店：应用删除后，再次安装，下载次数不增加<br />
+<br />
+<b>815</b><br />
+在软件商店中有应用的两个版本，安装其中一个版本后，另一版本显示为“已安装”状态<br />
+<br />
+<b>803</b><br />
+使用宽带连接进行系统更新，时间过长 <br />
+<br />
+<b>797</b><br />
+更新时断网提示安装失败，网络恢复提示安装成功，实际未成功，可以再次更新<br />
+<br />
+<b>769</b><br />
+更新修复后，进入控制面板，点击手动更新按钮，按钮无响应 <br />
+（无法再现）<br />
+<br />
+<b>763</b><br />
+进行手动更新，启动安装进程时断电，开机后启动更新修复<br />
+<br />
+<b>697</b><br />
+系统修复后提示成功，实际未成功，5分钟后又进行了自动更新<br />
+（版本号显示不正确）<br />
+<br />
+<b>670</b><br />
+进入历史记录页面点击数据下载，益体机死机<br />
+（无法再现）<br />
+<br />
+<b>491</b><br />
+更新日志显示不正确（测试错误）<br />
+<br />
+<b>472</b><br />
+进入软件商店响应时间超长并且显示下载失败<br />
+（UpdateMgr死锁）<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="UpdateBug300">UpdateBug300</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangPlatform">XikangPlatform</a></span></span><br /><a name="UpdateBug300#.h0"></a><h2>Update Bug300</h2>
+<span class="property">[font: 微软雅黑]</span><br />
+<br />
+<b>2220</b><br />
+软件商店：应用更新后，点击返回按键，仍能看到更新项<br />
+<br />
+返回到更新tab过快，updatemanager还没有完成对记录文件的更新。<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="UpdateManager">UpdateManager</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangPlatform">XikangPlatform</a></span></span><br /><a name="UpdateManager#.h0"></a><h2>Update Manager</h2>
+<a name="UpdateManager#.h19"></a><h3>Show Device Id</h3>
+dmidecode -t 2<br />
+<br />
+<a name="UpdateManager#.h55"></a><h3>Yum Status</h3>
+XK_UPDATEMGR_NETWORK_CHECK_START: 0<br />
+XK_UPDATEMGR_SERVER_CONNECT_START: 4<br />
+XK_UPDATEMGR_GET_APP_LIST_START: 8<br />
+XK_UPDATEMGR_GET_BRIEF_SIGNAL_START: 11<br />
+XK_UPDATEMGR_GET_CATEGORY_START: 14<br />
+XK_UPDATEMGR_GET_UNUPDATED_APPS_START: 17<br />
+XK_UPDATEMGR_GET_ICON_START: 23<br />
+XK_UPDATEMGR_PAY_START: 26<br />
+XK_UPDATEMGR_SET_RATING_START: 29<br />
+XK_UPDATEMGR_YUM_STATUS_DOWNLOAD_START: 33<br />
+XK_UPDATEMGR_YUM_STATUS_CREATEREPO_START: 37<br />
+XK_UPDATEMGR_YUM_STATUS_INSTALL_ALL_START: 40<br />
+XK_UPDATEMGR_YUM_STATUS_INSTALL_TRANSACTION: 48<br />
+XK_UPDATEMGR_YUM_STATUS_REMOVE_ALL_START: 54<br />
+XK_UPDATEMGR_YUM_STATUS_UPDATE_MANDATORY: 63<br />
+XK_UPDATEMGR_YUM_STATUS_QUERY_START: 68<br />
+XK_UPDATEMGR_SET_APP_INSTALL_STATISTICS_START: 73<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="XikangPrinting">XikangPrinting</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span></span><br /><a name="XikangPrinting#.h0"></a><h2>Xikang Printing</h2>
+<ul>
+<li /><span class="wiki-link"><a href="#JavaScriptPrint">JavaScriptPrint</a></span>
+<li /><span class="wiki-link"><a href="#GtkPrintRc">GtkPrintRc</a></span>
+<li /><span class="wiki-link"><a href="#CupsCommandline">CupsCommandline</a></span></ul>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="CupsCommandline">CupsCommandline</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangPrinting">XikangPrinting</a></span></span><br /><a name="CupsCommandline#.h0"></a><h2>Cups Commandline</h2>
+Command to add a printer and set it the default printer.<pre>lpadmin -p DJ845C -E -v 'usb://HP/DESKJET%20845C?serial=TH1CO760V70I' -m deskjet.ppd.gz
+lpadmin -d DJ845C
+</pre>
+Start and kill CUPS with init script<pre>[root@Neusoft-desktop rc5.d]# ln -s ../init.d/cups S66cups
+[root@Neusoft-desktop rc6.d]# ln -s ../init.d/cups K22cups
+</pre>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="GtkPrintRc">GtkPrintRc</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangPrinting">XikangPrinting</a></span></span><br /><a name="GtkPrintRc#.h0"></a><h2>Gtk Print Rc</h2>
+<b>gtk-print-backends = "cups"</b><br />
+<br />
+Default value: "file,cups"<br />
+<br />
+<b>gtk-print-preview-command = "touch %f"</b><br />
+<br />
+Default value: "evince --unlink-tempfile --preview --print-settings %s %f"<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="JavaScriptPrint">JavaScriptPrint</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#XikangPrinting">XikangPrinting</a></span></span><br /><a name="JavaScriptPrint#.h0"></a><h2>Java Script Print</h2>
+Creating a "Print this page"<br />
+<br />
+&lt;a href="JavaScript:window.print();"&gt;Print this page&lt;/a&gt;<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="XikangSvn">XikangSvn</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span></span><br /><a name="XikangSvn#.h0"></a><h2>Xikang Svn</h2>
+Username: fengh<br />
+Password: fengh<br />
+<br />
+<b>Trunk branch</b><br />
+<br />
+<span class="url-link"><a href="http://192.168.197.246:6080/svn/xikang_RandD/10.XIKANG-TERMINAL/B-XIKANG_TERMINAL-II/01.Develop/01.04Coding/Source/Trunk">http://192.168.197.246:6080/svn/xikang_RandD/10.XIKANG-TERMINAL/B-XIKANG_TERMINAL-II/01.Develop/01.04Coding/Source/Trunk</a></span><br />
+<br />
+<b>Old branch</b><br />
+<br />
+<span class="url-link"><a href="http://192.168.197.246:6080/svn/NHC/XIKANG_V2.0/">http://192.168.197.246:6080/svn/NHC/XIKANG_V2.0/</a></span><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="XikangTest">XikangTest</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span></span><br /><a name="XikangTest#.h0"></a><h2>Xikang Test</h2>
+<pre>[root@Fedora14Devel xk100]# mv $XKROOT/root/rpmbuild/RPMS/i386/appResManager-0.5.14-2.0xikang.i386.rpm .
+[root@Fedora14Devel xk100]# mv $XKROOT/root/rpmbuild/RPMS/i386/xkutility-0.8.52-2.0xikang.i386.rpm .
+[root@Fedora14Devel xk100]# mv $XKROOT/root/rpmbuild/RPMS/i386/xkutility-devel-0.8.52-2.0xikang.i386.rpm .
+[root@Fedora14Devel xk100]# mv $XKROOT/root/rpmbuild/RPMS/i386/xkprotocol-0.8.52-2.0.xikang.i386.rpm .
+[root@Fedora14Devel xk100]# mv $XKROOT/root/rpmbuild/RPMS/i386/log-xikang-0.6.3-2.0.xikang.i386.rpm .
+[root@Fedora14Devel xk100]# mv $XKROOT/root/rpmbuild/RPMS/i386/log-xikang-devel-0.6.3-2.0.xikang.i386.rpm .
+</pre>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="XikangUpdateFix">XikangUpdateFix</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span></span><br /><a name="XikangUpdateFix#.h0"></a><h2>Xikang Update Fix</h2>
+<a name="XikangUpdateFix#.h22"></a><h3>Case 1 INSTALLING_PACKAGE is empty</h3>
+[UPDATE]<br />
+UPDATE_PACKAGE=update-test<br />
+INSTALLING_PACKAGE=<br />
+<br />
+<a name="XikangUpdateFix#.h125"></a><h3>Case 2 INSTALLING_PACKAGE has unexpected suffix</h3>
+[UPDATE]<br />
+UPDATE_PACKAGE=update-test<br />
+INSTALLING_PACKAGE=app-video                                               8/16<br />
+<br />
+<a name="XikangUpdateFix#.h301"></a><h3>Case 3</h3>
+Delete update_status after system update done.<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="XikangUxlaunch">XikangUxlaunch</a>]</span><br /><br /><span class="parent-nodes">parent nodes: <span class="parent-node"><a href="#MyWiki">MyWiki</a></span></span><br /><a name="XikangUxlaunch#.h0"></a><h2>Xikang Uxlaunch</h2>
+<a name="XikangUxlaunch#.h20"></a><h3>/etc/xdg/autostart</h3>
+create app-manager.desktop<br />
+delete other desktop files<br />
+<br />
+<a name="XikangUxlaunch#.h98"></a><h3>/etc/sysconfig/uxlaunch</h3>
+user=xikang<br />
+<br />
+<a name="XikangUxlaunch#.h139"></a><h3>/etc/inittab</h3>
+run moblin-dm<br />
+<br />
+<a name="XikangUxlaunch#.h171"></a><h3>File permission</h3>
+make .so files readable<br />
+make .conf writable<br />
+<br />
+Note: It is not a good idea to allow all users to read and write the files in .conf<br />
+<br />
+make gtkrc readable<br />
+make files in themes/Acorn readable<br />
+make files in alsa-lib readable<br />
+<br />
+<a name="XikangUxlaunch#.h410"></a><h3>PATH</h3>
+ACORN_ROOT=/usr/local/acorn<br />
+PATH=$ACORN_ROOT/app/bin:$ACORN_ROOT/service/bin:$PATH<br />
+<br />
+<a name="XikangUxlaunch#.h503"></a><h3>/etc/dbus-1/system.d</h3>
+modified voicemgr.conf and sysman.conf<br />
+allow send_type="method_call"<br />
+<br />
+Note: Still not know any side effects.<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="New000001">New000001</a>]</span><br /><br /><span class="parent-nodes">parent nodes: </span><br /><a name="New000001#.h0"></a><h2>New000001</h2>
+<pre>#!/bin/bash
+
+if [[ "x$ACORN_ROOT" == "x" ]]; then
+    ACORN_ROOT=/usr/local/acorn
+fi
+
+CONF_FILE=$ACORN_ROOT/conf/update_status
+REPO_PATH=$ACORN_ROOT/conf/install_dir
+
+PYTHONPATH=$ACORN_ROOT/app/lib/updatefix
+LANG=zh_CN.UTF-8
+
+export PYTHONPATH LANG
+
+if [[ -f $CONF_FILE ]]; then
+    /usr/bin/createrepo $REPO_PATH
+    /usr/bin/yum clean all
+
+    if python -m updatefix &gt; /dev/null; then
+        echo done
+        /bin/rm -f $CONF_FILE
+    else
+        echo error
+        /bin/mv -f $CONF_FILE $(mktemp $CONF_FILE.XXXXXX)
+    fi
+
+    # reboot system
+    /sbin/shutdown -r now
+    exit
+fi
+
+/bin/rm -f $REPO_PATH/*.rpm
+/usr/bin/createrepo $REPO_PATH
+</pre>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/><span class="wiki-name-ref">[<a name="ScratchPad">ScratchPad</a>]</span><br /><br /><span class="parent-nodes">parent nodes: </span><br /><a name="ScratchPad#.h0"></a><h2>Scratch Pad</h2>
+1. chkconfig --add cups<br />
+2. edit /etc/gtk-2.0/gtkrc<br />
+3. add printer (lpadmin)<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr size="1"/>    </body>
+</html>

@@ -1,0 +1,8 @@
+﻿++ Voice Manager
+
+Modified voice_manager.
+Deleting code of starting pulseaudio.
+
+<<pre
+dbus-send --type=method_call --system --dest='sound.service.xk' / sound.service.xk.PlayWavByAction int32:0
+>>

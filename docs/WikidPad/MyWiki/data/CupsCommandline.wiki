@@ -1,0 +1,13 @@
+﻿++ Cups Commandline
+
+Command to add a printer and set it the default printer.
+<<pre
+lpadmin -p DJ845C -E -v 'usb://HP/DESKJET%20845C?serial=TH1CO760V70I' -m deskjet.ppd.gz
+lpadmin -d DJ845C
+>>
+
+Start and kill CUPS with init script
+<<pre
+[root@Neusoft-desktop rc5.d]# ln -s ../init.d/cups S66cups
+[root@Neusoft-desktop rc6.d]# ln -s ../init.d/cups K22cups
+>>

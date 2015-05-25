@@ -1,0 +1,359 @@
+* apt-get outputs
+** Install myunity
+
+jundaf@ubuntu:~$ apt-cache search myunity
+myunity - Unity configurator
+jundaf@ubuntu:~$ apt-cache show myunity
+Package: myunity
+Priority: optional
+Section: universe/utils
+Installed-Size: 1224
+Maintainer: Andrea Colangelo <warp10@ubuntu.com>
+Architecture: all
+Version: 3.1.5-0ubuntu1~ubuntu12.04.2
+Depends: gambas2-runtime, gambas2-gb-gtk, gambas2-gb-form, gambas2-gb-gtk-ext
+Recommends: unity
+Filename: pool/universe/m/myunity/myunity_3.1.5-0ubuntu1~ubuntu12.04.2_all.deb
+Size: 564864
+MD5sum: ee145de3cf78c4363d6a6cff7178bb6c
+SHA1: ed5bf14f8c1360c7d5641459d1a521b13a702956
+SHA256: 6785cc7f601960d68f289038b4f9fdf17582e39c4ecbedc38bda5c5ec13028f8
+Description-en: Unity configurator
+ This program allows one to configure and tune Unity with a pleasant and
+ comfortable graphical interface.
+ .
+ MyUnity is a third-party application, not official part of the Unity project.
+Homepage: https://launchpad.net/myunity
+Description-md5: 24aa67e17f299eeb2babd31706947952
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+Package: myunity
+Priority: optional
+Section: universe/utils
+Installed-Size: 1125
+Maintainer: Andrea Colangelo <warp10@ubuntu.com>
+Architecture: all
+Version: 3.1.3-0ubuntu1
+Depends: gambas2-runtime, gambas2-gb-gtk, gambas2-gb-form, gambas2-gb-gtk-ext
+Recommends: unity
+Filename: pool/universe/m/myunity/myunity_3.1.3-0ubuntu1_all.deb
+Size: 541984
+MD5sum: 653944d49a64be6f3455c4b76a76239f
+SHA1: 2d2d0b47beae3f407919049ac18673eb232a4899
+SHA256: 87a6d0c15877cf9277b56b614c705cffe261c71768c4d5b078f267848168f731
+Description-en: Unity configurator
+ This program allows one to configure and tune Unity with a pleasant and
+ comfortable graphical interface.
+ .
+ MyUnity is a third-party application, not official part of the Unity project.
+Homepage: https://launchpad.net/myunity
+Description-md5: 24aa67e17f299eeb2babd31706947952
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+jundaf@ubuntu:~$ sudo apt-get install myunity
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following extra packages will be installed:
+  gambas2-gb-form gambas2-gb-gtk gambas2-gb-gtk-ext gambas2-gb-gui
+  gambas2-gb-qt gambas2-gb-settings gambas2-runtime libqt3-mt
+Suggested packages:
+  libqt3-mt-psql libqt3-mt-mysql libqt3-mt-odbc
+The following NEW packages will be installed:
+  gambas2-gb-form gambas2-gb-gtk gambas2-gb-gtk-ext gambas2-gb-gui
+  gambas2-gb-qt gambas2-gb-settings gambas2-runtime libqt3-mt myunity
+0 upgraded, 9 newly installed, 0 to remove and 412 not upgraded.
+Need to get 5,388 kB of archives.
+After this operation, 12.8 MB of additional disk space will be used.
+Do you want to continue [Y/n]?
+Get:1 http://us.archive.ubuntu.com/ubuntu/ precise/universe gambas2-runtime i386 2.23.1-1ubuntu3 [193 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu/ precise/main libqt3-mt i386 3:3.3.8-b-8ubuntu3 [3,330 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu/ precise/universe gambas2-gb-qt i386 2.23.1-1ubuntu3 [250 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu/ precise/universe gambas2-gb-gtk i386 2.23.1-1ubuntu3 [230 kB]
+Get:5 http://us.archive.ubuntu.com/ubuntu/ precise/universe gambas2-gb-gui i386 2.23.1-1ubuntu3 [11.4 kB]
+Get:6 http://us.archive.ubuntu.com/ubuntu/ precise/universe gambas2-gb-settings all 2.23.1-1ubuntu3 [7,748 B]
+Get:7 http://us.archive.ubuntu.com/ubuntu/ precise/universe gambas2-gb-form all 2.23.1-1ubuntu3 [815 kB]
+Get:8 http://us.archive.ubuntu.com/ubuntu/ precise/universe gambas2-gb-gtk-ext i386 2.23.1-1ubuntu3 [8,648 B]
+Get:9 http://us.archive.ubuntu.com/ubuntu/ precise/universe myunity all 3.1.3-0ubuntu1 [542 kB]
+Fetched 5,388 kB in 2min 56s (30.5 kB/s)
+Selecting previously unselected package gambas2-runtime.
+(Reading database ... 144587 files and directories currently installed.)
+Unpacking gambas2-runtime (from .../gambas2-runtime_2.23.1-1ubuntu3_i386.deb) ...
+Selecting previously unselected package libqt3-mt.
+Unpacking libqt3-mt (from .../libqt3-mt_3%3a3.3.8-b-8ubuntu3_i386.deb) ...
+Selecting previously unselected package gambas2-gb-qt.
+Unpacking gambas2-gb-qt (from .../gambas2-gb-qt_2.23.1-1ubuntu3_i386.deb) ...
+Selecting previously unselected package gambas2-gb-gtk.
+Unpacking gambas2-gb-gtk (from .../gambas2-gb-gtk_2.23.1-1ubuntu3_i386.deb) ...
+Selecting previously unselected package gambas2-gb-gui.
+Unpacking gambas2-gb-gui (from .../gambas2-gb-gui_2.23.1-1ubuntu3_i386.deb) ...
+Selecting previously unselected package gambas2-gb-settings.
+Unpacking gambas2-gb-settings (from .../gambas2-gb-settings_2.23.1-1ubuntu3_all.deb) ...
+Selecting previously unselected package gambas2-gb-form.
+Unpacking gambas2-gb-form (from .../gambas2-gb-form_2.23.1-1ubuntu3_all.deb) ...
+Selecting previously unselected package gambas2-gb-gtk-ext.
+Unpacking gambas2-gb-gtk-ext (from .../gambas2-gb-gtk-ext_2.23.1-1ubuntu3_i386.deb) ...
+Selecting previously unselected package myunity.
+Unpacking myunity (from .../myunity_3.1.3-0ubuntu1_all.deb) ...
+Processing triggers for shared-mime-info ...
+Processing triggers for hicolor-icon-theme ...
+Processing triggers for man-db ...
+Processing triggers for desktop-file-utils ...
+Processing triggers for bamfdaemon ...
+Rebuilding /usr/share/applications/bamf.index...
+Processing triggers for gnome-menus ...
+Setting up gambas2-runtime (2.23.1-1ubuntu3) ...
+Setting up libqt3-mt (3:3.3.8-b-8ubuntu3) ...
+Setting up gambas2-gb-qt (2.23.1-1ubuntu3) ...
+Setting up gambas2-gb-gtk (2.23.1-1ubuntu3) ...
+Setting up gambas2-gb-gui (2.23.1-1ubuntu3) ...
+Setting up gambas2-gb-settings (2.23.1-1ubuntu3) ...
+Setting up gambas2-gb-form (2.23.1-1ubuntu3) ...
+Setting up gambas2-gb-gtk-ext (2.23.1-1ubuntu3) ...
+Setting up myunity (3.1.3-0ubuntu1) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+jundaf@ubuntu:~$
+
+** Install mc
+
+*** Download only
+
+jundaf@ubuntu:~$ sudo apt-get -d install mc
+[sudo] password for jundaf:
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following extra packages will be installed:
+  mc-data
+Suggested packages:
+  links w3m lynx arj dbview odt2txt gv catdvi djvulibre-bin imagemagick python-boto python-tz
+The following NEW packages will be installed:
+  mc mc-data
+0 upgraded, 2 newly installed, 0 to remove and 412 not upgraded.
+Need to get 2,116 kB of archives.
+After this operation, 6,077 kB of additional disk space will be used.
+Do you want to continue [Y/n]?
+0% [Working]
+Get:1 http://us.archive.ubuntu.com/ubuntu/ precise/universe mc-data all 3:4.8.1-2ubuntu1 [1,604 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu/ precise/universe mc i386 3:4.8.1-2ubuntu1 [512 kB]
+Fetched 2,116 kB in 28s (74.2 kB/s)
+Download complete and in download only mode
+jundaf@ubuntu:~$
+
+*** No-download install
+
+jundaf@ubuntu:~$ sudo apt-get install mc --no-download
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following extra packages will be installed:
+  mc-data
+Suggested packages:
+  links w3m lynx arj dbview odt2txt gv catdvi djvulibre-bin imagemagick python-boto python-tz
+The following NEW packages will be installed:
+  mc mc-data
+0 upgraded, 2 newly installed, 0 to remove and 412 not upgraded.
+Need to get 0 B/2,116 kB of archives.
+After this operation, 6,077 kB of additional disk space will be used.
+Do you want to continue [Y/n]?
+Selecting previously unselected package mc-data.
+(Reading database ... 144715 files and directories currently installed.)
+Unpacking mc-data (from .../mc-data_3%3a4.8.1-2ubuntu1_all.deb) ...
+Selecting previously unselected package mc.
+Unpacking mc (from .../mc_3%3a4.8.1-2ubuntu1_i386.deb) ...
+Processing triggers for man-db ...
+Processing triggers for hicolor-icon-theme ...
+Processing triggers for doc-base ...
+Processing 29 changed doc-base files, 1 added doc-base file...
+Processing triggers for desktop-file-utils ...
+Processing triggers for bamfdaemon ...
+Rebuilding /usr/share/applications/bamf.index...
+Processing triggers for gnome-menus ...
+Setting up mc-data (3:4.8.1-2ubuntu1) ...
+Setting up mc (3:4.8.1-2ubuntu1) ...
+update-alternatives: using /usr/bin/mcview to provide /usr/bin/view (view) in auto mode.
+jundaf@ubuntu:~$
+
+** Install lua5.1
+
+jundaf@ubuntu:~$ sudo apt-get install lua5.1 -d -y
+[sudo] password for jundaf:
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following NEW packages will be installed:
+  lua5.1
+0 upgraded, 1 newly installed, 0 to remove and 412 not upgraded.
+Need to get 147 kB of archives.
+After this operation, 326 kB of additional disk space will be used.
+Get:1 http://us.archive.ubuntu.com/ubuntu/ precise/main lua5.1 i386 5.1.4-12ubuntu1 [147 kB]
+Fetched 147 kB in 10s (13.8 kB/s)
+Download complete and in download only mode
+jundaf@ubuntu:~$ sudo apt-get install lua5.1 --no-download -y
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following NEW packages will be installed:
+  lua5.1
+0 upgraded, 1 newly installed, 0 to remove and 412 not upgraded.
+Need to get 0 B/147 kB of archives.
+After this operation, 326 kB of additional disk space will be used.
+Selecting previously unselected package lua5.1.
+(Reading database ... 145000 files and directories currently installed.)
+Unpacking lua5.1 (from .../lua5.1_5.1.4-12ubuntu1_i386.deb) ...
+Processing triggers for man-db ...
+Setting up lua5.1 (5.1.4-12ubuntu1) ...
+update-alternatives: using /usr/bin/lua5.1 to provide /usr/bin/lua (lua-interpreter) in auto mode.
+update-alternatives: using /usr/bin/luac5.1 to provide /usr/bin/luac (lua-compiler) in auto mode.
+
+** Remove lua5.1
+
+jundaf@ubuntu:~$ sudo apt-get remove lua5.1
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following packages will be REMOVED:
+  lua5.1
+0 upgraded, 0 newly installed, 1 to remove and 412 not upgraded.
+After this operation, 326 kB disk space will be freed.
+Do you want to continue [Y/n]?
+(Reading database ... 145007 files and directories currently installed.)
+Removing lua5.1 ...
+Processing triggers for man-db ...
+jundaf@ubuntu:~$
+* DONE API tidy-up
+  CLOSED: [2013-05-07 二 14:27]
+
+CHANGE
+int xk_updatemgr_XXX_async
+TO
+int xk_update_XXX
+
+* DONE move test scripts to a separated branch
+  CLOSED: [2013-05-02 四 15:16]
+
+Only kept c and lua files.
+Removed 'expect' and 'scripts'.
+
+* DONE delete update_client
+  CLOSED: [2013-05-06 一 10:53]
+
+Move source codes and data files into top directory.
+
+ - Modify Makefile.
+ - Modify spec file.
+
+* DONE com.xikang.UpdateManager
+  CLOSED: [2013-06-21 五 16:36]
+
+** UpdateAvailable
+Delete this signal.
+
+** StatusChanged
+Encode the signal with JSON.
+
+** GetStatus
+Encode the reply with JSON.
+
+* DONE Package name format
+  CLOSED: [2013-07-22 一 15:20]
+
+MeeGo uses '-' as the seperator, while Ubuntu uses '_'. For example:
+
+- lua-5.1.4-9.fc16.i686.rpm
+- subversion_1.6.12dfsg-4ubuntu5_armel.deb
+* DONE Install xikang.list
+  CLOSED: [2013-07-25 四 13:55]
+Add conf/xikang.list
+
+** Modify Makefile
+Add UPDAGEMGR_BACKEND condition.
+Install xikang.list into sources.list.d
+
+* DONE apt-get update
+  CLOSED: [2013-07-26 五 09:49]
+
+** run 'apt-get update' on system startup.
+create upstart script. /etc/init/acorn_update.conf
+
+** run 'apt-get autoclean' to clear useless packages.
+aptbase.py: apt_autoclean()
+
+* Use MAC address as device code
+No work needed.
+* Delete XK_SYS_UPDATE from the header files
+Delete usless macro.
+* TODO DBus activaion not working
+* TODO Update system to specific version.
+apt-get install xikang-system-udate=3.x.y-xikang3
+
+
+* Optional fixes
+
+** Add updatemgr.pc
+pkg-config --libs updatemgr
+
+** Clean up the conf dir
+Move data files (xml) into data dir
+
+* Longterm works
+
+** Using rpm/dpkg to install packages
+instead of yum/apt-get.
+
+** Modify DBus Interface
+Rename GetAppListAsync to GetAppList.
+Rename get_app_list_status_signal to AppList.
+
+** Clean up library dependencies
+  - libxkconnmgrclient
+  - libxkconfmgr
+  - libsysman
+
+** Re-design the App database
+Divide the app table into small tables.
+
+** Fix the pay api
+Use the real system version in the arguments.
+
+** Add public APIs
+  - GetCurrentVersion
+  - GetUnupdatedAppsNum
+
+* Compile Update Manager
+** Install dependancies
+
+libglib2.0-dev
+libdbus-glib-1-dev
+libjson-glib-dev
+libgtk2.0-dev
+libgconf2-dev
+libxml2-dev
+libxtst-dev
+libssl-dev
+libcurl4-gnutls-dev
+libsqlite3-dev
+libusb-dev
+libbluetooth-dev
+
+** Compile XK libraries
+
+   - CommonLib
+   - Service/ConfMgr
+   - Service/SystemMgr
+   - Service/ConnMgr/connman-client
+   - Service/DataMgr
+
+*** DataMgr/server/Makefile
+#+BEGIN_QUOTE
+gcc -o datamanagerd dtm_main.o talkserver.o data_adatper.o /home/jundaf/Source/Arm/Trunk/Service/DataMgr/devel/service/lib/libdmkernel.a /home/jundaf/Source/Arm/Trunk/Service/DataMgr/devel/service/lib/libdmutility.a -L/home/jundaf/Source/Arm/Trunk/Service/DataMgr/devel/service/lib -L/usr/local/acorn/lib -L/usr/local/acorn/service/lib  -lpthread -lsqlite3 -lxml2 -lcurl -lcrypt -lxkprotocol -lxkconfmgr -lxksysman -lxklog -ldl -lz -lxkconnmgrclient -lxkutility -lbluetooth `pkg-config --libs --cflags glib-2.0 gobject-2.0 gthread-2.0`
+/home/jundaf/Source/Arm/Trunk/Service/DataMgr/devel/service/lib/libdmutility.a(utility.o): In function `str2md5str':
+utility.c:(.text+0x1112): undefined reference to `MD5'
+collect2: ld returned 1 exit status
+make[2]: *** [datamanagerd] Error 1
+make[2]: Leaving directory `/home/jundaf/Source/Arm/Trunk/Service/DataMgr/server'
+#+END_QUOTE
+FIX: pkg-config --libs libssl

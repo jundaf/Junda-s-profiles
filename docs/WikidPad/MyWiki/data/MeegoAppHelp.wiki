@@ -1,0 +1,27 @@
+﻿++ Meego App Help
+
++++ Build App Help
+
+*Build dependences*
+
+    1. webkitbrowser
+    2. appResManager
+    3. acornControl
+    4. \DataMgr
+    5. \AppCommon
+    6. \AppDraw
+
+*Problems*
+
+    1. too many warnings when building acornControl
+    2. too many warnings in \AppCommon
+    3. too many warnings in \AppDraw
+
++++ Build RPM
+
++++ Fix dependences
+
+acornControl depends on
+
+    * libvoicemgr.so (voicemanager)
+    * libkeyboard

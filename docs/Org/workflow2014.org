@@ -1,0 +1,361 @@
+* April 2014
+** Week 15
+*** Emacs package management system
+    - Modified some Emacs init files
+    - Learn some Emacs tips
+    - Failed to setup el-get. I think it is because of the http proxy.
+*** Bugfix: AcornCheck
+    - not save current version in confmgr
+    - Do integration test
+** Week 16
+*** Refactoring BaseProcess				      :UpdateManager:
+    - tested subprocess.Popen and glib.idle_add
+    - refactored BaseProcess
+*** TODO Python Design Patterns (Alex Martelli)
+    - Iterators and Generators
+    - Masquerading and Adaptation design patterns
+    - Python Metaclasses
+    - Template Method and Factory
+
+*** Evil/expand-region/company					      :Emacs:
+    - Install expand-region
+    - Install company-mode
+*** Useful Emacs binary packages				      :Emacs:
+    - emacs-goodies-el
+    - auto-complete-el
+    - python-rope
+    - python-ropemacs
+    - slime - Superior LISP Interaction Mode for Emacs
+    - yasnippet
+**** Command line
+dpkg -l ack-grep exuberant-ctags global
+apt-get install ack-grep exuberant-ctags global
+
+*** El-get list packages					      :Emacs:
+    - [X] ack
+    - [X] anything/helm
+    - [ ] auto-complete
+    - [X] autopair
+    - [ ] bookmark+
+    - [X] browser-kill-ring
+    - [ ] color-theme
+    - [ ] emacs-goodies-el
+    - [ ] smex
+    - [X] switch-window
+    - [ ] yasnippet
+    - [X] ace-jump-mode
+    - [X] undo-tree
+*** DONE Firefox addons						    :Firefox:
+    CLOSED: [2014-04-30 Wed 10:00]
+    Build a mindmap which includes all my Firefox addons.
+
+** Week 17
+*** PhoneGap CLI commands
+    - With new Xikang proxy settings.
+    - ANDROID_HOME/ANT_HOME/PATH
+    - Upgrade to Android API level 19
+    - phonegap/cordova work now
+*** DONE Reset Firefox						    :Firefox:
+    CLOSED: [2014-05-05 Mon 15:01]
+    - [X] Reset and move defaut profile.
+    - [X] Install addons.
+    - [X] Delete old profiles.
+    - [X] Setup Sync.
+
+** Week 18
+*** Update Manager Test
+**** DONE update_test script
+     CLOSED: [2014-04-30 Wed 16:22]
+*** DONE Data Sync with P2P					     :Patent:
+    CLOSED: [2014-07-18 Fri 10:28]
+
+    - [X] Idea
+    - [X] Documentation
+    - [X] Polish up documentation
+
+*** DONE Data Backup
+    CLOSED: [2014-07-07 Mon 16:01]
+
+    - TiddlyWiki - OneDrive
+    - Zotero - USB Drive
+
+* May 2014
+** Week 19
+*** DONE Update Manager Test
+    CLOSED: [2014-05-09 Fri 13:20]
+
+    - [X] remove no-such-app
+    - [X] remove zile
+    - [X] remove zile,e3
+    - [X] fix package_installed bug
+    - [X] fix thread.join bug
+    - [X] install zile
+    - [X] fix install counter bug
+    - [X] add task_id to download_end
+    - [X] install zile,e3
+    - [X] download jed
+    - [X] install jed
+
+*** DONE New Zotero profile.
+    CLOSED: [2014-05-05 Mon 15:01]
+    - Install Zotero standalone/extension
+    - Create new Zotero profile.
+    - Restore Zotero database.
+*** DONE Setup new TiddlyWiki (with Node.js)
+    CLOSED: [2014-05-16 Fri 17:07]
+
+    tiddlywiki mywiki --init serer
+    tiddlywiki mywiki --serer
+
+*** DONE Learn some z.sh
+    CLOSED: [2014-05-14 Wed 16:11]
+
+    - awk
+    - bash_complete
+
+** Week 20
+*** DONE Review updatemgr code and check them in
+    CLOSED: [2014-05-13 Tue 14:03]
+
+    - __init__.py
+    - utils.py
+    - download.py
+    - yumbase.py
+
+**** update debian/changelog
+     - refactored BaseProcess and Install/Download/Remove process
+     - added some unit tests
+     - removed some MeeGo specific code
+
+*** More unit tests for updatemgr
+    - appdb.py
+    - request.py
+
+** Week 21
+*** Health Record Prototype
+* June 2014
+** Week 23
+*** Health Record Homepage Concept Design
+** Week 24
+*** TODO Study SensorMgr Source Code
+    - SensorMgr
+    - XkSensor
+
+*** Emacs Bookmark+
+    - Autofile Bookmarks
+    - Autonamed Bookmarks
+    - Bookmark Tags
+*** Method for upgrade a small group of xikang terminals.	     :Patent:
+*** Method to sort a large number of list.			     :Patent:
+*** DONE Scripts to count svn activites (svncount.sh)
+    CLOSED: [2014-06-13 Mon 17:07]
+
+    - Step 1: count by date and branch
+    - Step 2: count by SVN user
+** Week 25
+*** Business trip to Jinzhou
+*** AppHealthArchives coding
+    - Compile source code
+** Week 26
+*** AppHealthArchives coding
+* July 2014
+** Week 27
+*** AppHealthArchives testing
+*** Emacs Helm Mode
+** Week 28
+*** DONE HTML5 Foundations
+    CLOSED: [2014-07-18 Fri 10:23]
+*** DONE Gtk Kickstart
+    CLOSED: [2014-07-16 Wed 16:54]
+** Week 29
+*** DONE Revise patent doc
+    CLOSED: [2014-07-16 Wed 10:24]
+*** Express book
+    - Your First Express App
+    - Understanding Express Routes
+** Week 30
+*** Express book
+    - Response form the server
+    - The Jade templating language
+    - The Stylus CSS preprocessor
+    - Forms, Cookies and Sessions
+    - Express in Production
+*** Xikang Node-Webkit
+    - Install Node-Webkit (Win32)
+    - Glance over Node-Webkit Wiki
+
+*** DONE Fake health records					 :Innovation:
+    CLOSED: [2014-07-31 Thu 11:00]
+*** Node http proxy						 :Innovation:
+    - for protocal testing
+** Week 31
+*** DONE Socket.IO book
+    - Let's Chat
+    - Making It More Fun
+    - The Socket.io Protocol
+    - Deploying and Scaling
+    CLOSED: [2014-07-31 Thu 11:00]
+
+*** Debug Xikang Apps with the help of NFS			 :Innovation:
+*** Add document for closing previous project
+* August 2014
+** Week 32
+*** App plays media files from USB drive
+*** Web Starter Kit
+** Week 33
+*** Usbmount and Udisk
+*** Gstreamer framework
+    - Application dev manual
+    - SDK tutorial
+    - gst-python examples
+
+** Week 34
+*** Media player (gst-python)
+** Week 35
+*** HTML5 Video Player (Node-Webkit)
+    - file manager
+    - Bootstrap framework
+
+*** DONE Xikang Health Archive NW Demo
+    CLOSED: [2014-10-17 Fri 10:33]
+
+*** DONE Node-Webkit presentation slides
+    CLOSED: [2014-09-19 Fri 17:17]
+
+*** Review Patent Apply Document
+    - The agent finished rewritting apply file.
+
+* September 2014
+** Week 36
+*** TODO Finish avatar chooser demo.
+    - Make AppLogin use libcheese to take photos
+
+*** Yocto project evaluation
+
+** Week 37
+*** [[Build 4.1.0.RE Sep 2014]]
+
+** Week 38
+*** Finished PKM Slides
+*** Build and test Xikang-Arm image.
+    - Image has been made.
+    - ConfMgr, ConnMgr, DataMgr work.
+    - app-manager (bugfix), app-login work.
+    - Statusbar is empty.
+    - app-mainmenu crashed.
+
+** Week 39
+*** Test Xk Apps on Arm box
+*** Finish HealthArchives Clone
+*** System update auto test
+
+** Build 4.1.0.RE Sep 2014
+*** CommonLib
+*** Service
+**** ConfMgr (Arm 3.2.19)
+**** ConnMgr
+     - update Makefiles
+**** SystemMgr (Arm 3.2.19)
+**** DataMgr
+     - plugin/ecg12 not linkable (libtlc5000w.a)
+**** SensorMgr
+**** Framework, XkSensor
+     - failed to build test/tests
+     - undefined reference 'MD5'
+**** Nofification
+     - failed to build test_msg, test_signal
+     - undefined reference 'MD5'
+**** UpdatMgr, VoiceMgr (Arm)
+
+*** Application
+
+**** Inserted dummy code (xkappmanager_if.h)
+     - AppBloodRoutine
+     - AppChild
+     - AppShutdown
+     - AppSpiroAnalyzer
+     - AppUrineRoutine
+
+**** Not built
+     - AppLinphone
+     - AppUserSelect
+     - UpdateFix
+
+*** Build problems
+**** Compile errors
+     - pkg-config --cflags glib-2.0
+     - pkg-config --cflags dbus-1
+     - /usr/include/webkit-1.0 ==> /usr/include/webkitgtk-1.0
+**** Link errors
+     - gcc -fPIC
+     - pkg-config --libs gthread-2.0 json-glib-1.0
+     - libxkdm.so: undefined reference 'MD5'
+**** Source errors
+     - AppHealthArchives/inc/personal-archives-model.h
+     - AppManager
+     - Statusbar
+
+*** Missing Packages
+    - gdb
+    - subversion
+
+* October 2014
+** Week 44
+*** Provisioning Ubuntu 14.04 in Vagrant
+
+sudo apt-get update
+sudo apt-get install build-essential libssl-dev
+sudo apt-get install git
+
+** Week 45
+*** Download vagrant box
+    - install vagrant.rpm
+    - ubuntu/trusty64
+
+*** xk_arm_4.1.20141105
+    - Hide cursor
+    - Bugfix 25, 26 (updatemgr)
+    - Xikang background (xsetbg)
+    - New window manager (xfwm4)
+    - Bugfix 23 (WebView crashed)
+    - AppCommon
+    - AppSpiroAnalyzer/Makefile
+    - acorn/xinitrc (scim-bridge)
+    - AppControlPanel (Bugfix 19, 20)
+    - AppPregnancy (Bugfix 50, 51)
+    - AppChild (Bugfix 59, 60)
+    - AppFetalheart/src/acorn-fetalheart.c
+    - AppHeightWeight/src/acorn-heightweight-view.c
+    - AcornToolkit/src/xktoolkit_window.c
+    - SystemMgr
+
+*** TODO Xikang Node App
+    Implement Xikang App with Node.js
+
+** Week 46
+*** Node templates tutorial
+    - Chapter 5: The Jade Templating Language (Express book)
+*** CSS Preprocessor
+    - SASS/Compass
+*** DONE Automatic System Update				 :Innovation:
+    CLOSED: [2014-11-13 Thu 16:36]
+
+** Build 4.1.3 Oct 2014
+*** CommonLib
+*** Service
+*** Application
+    - Add AppUrineAnalysis
+    - Add AppOnlineEducation
+* Node School
+** DONE Learn You The Node.js For Much Win! (13/13)
+   CLOSED: [2014-05-14 Wed 13:56]
+
+** DONE Stream Adventure (13/15)
+   CLOSED: [2014-07-11 Fri]
+
+** DONE Node Bytewiser (7/7)
+   CLOSED: [2014-07-22 Tue 09:05]
+
+** DONE Functional JavaScript (17/18)
+   CLOSED: [2014-08-04 Mon 14:31]
+** TODO Git and GitHub

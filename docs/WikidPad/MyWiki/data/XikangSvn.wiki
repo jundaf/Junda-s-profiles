@@ -1,0 +1,12 @@
+﻿++ Xikang Svn
+
+Username: fengh
+Password: fengh
+
+*Trunk branch*
+
+http://192.168.197.246:6080/svn/xikang_RandD/10.XIKANG-TERMINAL/B-XIKANG_TERMINAL-II/01.Develop/01.04Coding/Source/Trunk
+
+*Old branch*
+
+http://192.168.197.246:6080/svn/NHC/XIKANG_V2.0/

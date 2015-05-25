@@ -1,0 +1,13 @@
+﻿++ Install Rsyslog
+
+<<
+[root@xikang-desktop ~]# rpm -e --nodeps sysklogd
+[root@xikang-desktop ~]# rpm -Uvh rsyslog-4.4.2-4.7.i586.rpm
+>>
+
++++ rsyslog.conf
+<<
+## for Acorn log
+local3.*                                                 /dev/tty5
+local3.*                                                 /var/log/Acorn_log
+>>

@@ -1,0 +1,26 @@
+﻿++ Xikang Gconftool
+
+<<pre
+[root@Neusoft-desktop ~]# gconftool-2 -R /System
+ /System/Business:
+  /System/Business/fetal:
+   Max = 120
+   Min = 80
+  /System/Business/bloodsugar: ...
+
+[root@Neusoft-desktop ~]# gconftool-2 -a /System/upgrade
+ upgrade_term = 1
+ serveraddress = https://apps.xikang.com/ix/HappixDX?type=dm
+ update_time = 2011-12-05 10:00:00
+ auto_upgrade = true
+
+[root@Neusoft-desktop ~]# gconftool-2 -s -t string /System/DataServer/address 'http://192.168.175.211:9098/TRMDataExchange/TRMDataExchange?type=dm'
+
+[root@Neusoft-desktop ~]# gconftool-2 -g /System/DataServer/address
+http://192.168.175.211:9098/TRMDataExchange/TRMDataExchange?type=dm
+
+[root@Neusoft-desktop ~]# gconftool-2 -s -t string /System/upgrade/serveraddress 'http://192.168.175.211:9096/AppMartIX/HappixDX?type=dm'
+
+[root@Neusoft-desktop ~]# gconftool-2 -g /System/upgrade/serveraddress
+http://192.168.175.211:9096/AppMartIX/HappixDX?type=dm
+>>

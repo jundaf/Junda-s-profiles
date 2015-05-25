@@ -1,0 +1,9 @@
+﻿++ Gtk Print Rc
+
+*gtk-print-backends = "cups"*
+
+Default value: "file,cups"
+
+*gtk-print-preview-command = "touch %f"*
+
+Default value: "evince --unlink-tempfile --preview --print-settings %s %f"

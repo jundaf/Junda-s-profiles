@@ -1,0 +1,22 @@
+﻿++ Install Steps
+
++++ Prepare
+
+    1. Install Meego 1.2 (netbook image)
+    2. Create user (xikang/1415926)
+    3. Install dependencies (zypper refresh; zypper install)
+    4. Update kernel (2.6.37.6)
+    5. Modify /boot/extlinux/extlinux.conf
+    6. Replace /usr/share/plymouth/*.png
+    7. Install Wifi driver
+    8. Install l2tp ModuleL2tp
+    9. Install wvdial
+    10. Install touchscreen driver
+    11. InstallRsyslog
+
++++ Install Xikang Packages
+
+    1. skip debuginfo and devel packages
+    2. skip acpid, plymouth-lite
+    3. skip fastinit
+    4. failed to install <<SpO2>>, app-bloodpressure, app-bloodpressurebase

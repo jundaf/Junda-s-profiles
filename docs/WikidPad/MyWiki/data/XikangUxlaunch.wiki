@@ -1,0 +1,37 @@
+﻿++ Xikang Uxlaunch
+
++++/etc/xdg/autostart
+
+create app-manager.desktop
+delete other desktop files
+
++++/etc/sysconfig/uxlaunch
+
+user=xikang
+
++++/etc/inittab
+
+run moblin-dm
+
++++File permission
+
+make .so files readable
+make .conf writable
+
+Note: It is not a good idea to allow all users to read and write the files in .conf
+
+make gtkrc readable
+make files in themes/Acorn readable
+make files in alsa-lib readable
+
++++PATH
+
+ACORN_ROOT=/usr/local/acorn
+PATH=$ACORN_ROOT/app/bin:$ACORN_ROOT/service/bin:$PATH
+
++++/etc/dbus-1/system.d
+
+modified voicemgr.conf and sysman.conf
+allow send_type="method_call"
+
+Note: Still not know any side effects.

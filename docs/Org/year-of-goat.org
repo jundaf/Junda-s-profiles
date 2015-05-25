@@ -1,0 +1,196 @@
+* January 2015
+** Week 5
+*** DONE Organize Tutorials (PDF)                                        :PC:
+    CLOSED: [2015-02-05 Thu 15:11]
+*** DONE Learn some easy-kill/easy-mark
+    - https://github.com/leoliu/easy-kill
+    - easy-kill is a drop-in replacement for kill-ring-save.
+    - After this configuration, M-w serves as both a command and a
+      prefix key for other commands. M-w alone saves in the order of
+      active region, url, email and finally current line.
+    CLOSED: [2015-03-10 Tue 17:10]
+*** DONE Learn some smartparens
+    CLOSED: [2015-03-11 Wed 14:01]
+*** DONE Learn some git (Atlassian Git Tutorials)
+    CLOSED: [2015-03-18 Wed 16:54]
+    [[https://www.atlassian.com/git/tutorials][Git Tutorials and Training]]
+    - Getting Start
+    - Collaborating
+
+* February 2015
+** Week 6
+   [[http://repo.continuum.io/anaconda3/Anaconda3-2.1.0-Windows-x86_64.exe][Continuum Anaconda3]]
+*** [[Systemd service files]]
+*** DONE Update ActivePython (2.7.8) and Anaconda3 (2.1)           :Software:
+    - [X] Activepython 2.7.8
+    - [X] Anaconda3 2.1
+    - [X] Kivy-1.8.0 Python 3.3
+    CLOSED: [2015-02-04 Wed 17:09]
+*** DONE Create another Windows user (Keven Feng)                        :PC:
+    CLOSED: [2015-02-04 Wed 17:09]
+** Week 7
+*** Test more sensors
+*** DONE Update Calibre to latest version (2.16)
+    CLOSED: [2015-02-26 Thu 14:42]
+*** Python Design Patterns (Alex Martelli)                           :Python:
+    - [X] Iterators and Generators
+    - [ ] Masquerading and Adaptation design patterns
+    - [ ] Python Metaclasses
+    - [ ] Template Method and Factory
+*** DONE Git and GitHub                                          :NodeSchool:
+    CLOSED: [2015-03-18 Wed 16:59]
+    [[http://jlord.us/git-it/index.html][Git-it Guide]]
+*** DONE Reinstall Windows 7/MS Office                                   :PC:
+    - Backup application data
+      + BitLocker Key
+      + [X] FeedDemon subscriptions
+      + [X] Evernote (Cloud)
+      + [X] Firefox/Zotero
+      + [X] Thunderbird Emails/Contacts
+      + [X] SlickRun MagicWords
+      + [X] AutoHotKey Scripts
+    - Backup files/photos
+    - Download softwares
+      + Adobe Reader 11
+      + Flash player 16
+      + Mozilla Firefox 35.0.1
+      + Mozilla Thunderbird 31.4
+      + Notepad++ 6.7.4
+      + FileZilla Client 3.10
+      + PuTTY 0.63
+      + WinRAR 5.2/7z 9.38
+      + Java 8/.Net Framework
+      + Youdao Dict 6.3
+      + TortoiseSVN 1.8.10
+      + Microsoft Security Essentials 4.6
+      + Sogou Input Method 7.4.1
+    - Install Windows 7 Enterprise Edition (BitLocker)
+    - Install device drivers (Lenovo E49)
+    - Backup Win7 system image
+    - Install Office/Applications
+    CLOSED: [2015-02-15 Sun 14:46]
+** Week 8
+*** DONE Setup Firefox Sync (fengh@neusoft.com)
+    CLOSED: [2015-02-25 Wed 16:06]
+*** DONE Setup LastPass
+    CLOSED: [2015-02-25 Wed 16:07]
+** Week 9
+More test on ARM terminal.
+*** DONE Clean PATH environment variable                                 :PC:
+    CLOSED: [2015-02-27 Fri 15:05]
+*** DONE Install Media Player (foobar)                                   :PC:
+    CLOSED: [2015-02-27 Fri 15:05]
+
+* March 2015
+** Week 10
+   [[JavaScript Garden]]
+*** DONE Install foobar2000
+    CLOSED: [2015-03-03 Tue 09:13]
+*** DONE Install Adobe Bracket
+    CLOSED: [2015-03-09 Mon 15:50]
+*** DONE Move msysgit and emacs to driver D:
+    CLOSED: [2015-03-16 Mon 14:17]
+
+** Week 11
+*** Revert UpdateManager backend to YUM
+** Week 12
+
+*** DONE Make rpm with yocto SDK
+    CLOSED: [2015-03-19 Thu 17:31]
+
+** Week 13
+*** Change password for Neusoft portal
+*** Check my supplementary penson account
+*** Save Xikang contacts to OneDrive
+*** Make an ARM terminal for Maying
+*** DONE Browserify handbook
+    CLOSED: [2015-03-25 Wed 17:30]
+    https://github.com/substack/browserify-handbook
+*** Modify UpdateManager protocol
+*** Make repository structure plan
+    http://www.xikang.com/release/HongKong/x86/
+    http://www.xikang.com/release/Jinzhou/armhf/
+    http://www.xikang.com/release/Main/armhf/
+*** DONE Learn you some Dired
+    CLOSED: [2015-03-27 Fri 15:49]
+
+** Using Chocolatey                                                 :Project:
+*** DONE Install Chocolatey                                        :Software:
+    CLOSED: [2015-03-24 Tue 13:35]
+*** DONE Learning Chocolatey
+    CLOSED: [2015-03-25 Wed 13:05]
+*** DONE Try Chocolatey commands
+    CLOSED: [2015-03-25 Wed 13:05]
+    Installed CCleaner 5.03
+
+* April 2015
+** Week 15
+*** Install Wandoujia for Desktop                                  :Software:
+*** Learn to use far file manager
+*** DONE Check in code/doc for update manager
+    CLOSED: [2015-04-06 Mon 11:10]
+
+** Week 16
+*** DONE Build Xikang image for Contec box
+    CLOSED: [2015-04-16 Thu 11:10]
+** Week 17
+** Week 18
+
+* May 2015
+** Week 19
+
+** TODO Evaluate DocPad                                            :Software:
+   - DocPad is a dynamic static-site generator.
+
+** Update manager for multi-repository                              :Project:
+*** DONE CommonLib protocal
+    CLOSED: [2015-04-01 Wed 15:22]
+*** DONE Update manager
+    CLOSED: [2015-03-31 Tue 15:22]
+*** DONE Test new programm and protocol
+    CLOSED: [2015-04-03 Fri 13:43]
+* Someday Maybe
+
+** Patent application 2015
+** Refactor CommonLib code (var_update.c)
+** Study SensorMgr Source Code
+   - [ ] Learn PyUSB/Libusb
+   - [ ] SensorMgr
+   - [ ] XkSensor
+
+** Install and learn Yasnippet                                        :Emacs:
+** Install and learn Helm-swoop                                       :Emacs:
+
+* Nodeschool Workshops                                              :Project:
+** DONE Planet Proto
+   CLOSED: [2015-03-19 Thu 16:09]
+
+** DONE Bowserify Adventure
+   CLOSED: [2015-03-26 Thu 15:52]
+
+** DONE LoLoLoDash
+   CLOSED: [2015-04-08 Wed 15:39]
+
+** DONE Async You
+   CLOSED: [2015-04-14 Tue 16:17]
+
+** TODO Level Me Up Scotty!
+** DONE Functional Javascript
+   CLOSED: [2015-04-29 Wed 15:41]
+** DONE Bug Clinic
+   CLOSED: [2015-04-30 Thu 16:35]
+** DONE Test Anything
+   CLOSED: [2015-05-04 Mon 14:00]
+** DONE Bytewiser
+   CLOSED: [2015-05-06 Wed 12:32]
+
+* Yocto Xikang Terminal                                             :Project:
+** DONE Investigate TTS and wave_player
+   CLOSED: [2015-03-24 Tue 11:14]
+** DONE Fix Voicemgr for playing click.wav
+   CLOSED: [2015-03-25 Wed 11:37]
+** DONE Fix Sysmgr for LCD back light
+   CLOSED: [2015-03-25 Wed 11:37]
+** TODO Test virtual keyboard
+** Test new Connman
+** Build RPM from source code

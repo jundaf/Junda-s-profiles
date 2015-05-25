@@ -1,0 +1,70 @@
+﻿++ Meego Install
+
+    * Remove /etc/xdg/autostart
+    * Remove mutter plugins (/usr/lib/mutter/plugins)
+
++++ Install dependences
+
+    * libgdbus
+    * libfakekey
+    * yum (1.6M)
+    * yum-utils
+    * createrepo
+    * alsa-utils (1.3M)
+    * ppp
+    * dmidecode
+
+Note: scim-pinyin need be removed.
+Note: Pre-installed scim-pinyin is ok.
+
+Optional:
+
+    * man (2.2M)
+    * *rsyslog* (has problem?)
+
++++ Not Installed RPM
+
+    * xikang-system-update
+    * fastinit
+    * <<GConf-dbus>>
+
++++ Connman problems
+
+Cannot find these packages in the Meego repositories.
+
+    * dhclient 
+    * <<ModemManager>>
+    * *wvdial* (Use moblin version) need compile with <<MeeGo>> 1.2
+
+Installing these packages for 3G and ADSL
+
+    * wvdial
+    * rp-pppoe
+
++++ Touchscreen
+
+    * MeegoTouchscreen12
+    * TouchscreenNewDriver
+
++++ Acorn Log
+
+<<pre
+## for Acorn log
+local3.*                                                 /dev/tty5
+local3.*                                                 /var/log/Acorn_log
+>>
+
++++ D-Bus
+
+    * sysman.conf
+    * voicemgr.conf
+
+<<pre
+    <policy context="default">
+        <allow send_type="method_call"/>
+    </policy>
+>>
+
++++ Udev
+
+Copy 60-persistent-serial.rules into /lib/udev/rules.d

@@ -1,0 +1,31 @@
+﻿++ Third Party Package
+
++++ Moblin
+
+plymouth-lite-0.6.0-11.2.xikang.i386
+connman-0.62.14-1.0.xikang.i386
+fastinit-1.14-3.6.xikang.i386
+mutter-2.27.5_0.0-9.4.xikang.i386
+scim-pinyin-0.5.91-1.0.xikang.i386
+GConf-dbus-2.26.2ross2-3.2.xikang.i386
+fvkbd-0.1.5.8-1.0.xikang.i386
+WebKit-gtk-1.1.10-2.0.xikang.i386
+acpid-1.0.10-12.3.xikang.i386
+scim-panel-vkb-gtk-0.1.5.3-1.0.xikang.i386
+
++++ <<MeeGo>>
+
+plymouth-lite-0.6.0-18.15
+connman-0.69.4-1.5
+fastinit-1.28-5.4
+mutter-2.31.5_1.1-3.12
+scim-pinyin-0.5.91-3.52
+GConf-dbus-2.29.1-1.10
+fvkbd-0.2.2-2.66
+WebKit-gtk-1.3.10-1.18
+acpid-1.0.10-18.2
+scim-panel-vkb-gtk-0.1.8-2.58
+
+*Missing*
+wvdial
+ttf-wqy-zenhei

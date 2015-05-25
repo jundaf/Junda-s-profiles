@@ -1,0 +1,77 @@
+* Emacs goodies
+
+M-x all			Edit all lines matching a given regexp.
+M-x diminish		Diminish minor-mode's display.
+M-x map-lines		Map a command (copy/kill) over many lines.
+
+* Highlight modes
+
+M-x hl-line-mode	Highlight the line about the point.
+M-x hightlight-changes-mode
+
+* Display
+
+M-x visual-line-mode	Word wrap mode
+M-x linum-mode		Display line numbers in the left margin.
+
+* CUA mode
+
+** CUA Rectangle
+<C-return> runs the command cua-set-rectangle-mark
+
+** CUA Register
+
+** CUA Global Mark
+
+* Remap Caps Lock with AutoHotKey
+
+#+begin_src language
+#IfWinActive ahk_class Emacs  ; if in emacs
+Capslock::Control   ; make Caps Lock the Control button
+LWin::AppsKey       ; make Windows Logo the Menu key
+#IfWinActive        ; end if in emacs
+#+end_src
+
+* Prelude Emacs
+
+** Global key bindings
+   - C-x \ :: Run align-regexp
+   - C-x g :: Run magit-status
+   - C-^ :: Join the current line with the line beneath it.
+   - C-= :: Run expand-region
+   - C-a :: Run prelude-move-beginning-of-line (smarter C-a)
+   - C-x C-b :: Run ibuffer
+   - C-x C-m :: Alias for M-x
+   - C-h C-m :: Run discover-my-major (also C-h RET, <f1> RET)
+   - M-/ :: Run hippie-expand (a replacement for dabbrev-expand)
+   - M-X :: Run smex-major-mode-commands (company M-x)
+   - M-Z :: Zap up to char (company M-z).
+
+** Prelude mode
+   - C-c d :: Duplicate the current line or region.
+   - C-c D :: Delete current file and buffer.
+   - C-c M-d :: Duplicate and comment the current line or region.
+   - C-c i :: Search for a symbol.
+   - C-c j :: Quick jump with ace-jump-mode.
+   - C-c n :: Fix indentation in buffer and strip whitespace.
+   - C-c r :: Rename the current buffer and its visiting file.
+   - C-c TAB :: Indent and copy region to clipboard.
+   - C-c I :: Open user's init file.
+   - C-c S :: Open shell's init file.
+   - C-S-RET or Super-o :: Insert an empty line above the current line.
+   - S-RET or M-o :: Insert an empty line.
+   - Super-g :: Toggle between God-mode and non-God mode.
+
+** Programming mode
+   - M-( :: Wrap with ()
+   - M-" :: Wrap with ""
+
+* Smartparens
+  + sp-cheat-sheet
+    - Generate a cheat sheet of all the smartparens interactive functions.
+
+** Manipulation functions
+   - M-s (sp-splice-sexp &optional ARG)
+   - M-S (sp-split-sexp ARG)
+   - M-up (sp-splice-sexp-killing-backward &optional ARG)
+   - M-down (sp-splice-sexp-killing-forward &optional ARG)

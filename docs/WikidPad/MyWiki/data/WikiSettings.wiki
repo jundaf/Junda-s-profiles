@@ -1,0 +1,9 @@
+﻿++ WikiSettings
+
+[global.importance.low.color: grey]
+[global.importance.high.bold: true]
+[global.contact.icon: contact]
+[global.wrap: 70]
+[global.font: DejaVu Sans Mono]
+
+[icon: cog]

@@ -1,0 +1,7 @@
+﻿++ Mount Usb Drive
+
+<<pre
+# fdisk -l 
+# mkdir /mnt/usbdrive
+# mount /dev/sdb1 /mnt/usbdrive
+>>

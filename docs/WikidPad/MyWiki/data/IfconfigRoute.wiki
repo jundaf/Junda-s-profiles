@@ -1,0 +1,9 @@
+﻿++ Ifconfig Route
+
+ifconfig eth0 192.168.176.155 netmask 255.255.255.192
+
+route add default gw 192.168.176.129
+
++++ DNS
+
+vi /etc/resolv.conf

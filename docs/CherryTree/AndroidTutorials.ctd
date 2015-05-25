@@ -1,0 +1,157 @@
+<?xml version="1.0" ?><cherrytree><node name="Android SQLite database and content provider" prog_lang="custom-colors" readonly="False" tags="" unique_id="1"><rich_text>This tutorial describes how to use the SQLite database in Android applications. It also demonstrates how to use existing                        ContentProvider and how to define new ones. It also demonstrates the usage of the Loader framework which allows to load data asynchronously.</rich_text><node name="SQLite and Android" prog_lang="custom-colors" readonly="False" tags="" unique_id="2"><rich_text>SQLite supports the data types TEXT (similar to String in Java), INTEGER (similar to long in Java) and REAL (similar to double in Java). 
+
+You only have to define the SQL statements for creating and updating the database. Afterwards the database is automatically managed for you by the Android platform. 
+
+If your application creates a database, this database is by default saved in the directory DATA/data/APP_NAME/databases/FILENAME. </rich_text></node><node name="SQLite architecture" prog_lang="custom-colors" readonly="False" tags="" unique_id="3"><rich_text scale="h2">Creating and updating database with SQLiteOpenHelper</rich_text><rich_text>
+
+To create and upgrade a database in your Android application you create a subclass of the </rich_text><rich_text style="italic">SQLiteOpenHelper</rich_text><rich_text> class. In the constructor of your subclass you call the super() method of SQLiteOpenHelper, </rich_text><rich_text background="#ffffffff0000">specifying the database name and the current database version</rich_text><rich_text>.
+
+In this class you need to override the following methods to create and update your database.
+
+    • onCreate() - is called by the framework, if the database is accessed but not yet created.
+    • onUpgrade() - called, if the database version is increased in your application code. This method allows you to update an existing database schema or to drop the existing database and recreate it via the onCreate() method.
+
+The </rich_text><rich_text style="italic">SQLiteOpenHelper</rich_text><rich_text> class provides the </rich_text><rich_text style="italic">getReadableDatabase</rich_text><rich_text>() and </rich_text><rich_text style="italic">getWriteableDatabase</rich_text><rich_text>() methods to get access to an </rich_text><rich_text style="italic">SQLiteDatabase</rich_text><rich_text> object; either in read or write mode.
+
+The database tables should use the identifier</rich_text><rich_text foreground="#ffff00000000"> </rich_text><rich_text foreground="#ffff00000000" weight="heavy">_id</rich_text><rich_text foreground="#ffff00000000"> </rich_text><rich_text>for the primary key of the table. Several Android functions rely on this standard. 
+
+</rich_text><rich_text scale="h2">SQLiteDatabase</rich_text><rich_text>
+
+</rich_text><rich_text style="italic">SQLiteDatabase</rich_text><rich_text> is the base class for working with a SQLite database in Android and provides methods to open, query, update and close the database.
+
+In addition it provides the </rich_text><rich_text style="italic">execSQL</rich_text><rich_text>() method, which allows to execute an SQL statement directly.
+
+The object </rich_text><rich_text style="italic">ContentValues</rich_text><rich_text> allows to define key/values. The key represents the table column identifier and the value represents the content for the table record in this column. </rich_text><rich_text style="italic">ContentValues</rich_text><rich_text> can be used for inserts and updates of database entries.
+
+Queries can be created via the </rich_text><rich_text style="italic">rawQuery</rich_text><rich_text>() and query() methods or via the </rich_text><rich_text style="italic">SQLiteQueryBuilder</rich_text><rich_text> class .
+
+</rich_text><rich_text scale="h2">Cursor</rich_text><rich_text>
+
+A query returns a Cursor object. A Cursor represents the result of a query and basically points to one row of the query result. This way </rich_text><rich_text background="#ffffffff0000">Android can buffer the query results efficiently; as it does not have to load all data into memory</rich_text><rich_text>.
+
+To get the number of elements of the resulting query use the </rich_text><rich_text style="italic">getCount</rich_text><rich_text>() method.
+
+To move between individual data rows, you can use the </rich_text><rich_text style="italic">moveToFirst</rich_text><rich_text>() and </rich_text><rich_text style="italic">moveToNext</rich_text><rich_text>() methods. The </rich_text><rich_text style="italic">isAfterLast</rich_text><rich_text>() method allows to check if the end of the query result has been reached.
+
+Cursor provides typed get*() methods, e.g. getLong(columnIndex), getString(columnIndex) to access the column data for the current position of the result. The &quot;columnIndex&quot; is the number of the column you are accessing. </rich_text></node><node name="Content provider and sharing data" prog_lang="custom-colors" readonly="False" tags="" unique_id="4"><rich_text>While a content provider can be used within an application to access data, its is typically used to share data with other application. As application data is by default private, a content provider is a convenient to share you data with other application based on a structured interface. 
+
+The access to a content provider is done via an URI. The basis for the URI is defined in the declaration of the ContentProvider in the AndroidManifest.xml file via the android:authorities attribute. 
+
+To create your own ContentProvider you have to define a class which extends android.content.ContentProvider. You also declare your ContentProvider in the AndroidManifest.xml file. 
+
+</rich_text><rich_text background="#ffffffff0000">Until Android version 4.2 a content provider is by default available to other Android applications. As of Android 4.2 a content provider must be explicitly exported.</rich_text><rich_text>
+
+To set the visibility of your content provider use the </rich_text><rich_text style="italic">android:exported=false|true</rich_text><rich_text> parameter in the declaration of your content provider in the AndroidManifest.xml file. 
+
+</rich_text><rich_text background="#ffffffff0000">The ContentProvider can be accessed from several programs at the same time, therefore you must implement the access thread-safe.</rich_text><rich_text> The easiest way is to use the keyword synchronized in front of all methods of the ContentProvider, so that only one thread can access these methods at the same time.
+
+If you do not require that Android synchronizes data access to the ContentProvider, set the </rich_text><rich_text style="italic">android:multiprocess=true</rich_text><rich_text> attribute in your &lt;provider&gt; definition in the AndroidManifest.xml file. </rich_text><rich_text background="#ffffffff0000">This permits an instance of the provider to be created in each client process, eliminating the need to perform interprocess communication (IPC). </rich_text></node><node name="Loader" prog_lang="custom-colors" readonly="False" tags="" unique_id="5"><rich_text scale="h2">Purpose of the Loader class</rich_text><rich_text>
+
+The Loader class allow you to load data asynchronously in an activity or fragment. </rich_text><rich_text background="#ffffffff0000">They can monitor the source of the data and deliver new results when the content changes.</rich_text><rich_text> </rich_text><rich_text background="#ffffffff0000">They also persist data between configuration changes.</rich_text><rich_text>
+
+If the result is retrieved by the Loader after the object has been disconnected from its parent (activity or fragment), it can cache the data.
+
+</rich_text><rich_text scale="h2">Implementing a Loader</rich_text><rich_text>
+
+You can use the abstract AsyncTaskLoader class as the basis for your own Loader implementations.
+
+The LoaderManager of an activity or fragment manages one or more Loader instances. The creation of a Loader is done via the following method call. 
+
+</rich_text><rich_text family="monospace" foreground="#7f7f7f7f7f7f"># start a new loader or re-connect to existing one
+getLoaderManager().initLoader(0, null, this); 
+</rich_text><rich_text>
+It is good practice that an activity or the fragment which uses a Loader implements the </rich_text><rich_text style="italic">LoaderManager.LoaderCallbacks</rich_text><rich_text> interface. 
+
+ The Loader is not directly created by the </rich_text><rich_text style="italic">getLoaderManager().initLoader()</rich_text><rich_text> method call, but must be created by the callback class in the </rich_text><rich_text style="italic">onCreateLoader()</rich_text><rich_text> method.
+
+Once the Loader has finished reading data asynchronously, the </rich_text><rich_text style="italic">onLoadFinished()</rich_text><rich_text> method of the callback class is called. Here you can update your user interface. 
+
+</rich_text><rich_text scale="h2">SQLite database and CursorLoader</rich_text><rich_text>
+
+For a ContentProvider based on an SQLite database you would typically use the CursorLoader class. This Loader performs the database query in a background thread so that the application is not blocked.
+
+The CursorLoader class is the replacement for Activity-managed cursors which are deprecated now.
+</rich_text></node></node><node name="Using lists in Android (ListView)" prog_lang="custom-colors" readonly="False" tags="" unique_id="6"><rich_text>
+</rich_text><node name="Android and Lists" prog_lang="custom-colors" readonly="False" tags="" unique_id="7"><rich_text scale="h2" underline="single">Android and Lists</rich_text><rich_text underline="single">
+</rich_text><rich_text>
+Android provides the </rich_text><rich_text style="italic">ListView</rich_text><rich_text> and the </rich_text><rich_text style="italic">ExpandableListView</rich_text><rich_text> classes which is capable of displaying a scrollable list of items.The ExpandableListView class supports a grouping of items. 
+
+</rich_text><rich_text background="#ffffffff0000">The input to the list (items in the list) can be arbitrary Java objects. </rich_text><rich_text>The adapter extracts the correct data from the data object and assigns this data to the views in the row of the ListView. 
+
+</rich_text><rich_text scale="h3">Adapters</rich_text><rich_text>
+
+An adapter manages the data model and adapts it to the individual rows in the list view. An adapter extends the </rich_text><rich_text style="italic">BaseAdapter</rich_text><rich_text> class.
+
+Every line in the list view consists of a layout which can be as complex as you want. </rich_text><rich_text background="#ffffffff0000">A typical line in a list view has an image on the left side and two text lines in the middle as depicted in the following graphic.</rich_text><rich_text> The adapter would inflate the layout for each row in its getView() method and assign the data to the individual views in the row. 
+
+</rich_text><rich_text scale="h3">Data Update</rich_text><rich_text>
+
+The </rich_text><rich_text style="italic">notifyDataSetChanged</rich_text><rich_text>() method on the adapter is called if the data has changed or if new data is available.
+
+The </rich_text><rich_text style="italic">notifyDataSetInvalidated</rich_text><rich_text>() method is called if the data is not available anymore. 
+
+</rich_text><rich_text scale="h3">Listener</rich_text><rich_text>
+
+To react to selections in the list, set an </rich_text><rich_text style="italic">OnItemClickListener</rich_text><rich_text> to your ListView.</rich_text></node><node name="Default adapter" prog_lang="custom-colors" readonly="False" tags="" unique_id="8"><rich_text>Android provides default adapter implementations; the most important are ArrayAdapter and CursorAdapter.  ArrayAdapter can handle data based on Arrays or java.util.List. SimpleCursorAdapter can handle database related data.
+
+</rich_text><rich_text scale="h2">Using ArrayAdapter</rich_text><rich_text>
+
+By default, it maps the toString() method of the object to a view in the row layout.
+
+You can define the ID of the view in the constructor of the ArrayAdapter otherwise the android.R.id.text1 ID is used as default.  </rich_text></node><node name="Custom adapter implementations" prog_lang="custom-colors" readonly="False" tags="" unique_id="9"><rich_text>The ArrayAdapter is limited as it supports only the mapping of toString() to one view in the row layout. To control the data assignment and to support several views, you have to create your custom adapter implementation. 
+
+Frequently you extend ArrayAdapter to write a custom adapter, as this is simpler than extending BaseAdapter directly. 
+
+</rich_text><rich_text scale="h2">Preparing a row for the list</rich_text><rich_text>
+
+</rich_text><rich_text background="#ffffffff0000">The ListView instance calls the getView() method on the adapter for each data element.</rich_text><rich_text> In this method the adapter creates the row layout and maps the data to the views in the layout. This root of the layout is typically a ViewGroup (layout manager) and contains several other views , e.g., an ImageView and a TextView. 
+
+Within the getView() method you would inflate an XML based layout and then set the content of the individual views based on the Java object for this row. To inflate the XML layout file, you can use the </rich_text><rich_text style="italic">LayoutInflator</rich_text><rich_text> system service. 
+
+</rich_text><rich_text weight="heavy">Note</rich_text><rich_text>
+
+This layout inflator service can get accessed via the </rich_text><rich_text style="italic">getLayoutInflator</rich_text><rich_text>() method of the activity or via the context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) method call.
+</rich_text></node><node name="ListActivity and ListFragment" prog_lang="custom-colors" readonly="False" tags="" unique_id="10"><rich_text> You do not have to assign a layout to these elements. If you do not define a layout, the activity or fragment contains a single ListView by default. ListActivity and ListFragment also allow you to override a </rich_text><rich_text style="italic">onListItemClick</rich_text><rich_text>() method for handling selection of list items.
+
+Both classes allow you to set the adapter to the default ListView via the </rich_text><rich_text style="italic">setListAdapter</rich_text><rich_text>() method. 
+
+</rich_text><rich_text scale="h2">Custom layout</rich_text><rich_text>
+
+You can use a custom layout with ListActivity or ListFragment. </rich_text><rich_text background="#ffffffff0000">In this case the fragment or activity searches in the provided layout for a ListView with the pre-defined android:id attribute set to @android:id/list</rich_text><rich_text>.
+
+You can also use a view with the @android:id/empty ID in your layout. The corresponding activity and fragment shows this view automatically if the ListView is empty and hides it otherwise.</rich_text></node><node name="ListViews and performance" prog_lang="custom-colors" readonly="False" tags="" unique_id="11"><rich_text scale="h2">Time consuming operations</rich_text><rich_text>
+
+Every view which get inflated from an XML layout file will result in a Java object. Inflating layouts and creating Java objects is expensive with regards to time and memory consumption.
+
+In addition using the findViewById() method is relatively time consuming, even though it is not as bad as XML inflating. 
+
+</rich_text><rich_text scale="h2">Avoiding layout inflation and object creation</rich_text><rich_text>
+
+ If Android determines that a row is not visible anymore, it allows the getView() of the adapter method to reuse the associated view via the convertView parameter.
+
+The adapter can assign new data to the views contained in the view hierarchy of the convertView. This avoids inflating an XML file and creating new Java objects. 
+
+</rich_text><rich_text scale="h2">Holder Pattern</rich_text></node><node name="ListView Miscellaneous" prog_lang="custom-colors" readonly="False" tags="" unique_id="15"><rich_text scale="h2">Storing the selection of a view</rich_text><rich_text>
+
+By default a ListView has no selection mode active. You can activate it via the setChoiceMode() method call. Pass ListView.CHOICE_MODE_MULTIPLE for multiple selections or ListView.CHOICE_MODE_SINGLE for single selections to this method. 
+
+</rich_text><rich_text scale="h2">Contextual action mode for ListView</rich_text><rich_text>
+
+To assign a contextual action mode to a long click on an individual item, use the method </rich_text><rich_text style="italic">setOnItemLongClickListener</rich_text><rich_text>() on ListView. This methods includes information about the selected item. In this method you can start the </rich_text><rich_text style="italic">ActionMode</rich_text><rich_text>. 
+
+</rich_text><rich_text scale="h2">Implementing undo for an action</rich_text><rich_text>
+
+A proven pattern to handle this undo option is to offer a selection at the end of the screen. This selection vanishes after a predefined time or once the user continues to interact with the application. 
+
+</rich_text><rich_text scale="h2">How to display two items in a ListView</rich_text><rich_text>
+
+You can use the </rich_text><rich_text style="italic">SimpleAdapter</rich_text><rich_text> class to show the data of two elements. This class expects a Array of Strings (from data) in which the fields of the input data are defined. It also requires a Array of ints which defines the IDs of the widgets in the layout for the row to which these fields are mapped.
+
+The actual data is then a list of Maps. The Map defines for each field in the from data a value.
+
+</rich_text><rich_text scale="h2">Implementing an expandable ListView</rich_text><rich_text>
+
+The ExpandableListView is similar to ListView but allow you to define groups and details for this group. ExpandableListView expects and adapter of type BaseExpandableListAdapter.
+
+In this case you have to define two layouts, one for the group and another one for the details row.
+</rich_text></node></node><bookmarks list="13"/></cherrytree>

@@ -1,0 +1,626 @@
+<?xml version="1.0" ?>
+<cherrytree><node name="C1 Getting Started" prog_lang="custom-colors" readonly="False" tags="" unique_id="1"><rich_text>You should avoid identifiers starting with an underscore followed by one or more uppercase letters (e.g., _VERSION); they are reserved for special uses in Lua. Usually, I reserve the identifier _ (a single underscore) for a dummy variable. </rich_text><node name="The Stand-Alone Interpreter" prog_lang="custom-colors" readonly="False" tags="" unique_id="2"><rich_text scale="h2">Usage</rich_text><rich_text>
+
+</rich_text><rich_text foreground="#a5a52a2a2a2a" style="italic">usage: lua [options] [script [args]].
+Available options are:
+  -e stat  execute string 'stat'
+  -l name  require library 'name'
+  -i       enter interactive mode after executing 'script'
+  -v       show version information
+  --       stop handling options
+  -        execute stdin and stop handling options
+</rich_text><rich_text>
+</rich_text><rich_text scale="h2">LUA_INIT</rich_text><rich_text>
+
+Before it starts running arguments, lua looks for an environment variable called LUA_INIT. If there is such a variable and its content is @filename, then lua loads the given file. If LUA_INIT is defined but does not start with `@´, then lua assumes that it contains Lua code and runs it. This variable gives you great power when configuring the stand-alone interpreter, because you have the full power of Lua in the configuration. You can pre-load packages, change the prompt and the path, define your own functions, rename or delete functions, and so on. </rich_text></node></node><node name="C2 Types and Values" prog_lang="custom-colors" readonly="False" tags="" unique_id="3"><rich_text>• Lua is a dynamically typed language.
+• There are eight basic types in Lua: </rich_text><rich_text weight="heavy">nil, boolean, number, string, userdata, function, thread,</rich_text><rich_text> and </rich_text><rich_text weight="heavy">table</rich_text><rich_text>.
+• The type function gives the type name of a given value 
+• Functions are first-class values in Lua</rich_text><node name="Booleans" prog_lang="custom-colors" readonly="False" tags="" unique_id="4"><rich_text>In Lua, any value may represent a condition. Conditionals (such as the ones in control structures) consider false and nil as false and anything else as true. 
+
+Beware that, unlike some other scripting languages, Lua considers both zero and the empty string as true in conditional tests. </rich_text></node><node name="Numbers" prog_lang="custom-colors" readonly="False" tags="" unique_id="5"><rich_text>The number type represents real (double-precision floating-point) numbers.
+
+Lua has no integer type, as it does not need it.</rich_text></node><node name="Strings" prog_lang="custom-colors" readonly="False" tags="" unique_id="6"><rich_text>Lua is eight-bit clean and so strings may contain characters with any numeric value, including embedded zeros. That means that you can store any binary data into a string.
+
+Strings in Lua are immutable values.
+
+We can delimit literal strings by matching single or double quotes:
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    a = &quot;a line&quot;
+    b = 'another line'
+</rich_text><rich_text>
+</rich_text><rich_text scale="h2">[[...]]
+</rich_text><rich_text>
+We can delimit literal strings also by matching double square brackets [[...]]. 
+
+Literals in this bracketed form may run for several lines, may nest, and do not interpret escape sequences. 
+
+Moreover, this form ignores the first character of the string when this character is a newline.
+
+</rich_text><rich_text scale="h2">Automatic conversions</rich_text><rich_text>
+
+Lua provides automatic conversions between numbers and strings at run time. Any numeric operation applied to a string tries to convert the string to a number: 
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    print(&quot;10&quot; + 1)           --&gt; 11
+    print(&quot;10 + 1&quot;)           --&gt; 10 + 1
+    print(&quot;-5.3e-10&quot;*&quot;2&quot;)     --&gt; -1.06e-09
+    print(&quot;hello&quot; + 1)        -- ERROR (cannot convert &quot;hello&quot;)
+</rich_text><rich_text>
+Conversely, whenever it finds a number where it expects a string, Lua converts the number to a string:
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    print(10 .. 20)        --&gt; 1020
+</rich_text><rich_text>
+(The .. is the string concatenation operator in Lua. When you write it right after a numeral, you must separate them with a space; otherwise, Lua thinks that the first dot is a decimal point.) 
+
+</rich_text><rich_text scale="h2">Explicit conversions</rich_text><rich_text>
+
+If you need to convert a string to a number explicitly, you can use the function </rich_text><rich_text weight="heavy">tonumber</rich_text><rich_text>, which returns </rich_text><rich_text weight="heavy">nil</rich_text><rich_text> if the string does not denote a proper number: 
+
+To convert a number to a string, you can call the function </rich_text><rich_text weight="heavy">tostring</rich_text><rich_text> or concatenate the number with the empty string:
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    print(tostring(10) == &quot;10&quot;)   --&gt; true
+    print(10 .. &quot;&quot; == &quot;10&quot;)       --&gt; true
+</rich_text></node><node name="Tables" prog_lang="custom-colors" readonly="False" tags="" unique_id="7"><rich_text>The table type implements associative arrays. An associative array is an array that can be indexed not only with numbers, but also with strings or any other value of the language, except </rich_text><rich_text weight="heavy">nil</rich_text><rich_text>.
+
+Tables in Lua are neither values nor variables; they are </rich_text><rich_text weight="heavy">objects</rich_text><rich_text>. Moreover, you do not have to declare a table in Lua; in fact, there is no way to declare one. You create tables by means of a</rich_text><rich_text weight="heavy"> constructor expression</rich_text><rich_text>, which in its simplest form is written as {}
+
+Like global variables, table fields evaluate to nil if they are not initialized. Also like global variables, you can assign nil to a table field to delete it. That is not a coincidence: Lua stores global variables in ordinary tables. 
+
+To represent records, you use the field name as an index. Lua supports this representation by providing </rich_text><rich_text weight="heavy">a.name</rich_text><rich_text> as syntactic sugar for </rich_text><rich_text weight="heavy">a[&quot;name&quot;]</rich_text><rich_text>. 
+
+A common mistake for beginners is to confuse </rich_text><rich_text weight="heavy">a.x</rich_text><rich_text> with </rich_text><rich_text weight="heavy">a[x]</rich_text><rich_text>. The first form represents a[&quot;x&quot;], that is, a table indexed by the string &quot;x&quot;. The second form is a table indexed by the value of the variable x. 
+
+To represent a conventional array, you simply use a table with integer keys. There is no way to declare its size; you just initialize the elements you need:
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    -- read 10 lines storing them in a table
+    a = {}
+    for i=1,10 do
+      a[i] = io.read()
+    end
+</rich_text><rich_text>
+When you iterate over the elements of the array, the first non-initialized index will result in nil; you can use this value as a sentinel to represent the end of the array. For instance, you could print the lines read in the last example with the following code:
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    -- print the lines
+    for i,line in ipairs(a) do
+      print(line)
+    end
+</rich_text><rich_text>
+However, it is customary in Lua to start arrays with one (and not with zero, as in C) and the standard libraries stick to this convention. 
+</rich_text></node></node><node name="C3 Expressions" prog_lang="custom-colors" readonly="False" tags="" unique_id="8"><rich_text>Expressions denote values. 
+
+Expressions in Lua include the </rich_text><rich_text weight="heavy">numeric constants</rich_text><rich_text> and </rich_text><rich_text weight="heavy">string literals</rich_text><rich_text>, </rich_text><rich_text weight="heavy">variables</rich_text><rich_text>, </rich_text><rich_text weight="heavy">unary and binary operations</rich_text><rich_text>, and </rich_text><rich_text weight="heavy">function calls</rich_text><rich_text>. 
+
+Expressions can be also the </rich_text><rich_text weight="heavy">unconventional function definitions</rich_text><rich_text> and </rich_text><rich_text weight="heavy">table constructors</rich_text><rich_text>. </rich_text><node name="Relational Operators" prog_lang="custom-colors" readonly="False" tags="" unique_id="9"><rich_text>All these operators always result in true or false.
+
+Lua compares tables, userdata, and functions by reference, that is, two such values are considered equal only if they are the very same object. 
+
+We can apply the order operators only to two numbers or to two strings. 
+
+Lua compares strings in alphabetical order, which follows the locale set for Lua. 
+
+Other types can be compared only for equality (and inequality). 
+</rich_text></node><node name="Logical Operators" prog_lang="custom-colors" readonly="False" tags="" unique_id="10"><rich_text>The logical operators are </rich_text><rich_text weight="heavy">and</rich_text><rich_text>, </rich_text><rich_text weight="heavy">or</rich_text><rich_text>, and </rich_text><rich_text weight="heavy">not</rich_text><rich_text>. Like control structures, all logical operators consider </rich_text><rich_text weight="heavy">false</rich_text><rich_text> and </rich_text><rich_text weight="heavy">nil</rich_text><rich_text> as false and anything else as true. 
+
+The operator </rich_text><rich_text weight="heavy">and</rich_text><rich_text> returns its first argument if it is false; otherwise, it returns its second argument. The operator </rich_text><rich_text weight="heavy">or</rich_text><rich_text> returns its first argument if it is not false; otherwise, it returns its second argument:
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    print(4 and 5)         --&gt; 5
+    print(nil and 13)      --&gt; nil
+    print(false and 13)    --&gt; false
+    print(4 or 5)          --&gt; 4
+    print(false or 5)      --&gt; 5
+</rich_text><rich_text>
+Both and and or use </rich_text><rich_text weight="heavy">short-cut evaluation</rich_text><rich_text>, that is, they evaluate their second operand only when necessary. 
+
+The operator not always returns true or false:
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    print(not nil)      --&gt; true
+    print(not false)    --&gt; true
+    print(not 0)        --&gt; false
+    print(not not nil)  --&gt; false
+</rich_text></node><node name="Table Constructors" prog_lang="custom-colors" readonly="False" tags="" unique_id="11"><rich_text scale="h2">Empty Table</rich_text><rich_text>
+
+{}
+
+</rich_text><rich_text scale="h2">Arrays, Sequences, and Lists</rich_text><rich_text>
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    days = {&quot;Sunday&quot;, &quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;,
+            &quot;Thursday&quot;, &quot;Friday&quot;, &quot;Saturday&quot;}
+</rich_text><rich_text>
+the first element has always index 1, not 0
+
+</rich_text><rich_text scale="h2">Records</rich_text><rich_text>
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    a = {x=0, y=0}
+</rich_text><rich_text>
+which is equivalent to
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    a = {}; a.x=0; a.y=0
+</rich_text><rich_text>
+We can mix record-style and list-style initializations in the same constructor:
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    polyline = {color=&quot;blue&quot;, thickness=2, npoints=4,
+                 {x=0,   y=0},
+                 {x=-10, y=0},
+                 {x=-10, y=1},
+                 {x=0,   y=1}
+               }
+</rich_text><rich_text>
+</rich_text><rich_text scale="h2">General table constructors</rich_text><rich_text>
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    opnames = {[&quot;+&quot;] = &quot;add&quot;, [&quot;-&quot;] = &quot;sub&quot;,
+               [&quot;*&quot;] = &quot;mul&quot;, [&quot;/&quot;] = &quot;div&quot;}
+</rich_text><rich_text>
+You can always put a comma after the last entry. These trailing commas are optional, but are always valid:
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    a = {[1]=&quot;red&quot;, [2]=&quot;green&quot;, [3]=&quot;blue&quot;,}
+</rich_text><rich_text>
+Finally, you can always use a semicolon instead of a comma in a constructor. We usually reserve semicolons to delimit different sections in a constructor, for instance to separate its list part from its record part:
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">    {x=10, y=45; &quot;one&quot;, &quot;two&quot;, &quot;three&quot;}
+</rich_text></node></node><node name="C4 Statements" prog_lang="custom-colors" readonly="False" tags="" unique_id="12"><rich_text></rich_text><node name="Multi-assignment" prog_lang="custom-colors" readonly="False" tags="" unique_id="13"><rich_text>Lua allows multiple assignment, where a list of values is assigned to a list of variables in one step. 
+
+In a multiple assignment, Lua first evaluates all values and only then executes the assignments. Therefore, we can use a multiple assignment to swap two values, as in
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    x, y = y, x                -- swap `x' for `y'
+    a[i], a[j] = a[j], a[i]    -- swap `a[i]' for `a[j]'
+</rich_text><rich_text>
+Lua always adjusts the number of values to the number of variables: When the list of values is shorter than the list of variables, the extra variables receive nil as their values; when the list of values is longer, the extra values are silently discarded: 
+
+A more frequent use is to collect multiple returns from function calls. As we will discuss in detail later, a function call can return multiple values. In such cases, a single expression can supply the values for several variables. For instance, in the assignment
+
+    a, b = f()
+</rich_text></node><node name="Local Variables and Blocks" prog_lang="custom-colors" readonly="False" tags="" unique_id="14"><rich_text>Unlike global variables, local variables have their scope limited to the block where they are declared. 
+
+A block is </rich_text><rich_text weight="heavy">the body of a control structure</rich_text><rich_text>, </rich_text><rich_text weight="heavy">the body of a function</rich_text><rich_text>, or </rich_text><rich_text weight="heavy">a chunk</rich_text><rich_text> (the file or string with the code where the variable is declared). 
+
+We can delimit a block explicitly, bracketing it with the keywords </rich_text><rich_text weight="heavy">do-end</rich_text><rich_text>. These do blocks can be useful when you need finer control over the scope of one or more local variables:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    do
+      local a2 = 2*a
+      local d = sqrt(b^2 - 4*a*c)
+      x1 = (-b + d)/a2
+      x2 = (-b - d)/a2
+    end          -- scope of `a2' and `d' ends here
+    print(x1, x2)
+</rich_text></node><node name="Control Structures" prog_lang="custom-colors" readonly="False" tags="" unique_id="15"><rich_text></rich_text><node name="Numeric for" prog_lang="custom-colors" readonly="False" tags="" unique_id="16"><rich_text>A numeric for has the following syntax:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    for var=exp1,exp2,exp3 do
+      something
+    end
+</rich_text><rich_text>
+First, all three expressions are evaluated once, before the loop starts. 
+
+Second, the control variable is a local variable automatically declared by the for statement and is visible only inside the loop.
+
+Third, you should never change the value of the control variable: The effect of such changes is unpredictable.
+</rich_text></node><node name="Generic for" prog_lang="custom-colors" readonly="False" tags="" unique_id="17"><rich_text>The generic for loop allows you to traverse all values returned by an iterator function. 
+
+    -- print all values of array `a'
+    for i,v in ipairs(a) do print(v) end
+
+A similar example shows how we traverse all keys of a table:
+
+    -- print all keys of table `t'
+    for k in pairs(t) do print(k) end
+
+Despite its apparent simplicity, the generic for is powerful. With proper iterators, we can traverse almost anything. 
+
+The standard libraries provide several iterators, which allow us to iterate over the lines of a file (</rich_text><rich_text weight="heavy">io.lines</rich_text><rich_text>), the pairs in a table (</rich_text><rich_text weight="heavy">pairs</rich_text><rich_text>), the words of a string (</rich_text><rich_text weight="heavy">string.gfind</rich_text><rich_text>), and so on.
+</rich_text></node></node><node name="break and return" prog_lang="custom-colors" readonly="False" tags="" unique_id="18"><rich_text>There is an implicit return at the end of any function, so you do not need to use one if your function ends naturally, without returning any value. 
+
+</rich_text><rich_text style="italic">For syntactic reasons, a break or return can appear only as the last statement of a block (in other words, as the last statement in your chunk or just before an end, an else, or an until).</rich_text></node></node><node name="C5 Functions" prog_lang="custom-colors" readonly="False" tags="" unique_id="19"><rich_text>Functions can both carry out a specific task (what is sometimes called procedure or subroutine in other languages) or compute and return values.
+
+If the function has one single argument and this argument is either a literal string or a table constructor, then the parentheses are optional: 
+
+You can call a function with a number of arguments different from its number of parameters. Lua adjusts the number of arguments to the number of parameters, as it does in a multiple assignment: Extra arguments are thrown away; extra parameters get nil.</rich_text><node name="Multiple Results" prog_lang="custom-colors" readonly="False" tags="" unique_id="20"><rich_text>Lua always adjusts the number of results from a function to the circumstances of the call.
+
+When we call a function as a statement, Lua discards all of its results. 
+
+When we use a call as an expression, Lua keeps only the first result. 
+
+We get all results only when the call is the last (or the only) expression in a list of expressions. 
+
+These lists appear in four constructions in Lua: </rich_text><rich_text weight="heavy">multiple assignment, arguments to function calls, table constructors, and return statements.</rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">Unpack</rich_text><rich_text>
+
+A special function with multiple returns is unpack. It receives an array and returns as results all elements from the array, starting from index 1
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    print(unpack{10,20,30})    --&gt; 10   20   30
+    a,b = unpack{10,20,30}     -- a=10, b=20, 30 is discarded
+</rich_text></node><node name="Variable Number of Arguments" prog_lang="custom-colors" readonly="False" tags="" unique_id="21"><rich_text></rich_text></node><node name="Named Arguments" prog_lang="custom-colors" readonly="False" tags="" unique_id="22"><rich_text></rich_text></node></node><node name="C6 More about Functions" prog_lang="custom-colors" readonly="False" tags="" unique_id="23"><rich_text>Functions in Lua are first-class values with proper lexical scoping. 
+
+</rich_text><rich_text scale="h2">First-class values</rich_text><rich_text>
+
+Functions can be stored in variables (both global and local) and in tables, can be passed as arguments, and can be returned by other functions. 
+
+</rich_text><rich_text scale="h2">Lexical scoping</rich_text><rich_text>
+
+It means that functions can access variables of its enclosing functions. (It also means that Lua contains the lambda calculus properly.)
+
+</rich_text><rich_text scale="h2">Anonymous functions</rich_text><rich_text>
+
+A somewhat difficult notion in Lua is that functions, like all other values, are anonymous; they do not have names. When we talk about a function name, say print, we are actually talking about a variable that holds that function.
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    function foo (x) return 2*x end
+    foo = function (x) return 2*x end
+</rich_text><rich_text>
+That is, a function definition is in fact a statement (an assignment, more specifically) that assigns a value of type &quot;function&quot; to a variable. We can see the expression </rich_text><rich_text weight="heavy">function (x) ... end</rich_text><rich_text> as a function constructor, just as {} is a table constructor.
+
+A function that gets another function as an argument, such as sort, is what we call a </rich_text><rich_text weight="heavy">higher-order function</rich_text><rich_text>.
+</rich_text><node name="Closures" prog_lang="custom-colors" readonly="False" tags="" unique_id="24"><rich_text>When a function is written enclosed in another function, it has full access to local variables from the enclosing function; this feature is called </rich_text><rich_text weight="heavy">lexical scoping</rich_text><rich_text>. 
+
+</rich_text><rich_text scale="h2">External local variable (upvalue)</rich_text><rich_text>
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    function newCounter ()
+      local i = 0
+      return function ()   -- anonymous function
+               i = i + 1
+               return i
+             end
+    end
+    
+    c1 = newCounter()
+    print(c1())  --&gt; 1
+    print(c1())  --&gt; 2
+    
+    c2 = newCounter()
+    print(c2())  --&gt; 1
+    print(c1())  --&gt; 3
+    print(c2())  --&gt; 2
+</rich_text></node><node name="Non-Global Functions" prog_lang="custom-colors" readonly="False" tags="" unique_id="25"><rich_text></rich_text></node><node name="Proper Tail Calls" prog_lang="custom-colors" readonly="False" tags="" unique_id="26"><rich_text>A tail call happens when a function calls another as its last action, so it has nothing else to do. For instance, in the following code, the call to g is a tail call:
+
+    function f (x)
+      return g(x)
+    end
+
+Because a proper tail call uses no stack space, there is no limit on the number of &quot;nested&quot; tail calls that a program can make. For instance, we can call the following function with any number as argument; it will never overflow the stack:
+
+    function foo (n)
+      if n &gt; 0 then return foo(n - 1) end
+    end
+
+As I said earlier, a tail call is a kind of goto. As such, a quite useful application of proper tail calls in Lua is for programming state machines. </rich_text></node></node><node name="C7 Iterators and the Generic for" prog_lang="custom-colors" readonly="False" tags="" unique_id="27"><rich_text></rich_text><node name="The Semantics" prog_lang="custom-colors" readonly="False" tags="" unique_id="28"><rich_text>We saw that the generic for keeps the iterator function internally, during the loop. Actually, it keeps three values: </rich_text><rich_text weight="heavy">The iterator function, an invariant state, and a control variable. </rich_text><rich_text>
+
+More precisely, a construction like
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    for var_1, ..., var_n in explist do block end
+</rich_text><rich_text>
+is equivalent to the following code:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    do
+      local _f, _s, _var = explist
+      while true do
+        local var_1, ... , var_n = _f(_s, _var)
+        _var = var_1
+        if _var == nil then break end
+        block
+      end
+    end
+</rich_text></node><node name="Stateless Iterators" prog_lang="custom-colors" readonly="False" tags="" unique_id="29"><rich_text>As the name implies, a stateless iterator is an iterator that does not keep any state by itself. Therefore, we may use the same stateless iterator in multiple loops, avoiding the cost of creating new closures. 
+
+</rich_text><rich_text scale="h2">ipairs</rich_text><rich_text>
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    function iter (a, i)
+      i = i + 1
+      local v = a[i]
+      if v then
+        return i, v
+      end
+    end
+    
+    function ipairs (a)
+      return iter, a, 0
+    end
+</rich_text><rich_text>
+When Lua calls ipairs(a) in a for loop, it gets three values: the iter function as the iterator, a as the invariant state, and zero as the initial value for the control variable. 
+
+</rich_text><rich_text scale="h2">pairs</rich_text><rich_text>
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    function pairs (t)
+      return next, t, nil
+    end
+</rich_text><rich_text>
+The call next(t, k), where k is a key of the table t, returns a next key in the table, in an arbitrary order. (It returns also the value associated with that key, as a second return value.) The call next(t, nil) returns a first pair. When there are no more pairs, next returns nil. 
+</rich_text></node></node><node name="C8 Compilation, Execution, and Errors" prog_lang="custom-colors" readonly="False" tags="" unique_id="30"><rich_text scale="h2">loadfile</rich_text><rich_text>
+
+The dofile function is actually an auxiliary function; loadfile does the hard work. Like dofile, loadfile also loads a Lua chunk from a file, but it does not run the chunk. Instead, it only compiles the chunk and returns the compiled chunk as a function. 
+
+Moreover, unlike dofile, loadfile does not raise errors, but instead returns error codes, so that we can handle the error. We could define dofile as follows:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    function dofile (filename)
+      local f = assert(loadfile(filename))
+      return f()
+    end
+</rich_text><rich_text>
+A common mistake is to assume that loadfile (or loadstring) defines functions. In Lua, function definitions are assignments; as such, they are made at runtime, not at compile time. 
+
+Note that loadstring expects a chunk, that is, statements. If you want to evaluate an expression, you must prefix it with return, so that you get a statement that returns the value of the given expression. </rich_text><node name="The require Function" prog_lang="custom-colors" readonly="False" tags="" unique_id="31"><rich_text>Roughly, require does the same job as dofile, but with two important differences. 
+
+First, require searches for the file in a path; second, require controls whether a file has already been run to avoid duplicating the work.
+
+</rich_text><rich_text scale="h2">LUA_PATH</rich_text><rich_text>
+
+However, ANSI C (the abstract platform where Lua runs) does not have the concept of directories. Therefore, the path used by require is a list of patterns
+
+To determine its path, require first checks the global variable LUA_PATH. If the value of LUA_PATH is a string, that string is the path. 
+
+Otherwise, require checks the environment variable LUA_PATH. 
+
+Finally, if both checks fail, require uses a fixed path (typically &quot;?;?.lua&quot;, although it is easy to change that when you compile Lua). 
+
+</rich_text><rich_text scale="h2">_LOADED</rich_text><rich_text>
+
+The other main job of require is to avoid loading the same file twice. For that purpose, it keeps a table with the names of all loaded files. If a required file is already in the table, require simply returns.
+
+You can access this control table through the global variable _LOADED.</rich_text></node><node name="Errors" prog_lang="custom-colors" readonly="False" tags="" unique_id="32"><rich_text>Because Lua is an extension language, frequently embedded in an application, it cannot simply crash or exit when an error happens. Instead, whenever an error occurs, Lua ends the current chunk and returns to the application. 
+
+Any unexpected condition that Lua encounters raises an error. You can also explicitly raise an error calling the error function; its argument is the error message. 
+
+Such combination of </rich_text><rich_text weight="heavy">if not ... then error end</rich_text><rich_text> is so common that Lua has a built-in function just for that job, called assert:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    print &quot;enter a number:&quot;
+    n = assert(io.read(&quot;*number&quot;), &quot;invalid input&quot;)
+</rich_text><rich_text>
+The assert function checks whether its first argument is not false and simply returns that argument; if the argument is false (that is, false or nil), assert raises an error.
+
+When a function finds an unexpected situation (an exception), it can assume two basic behaviors: It can return an error code (typically nil) or it can raise an error, calling the error function. </rich_text><rich_text style="italic">An exception that is easily avoided should raise an error; otherwise, it should return an error code. </rich_text></node><node name="Error Handling and Exceptions" prog_lang="custom-colors" readonly="False" tags="" unique_id="33"><rich_text>If you need to handle errors in Lua, you should use the pcall function (protected call) to encapsulate your code.
+
+The pcall function calls its first argument in protected mode, so that it catches any errors while the function is running. If there are no errors, pcall returns true, plus any values returned by the call. Otherwise, it returns false, plus the error message.
+
+Despite its name, the error message does not have to be a string. Any Lua value that you pass to error will be returned by pcall:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    local status, err = pcall(function () error({code=121}) end)
+    print(err.code)  --&gt;  121
+</rich_text><rich_text>
+These mechanisms provide all we need to do exception handling in Lua. </rich_text><rich_text style="italic">We throw an exception with error and catch it with pcall.</rich_text><rich_text> The error message identifies the kind or error. </rich_text></node><node name="Error Messages and Tracebacks" prog_lang="custom-colors" readonly="False" tags="" unique_id="34"><rich_text>The error function has an additional second parameter, which gives the level where it should report the error; with it, you can blame someone else for the error.
+
+Lua provides the </rich_text><rich_text style="italic">xpcall</rich_text><rich_text> function. Besides the function to be called, it receives a second argument, an error handler function. In case of errors, Lua calls that error handler before the stack unwinds
+
+Two common error handlers are </rich_text><rich_text style="italic">debug.debug</rich_text><rich_text>, which gives you a Lua prompt so that you can inspect by yourself what was going on when the error happened; and </rich_text><rich_text style="italic">debug.traceback</rich_text><rich_text>, which builds an extended error message with a traceback.</rich_text></node></node><node name="C9 Coroutines" prog_lang="custom-colors" readonly="False" tags="" unique_id="35"><rich_text>One of the most paradigmatic examples of coroutines is in the producer-consumer problem. </rich_text><node name="Coroutine Basics" prog_lang="custom-colors" readonly="False" tags="" unique_id="36"><rich_text>The </rich_text><rich_text weight="heavy">coroutine.create</rich_text><rich_text> function creates new coroutines. It has a single argument, a function with the code that the coroutine will run. It returns a value of type thread, which represents the new coroutine.
+
+A coroutine can be in one of three different states: </rich_text><rich_text weight="heavy">suspended, running,</rich_text><rich_text> and </rich_text><rich_text weight="heavy">dead.</rich_text><rich_text> When we create a coroutine, it starts in the suspended state. 
+
+The function </rich_text><rich_text weight="heavy">coroutine.resume</rich_text><rich_text> (re)starts the execution of a coroutine, changing its state from suspended to running: 
+
+The real power of coroutines stems from the </rich_text><rich_text weight="heavy">coroutinge.yield</rich_text><rich_text> function, which allows a running coroutine to suspend its execution so that it can be resumed later. 
+
+</rich_text><rich_text scale="h2">resume-yield pair</rich_text><rich_text>
+
+A useful facility in Lua is that a pair resume-yield can exchange data between them. The first resume, which has no corresponding yield waiting for it, passes its extra arguments as arguments to the coroutine main function:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    co = coroutine.create(function (a,b,c)
+           print(&quot;co&quot;, a,b,c)
+         end)
+    coroutine.resume(co, 1, 2, 3)    --&gt; co  1  2  3
+</rich_text><rich_text>
+A call to resume returns, after the true that signals no errors, any arguments passed to the corresponding yield:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    co = coroutine.create(function (a,b)
+           coroutine.yield(a + b, a - b)
+         end)
+    print(coroutine.resume(co, 20, 10))  --&gt; true  30  10
+</rich_text><rich_text>
+Symmetrically, yield returns any extra arguments passed to the corresponding resume:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    co = coroutine.create (function ()
+           print(&quot;co&quot;, coroutine.yield())
+         end)
+    coroutine.resume(co)
+    coroutine.resume(co, 4, 5)     --&gt; co  4  5
+</rich_text><rich_text>
+Finally, when a coroutine ends, any values returned by its main function go to the corresponding resume:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    co = coroutine.create(function ()
+           return 6, 7
+         end)
+    print(coroutine.resume(co))   --&gt; true  6  7
+</rich_text></node></node><node name="Part II Tables and Objects" prog_lang="custom-colors" readonly="False" tags="" unique_id="37"><rich_text></rich_text><node name="C19 The Table Library" prog_lang="custom-colors" readonly="False" tags="" unique_id="40"><rich_text scale="h2">Array Size</rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">Insert and Remove</rich_text><rich_text>
+
+table.insert (list, [pos], value)
+table.remove (list, [pos])
+
+Removes from list the element at position pos, </rich_text><rich_text style="italic">returning the value of the removed element. </rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">Sort</rich_text><rich_text>
+
+table.sort (list [, comp])
+
+This order function receives two arguments and must return true if the first argument should come first in the sorted array. If this function is not provided, sort uses </rich_text><rich_text style="italic">the default less-than operation</rich_text><rich_text> (corresponding to the `&lt;´ operator). 
+
+A common mistake is to try to order the indices of a table. If you want to order them, you have to copy them to an array and then sort the array.</rich_text></node><node name="C20 The String Library" prog_lang="custom-colors" readonly="False" tags="" unique_id="41"><rich_text scale="h2">Simple Functions</rich_text><rich_text>
+
+string.len(s)
+string.rep(s,n) returns the string s repeated n times.
+
+string.upper(s)
+string.lower(s)
+
+Both string.upper and string.lower follow the current locale.
+
+string.sub(s,i,j)
+
+Returns the substring of s that starts at i and continues until j; i and j can be negative.
+
+The string.char and string.byte functions convert between characters and their internal numeric representations. 
+
+string.format (formatstring, ···)
+
+The q option formats a string between double quotes, using escape sequences when necessary to ensure that it can safely be read back by the Lua interpreter.</rich_text><node name="Pattern-Matching Functions" prog_lang="custom-colors" readonly="False" tags="" unique_id="42"><rich_text>Unlike several other scripting languages, Lua does not use POSIX regular expressions (regexp) for pattern matching.
+
+</rich_text><rich_text scale="h2">Find</rich_text><rich_text>
+
+</rich_text><rich_text background="#e6e6e6e6fafa">string.find(s, pattern)
+string.find(s, pattern, init)
+</rich_text><rich_text>
+The basic use of string.find is to search for a pattern inside a given string, called the subject string. The function returns the position where it found the pattern or nil if it could not find it. 
+
+</rich_text><rich_text scale="h2">Global Substitution</rich_text><rich_text>
+
+</rich_text><rich_text background="#e6e6e6e6fafa">string.gsub(s, pattern, replace)
+string.gsub(s, pattern, replace, n)</rich_text><rich_text>
+
+The string.gsub function has three parameters: a subject string, a pattern, and a replacement string. Its basic use is to substitute the replacement string for all occurrences of the pattern inside the subject string.</rich_text></node><node name="Patterns" prog_lang="custom-colors" readonly="False" tags="" unique_id="43"><rich_text scale="h2">Character Class</rich_text><rich_text>
+
+A character class is an item in a pattern that can match any character in a specific set. 
+
+.	all characters
+</rich_text><rich_text weight="heavy">%a	letters</rich_text><rich_text style="italic">
+</rich_text><rich_text>%c	control characters
+</rich_text><rich_text weight="heavy">%d	digits
+</rich_text><rich_text>%l	lower case letters
+%p	punctuation characters
+</rich_text><rich_text weight="heavy">%s	space characters
+</rich_text><rich_text>%u	upper case letters
+</rich_text><rich_text weight="heavy">%w	alphanumeric characters
+</rich_text><rich_text>%x	hexadecimal digits
+%z	the character with representation 0
+
+An upper case version of any of those classes represents the complement of the class. For instance, '%A' represents all non-letter characters.
+
+</rich_text><rich_text scale="h2">Magic Characters</rich_text><rich_text>
+
+The magic characters are
+
+</rich_text><rich_text weight="heavy">    ( ) . % + - * ? [ ] ^ $
+</rich_text><rich_text>
+The character `%´ works as an escape for those magic characters. So, '%.' matches a dot; '%%' matches the character `%´ itself.
+
+</rich_text><rich_text scale="h2">Char-set</rich_text><rich_text>
+
+[%w_]  matches both alphanumeric characters and underscores
+[0-9]
+[a-zA-Z]
+[^0-9]
+[^%s]  same as %S
+
+</rich_text><rich_text scale="h2">Pattern Modifies</rich_text><rich_text>
+
++	1 or more repetitions
+*	0 or more repetitions
+-	also 0 or more repetitions (matchs the shortest sequences)
+?	optional (0 or 1 occurrence)
+
+</rich_text><rich_text style="italic">Unlike some other systems, in Lua a modifier can only be applied to a character class; there is no way to group patterns under a modifier.</rich_text><rich_text> For instance, there is no pattern that matches an optional word (unless the word has only one letter). 
+
+</rich_text><rich_text scale="h2">Balanced Strings</rich_text><rich_text>
+
+Another item in a pattern is the '%b', that matches balanced strings. For instance, the pattern '%b()' matches parts of the string that start with a `(´ and finish at the respective `)´:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    print(string.gsub(&quot;a (enclosed (in) parentheses) line&quot;,
+                      &quot;%b()&quot;, &quot;&quot;))
+      --&gt; a  line
+</rich_text><rich_text>
+Typically, this pattern is used as </rich_text><rich_text weight="heavy">'%b()', '%b[]', '%b%{%}', or '%b&lt;&gt;'</rich_text><rich_text>, but you can use any characters as delimiters. 
+</rich_text></node><node name="Captures" prog_lang="custom-colors" readonly="False" tags="" unique_id="44"><rich_text scale="h2">string.find</rich_text><rich_text>
+
+When you specify captures to string.find, it returns the captured values as extra results from the call. A typical use of this facility is to break a string into parts:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    pair = &quot;name = Anna&quot;
+    _, _, key, value = string.find(pair, &quot;(%a+)%s*=%s*(%a+)&quot;)
+    print(key, value)  --&gt; name  Anna
+</rich_text><rich_text>
+We can also use captures in the pattern itself. In a pattern, an item like '%d', where d is a single digit, matches only a copy of the d-th capture.
+
+</rich_text><rich_text scale="h2">string.gsub</rich_text><rich_text>
+
+The third use of captured values is in the replacement string of gsub. Like the pattern, the replacement string may contain items like '%d', which are changed to the respective captures when the substitution is made. (By the way, because of those changes, a `%´ in the replacement string must be escaped as &quot;%%&quot;.)
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    print(string.gsub(&quot;hello Lua!&quot;, &quot;(%a)&quot;, &quot;%1-%1&quot;))
+      --&gt;  h-he-el-ll-lo-o L-Lu-ua-a!
+</rich_text><rich_text>
+The last use of captured values is perhaps the most powerful. We can call string.gsub with a function as its third argument, instead of a replacement string. 
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    function expand (s)
+      s = string.gsub(s, &quot;$(%w+)&quot;, function (n)
+            return _G[n]
+          end)
+      return s
+    end
+    
+    name = &quot;Lua&quot;; status = &quot;great&quot;
+    print(expand(&quot;$name is $status, isn't it?&quot;))
+      --&gt; Lua is great, isn't it?
+</rich_text><rich_text>
+</rich_text><rich_text scale="h2">string.gmatch</rich_text><rich_text>
+</rich_text></node></node><node name="C21 The IO Library" prog_lang="custom-colors" readonly="False" tags="" unique_id="45"><rich_text></rich_text><node name="The Simple I/O Model" prog_lang="custom-colors" readonly="False" tags="" unique_id="46"><rich_text>The library initializes the current input file as the process's standard input (stdin) and the current output file as the process's standard output (stdout). 
+
+We can change those current files with the </rich_text><rich_text weight="heavy">io.input</rich_text><rich_text> and </rich_text><rich_text weight="heavy">io.output</rich_text><rich_text> functions. 
+
+A call like io.input(filename) opens the given file (in read mode) and sets it as the current input file. From this point on, all input will come from this file, until another call to io.input; io.output does a similar job for output.
+
+</rich_text><rich_text scale="h2">io.write</rich_text><rich_text>
+
+The io.write function simply gets an arbitrary number of string arguments and writes them to the current output file. 
+
+Numbers are converted to strings following the usual conversion rules; for full control over this conversion, you should use the format function, from the string library:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    &gt; io.write(&quot;sin (3) = &quot;, math.sin(3), &quot;\n&quot;)
+      --&gt; sin (3) = 0.1411200080598672
+    &gt; io.write(string.format(&quot;sin (3) = %.4f\n&quot;, math.sin(3)))
+      --&gt; sin (3) = 0.1411
+</rich_text><rich_text>
+Avoid code like </rich_text><rich_text weight="heavy">io.write(a..b..c);</rich_text><rich_text> the call </rich_text><rich_text weight="heavy">io.write(a,b,c)</rich_text><rich_text> accomplishes the same effect with fewer resources, as it avoids the concatenations. 
+
+As a rule, you should use print for quick-and-dirty programs, or for debugging, and write when you need full control over your output:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    &gt; print(&quot;hello&quot;, &quot;Lua&quot;); print(&quot;Hi&quot;)
+      --&gt; hello   Lua
+      --&gt; Hi
+    
+    &gt; io.write(&quot;hello&quot;, &quot;Lua&quot;); io.write(&quot;Hi&quot;, &quot;\n&quot;)
+      --&gt; helloLuaHi
+</rich_text><rich_text>
+• Unlike print, write adds no extra characters to the output, such as tabs or newlines. 
+• Moreover, write uses the current output file, whereas print always uses the standard output. 
+• Finally, print automatically applies tostring to its arguments, so it can also show tables, functions, and nil. 
+
+</rich_text><rich_text scale="h2">io.read</rich_text><rich_text>
+
+The read function reads strings from the current input file. Its arguments control what is read:
+
+</rich_text><rich_text weight="heavy">&quot;*all&quot;</rich_text><rich_text>	reads the whole file
+</rich_text><rich_text weight="heavy">&quot;*line&quot;</rich_text><rich_text>	reads the next line
+</rich_text><rich_text weight="heavy">&quot;*number&quot;</rich_text><rich_text>	    reads a number
+</rich_text><rich_text weight="heavy">num</rich_text><rich_text>	    reads a string with up to num characters
+
+The call </rich_text><rich_text weight="heavy">io.read(&quot;*all&quot;)</rich_text><rich_text> reads the whole current input file, starting at its current position. If we are at the end of file, or if the file is empty, the call returns an empty string. 
+
+The call </rich_text><rich_text weight="heavy">io.read(&quot;*line&quot;)</rich_text><rich_text> returns the next line from the current input file, without the newline character. When we reach the end of file, the call returns nil
+
+This pattern is the default for read, so </rich_text><rich_text weight="heavy">io.read()</rich_text><rich_text> has the same effect as io.read(&quot;*line&quot;).
+
+You can call read with multiple options:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">      local n1, n2, n3 = io.read(&quot;*number&quot;, &quot;*number&quot;,
+                                 &quot;*number&quot;)
+</rich_text><rich_text>
+As a special case, </rich_text><rich_text weight="heavy">io.read(0)</rich_text><rich_text> works as a test for end of file: It returns an empty string if there is more to be read or nil otherwise. 
+</rich_text></node><node name="The Complete I/O Model" prog_lang="custom-colors" readonly="False" tags="" unique_id="47"><rich_text>To open a file, you use the io.open function, which mimics the fopen function in C. It receives as arguments the name of the file to open plus a mode string. 
+
+The open function returns a new handle for the file. In case of errors, open returns nil, plus an error message and an error number: 
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    print(io.open(&quot;non-existent file&quot;, &quot;r&quot;))
+      --&gt; nil     No such file or directory       2
+    
+    print(io.open(&quot;/etc/passwd&quot;, &quot;w&quot;))
+      --&gt; nil   Permission denied       13</rich_text><rich_text>
+
+For instance, to open a file and read it all, you can use a chunk like this:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    local f = assert(io.open(filename, &quot;r&quot;))
+    local t = f:read(&quot;*all&quot;)
+    f:close()
+</rich_text></node><node name="Other Operations on Files" prog_lang="custom-colors" readonly="False" tags="" unique_id="48"><rich_text>io.tmpfile
+io.flush
+io.seek</rich_text></node></node><node name="C22 The Operating System Library" prog_lang="custom-colors" readonly="False" tags="" unique_id="49"><rich_text></rich_text><node name="Date and Time" prog_lang="custom-colors" readonly="False" tags="" unique_id="50"><rich_text>os.time
+os.date
+os.clock</rich_text></node><node name="Other System Calls" prog_lang="custom-colors" readonly="False" tags="" unique_id="51"><rich_text>The </rich_text><rich_text weight="heavy">os.exit</rich_text><rich_text> function terminates the execution of a program. 
+
+The </rich_text><rich_text weight="heavy">os.getenv</rich_text><rich_text> function gets the value of an environment variable.
+
+The function </rich_text><rich_text weight="heavy">os.execute</rich_text><rich_text> runs a system command; it is equivalent to the system function in C. It receives a string with the command and returns an error code.
+
+The </rich_text><rich_text weight="heavy">os.setlocale</rich_text><rich_text> function sets the current locale used by a Lua program.
+ </rich_text></node></node></node><node name="Part III The Standard Libraries" prog_lang="custom-colors" readonly="False" tags="" unique_id="38"><rich_text></rich_text></node><node name="Part IV The C API" prog_lang="custom-colors" readonly="False" tags="" unique_id="39"><rich_text></rich_text></node></cherrytree>

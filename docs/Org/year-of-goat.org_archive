@@ -1,0 +1,189 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file d:/Jundaf/Application/Emacs/Org/year-of-goat.org
+
+
+* Xikang ARM Terminal
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2015-03-20 Fri 10:43
+  :ARCHIVE_FILE: d:/Jundaf/Application/Emacs/Org/year-of-goat.org
+  :ARCHIVE_CATEGORY: year-of-goat
+  :END:
+** Xikang ARM Terminal for Yocto
+*** Problems found
+    - All apps run in fullscreen mode.
+
+*** Missing packages
+    - cups-config (SDK)
+    - libcurl
+    - libgdbus
+    - pulseaudio (required by system manager)
+    - wqy-zenhei fonts
+
+*** Setup Xikang packages
+    - Install *ld.so.conf* and run *ldconfig*
+    - Install Dbus policy files
+    - Install wqy-zenhei with *fc-cache -vf*
+
+**** Dbus policy files
+     - notification_dbus.conf
+     - voicemgr.conf
+     - devman_dbus.conf (SensorMgr)
+     - bluez_agent.conf (SensorMgr)
+     - sysman.conf
+     - updatemgr.conf
+
+**** Systemd service files
+#+BEGIN_EXAMPLE
+[Unit]
+Description=Xikang Data Manager
+Requires=connman.service
+After=connman.service
+
+[Service]
+Restart=always
+ExecStart=/usr/local/acorn/service/bin/datamanagerd
+
+[Install]
+WantedBy=multi-user.target
+#+END_EXAMPLE
+
+* JavaScript Garden
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2015-03-20 Fri 10:43
+  :ARCHIVE_FILE: d:/Jundaf/Application/Emacs/Org/year-of-goat.org
+  :ARCHIVE_CATEGORY: year-of-goat
+  :END:
+http://bonsaiden.github.io/JavaScript-Garden/
+** Objects
+*** Object Usage and Properties
+    - Everything in JavaScript acts like an object, with the only two
+      exceptions being null and undefined.
+    - The only way to remove a property from an object is to use the
+      delete operator; setting the property to undefined or null only
+      removes the value associated with the property, but not the key.
+*** The Prototype
+*** hasOwnProperty
+    - To check whether an object has a property defined on itself and
+      not somewhere on its prototype chain, it is necessary to use the
+      hasOwnProperty method which all objects inherit from
+      Object.prototype.
+*** The for in Loop
+    - It is recommended to always use hasOwnProperty in ECMAScript 3
+      or lower, as well as in library code.
+    - Since ECMAScript 5, Object.defineProperty makes it possible to
+      define non-enumerable properties and to omit hasOwnProperty in
+      application code.
+** Functions
+*** Function Declarations and Expressions
+    - the name of the function is always made available in the local
+      scope of the function itself.
+*** How this Works
+    - The Global Scope
+    - Calling a Function
+    - Calling a Method
+    - Calling a Constructor
+    - Explicit Setting of this (When using the call or apply methods
+      of Function.prototype)
+    - As of ECMAScript 5 you can use the bind method combined with an
+      anonymous function to achieve the same result.
+    - While the late binding of this might seem like a bad idea at
+      first, in fact, it is what makes prototypal inheritance work.
+*** Closures and References
+    - Since the only scoping that JavaScript has is function scope,
+      all functions, by default, act as closures.
+    - Emulating private variables
+    - Closures Inside Loops
+    - In order to copy the value of the loop's index variable, it is
+      best to use an anonymous wrapper.
+*** The arguments Object
+    - The arguments object is not an Array. While it has some of the
+      semantics of an array - namely the length property - it does not
+      inherit from Array.prototype and is in fact an Object.
+    - Converting to an Array -- Array.prototype.slice.call(arguments);
+*** Constructors
+    - Any function call that is preceded by the new keyword acts as a
+      constructor.
+    - The prototype of this new object is set to the prototype of the
+      function object that was invoked as the constructor.
+    - In case of an explicit return statement, the function returns
+      the value specified by that statement, but only if the return
+      value is an Object.
+*** Scopes and Namespaces
+    - The only source for local variables in JavaScript are function
+      parameters and variables declared via the var statement.
+    - JavaScript hoists declarations. This means that both var
+      statements and function declarations will be moved to the top of
+      their enclosing scope.
+    - Unnamed functions are considered expressions; so in order to be
+      callable, they must first be evaluated.
+    - It is recommended to always use an *anonymous wrapper* to
+      encapsulate code in its own namespace.
+    - Additionally, the use of global variables is considered bad
+      practice.
+** Arrays
+*** Array Iteration and Properties
+    - For the best performance, it is recommended to always use the
+      plain for loop and cache the length property.
+*** The Array Constructor
+    - Literals are preferred to the Array constructor. They are
+      shorter, have a clearer syntax, and increase code readability.
+** Types
+*** Equality and Comparisons
+    - JavaScript features weak typing. This means that the equality
+      operator coerces types in order to compare them.
+    - It is highly recommended to only use the strict equality
+      operator (===).
+    - In cases where types need to be coerced, it should be
+      done explicitly and not left to the language's complicated
+      coercion rules.
+*** The typeof Operator
+    - The typeof operator (together with instanceof) is probably the
+      biggest design flaw of JavaScript, as it is almost completely
+      broken.
+    - In order to check the type of an object, it is highly
+      recommended to use Object.prototype.toString because this is the
+      only reliable way of doing so.
+    - Unless checking whether a variable is defined, typeof should be
+      avoided.
+*** The instanceof Operator
+    - The instanceof operator compares the constructors of its two
+      operands. It is only useful when comparing custom made objects.
+    - Just like the typeof operator, every other use of it should be
+      avoided.
+*** Type Casting
+    - Using a built-in type like Number as a constructor will create a
+      new Number object, but leaving out the new keyword will make the
+      Number function behave like a converter.
+    - The best option is to cast to one of the three possible types
+      (String, Nuber, Boolean) explicitly.
+** Core
+*** Why Not to Use eval
+    - The eval function will execute a string of JavaScript code in
+      the local scope.
+    - The use of eval should be avoided.
+*** undefined and null
+    - undefined is a type with exactly one value: undefined.
+    - The language also defines a global variable that has the value
+      of undefined; this variable is also called undefined.
+    - in almost all cases, null can be replaced by undefined.
+*** Automatic Semicolon Insertion
+    - It is highly recommended to never omit semicolons. It is also
+      recommended that braces be kept on the same line as their
+      corresponding statements and to never omit them for single-line
+      if / else statements.
+*** The delete Operator
+    - In short, it's impossible to delete global variables, functions
+      and some other stuff in JavaScript which have a DontDelete
+      attribute set.
+    - The delete operator often has unexpected behaviour and can only
+      be safely used to delete explicitly set properties on normal
+      objects.
+** Other
+*** setTimeout and setInterval
+    - A string should never be used as the parameter of setTimeout or
+      setInterval.
+    - The function that was passed as the first parameter will get
+      called by the global object, which means that *this* inside the
+      called function refers to the global object.

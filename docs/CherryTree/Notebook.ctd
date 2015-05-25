@@ -1,0 +1,177 @@
+<?xml version="1.0" ?>
+<cherrytree><node name="Cross building" prog_lang="custom-colors" readonly="False" tags="" unique_id="1"><rich_text></rich_text><node name="Install scratchbox2" prog_lang="custom-colors" readonly="False" tags="" unique_id="2"><rich_text>sudo apt-get install build-essential
+sudo apt-get install scratchbox2
+sudo apt-get install debootstrap
+sudo apt-get install g++-arm-linux-gnueabi</rich_text></node><node name="Setup scratchbox2" prog_lang="custom-colors" readonly="False" tags="" unique_id="3"><rich_text scale="h2">precise-arm</rich_text><rich_text>
+
+debootstrap --arch=armel --variant=buildd --foreign precise precise-arm
+sb2-init -n -c /usr/bin/qemu-arm ARM arm-linux-gnueabi-gcc
+sb2 -eR ./debootstrap/debootstrap --second-stage --verbose
+
+</rich_text><rich_text scale="h2">precisesb</rich_text><rich_text>
+
+fakeroot debootstrap --arch=armel --foreign precise precisesb2
+sb2-init -n -c /usr/bin/qemu-arm XK arm-linux-gnueabi-gcc
+sb2 -eR ./debootstrap/debootstrap --second-stage --verbose
+</rich_text></node><node name="Oneiric ARM" prog_lang="custom-colors" readonly="False" tags="" unique_id="4"><rich_text>sb2-init -c /usr/bin/qemu-arm ONE arm-linux-gnueabi-gcc
+</rich_text></node><node name="Compile AppManager" prog_lang="custom-colors" readonly="False" tags="" unique_id="16"><rich_text>1. Compile CommonLib
+2. Compile Server/ConfMgr</rich_text></node><node name="Compile AcornControl" prog_lang="custom-colors" readonly="False" tags="" unique_id="17"><rich_text>AppManager
+AppResManager
+VoiceMgr/sub_program/voicemgr_util
+InputMethod/libkeyboard-dbus
+</rich_text></node></node><node name="Apt-Get Usage" prog_lang="custom-colors" readonly="False" tags="" unique_id="18"><rich_text></rich_text><node name="Install liblua5.1-0-dev" prog_lang="custom-colors" readonly="False" tags="" unique_id="19"><rich_text>root@ubuntu:/etc/apt# apt-get install liblua5.1-0-dbg liblua5.1-0-dev
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  zerofree libdumbnet1 dkms
+Use 'apt-get autoremove' to remove them.
+The following extra packages will be installed:
+  autotools-dev libltdl-dev libreadline-dev libreadline6-dev libtinfo-dev libtool
+Suggested packages:
+  libtool-doc autoconf automaken gfortran fortran95-compiler gcj
+The following NEW packages will be installed:
+  autotools-dev libltdl-dev liblua5.1-0-dbg liblua5.1-0-dev libreadline-dev libreadline6-dev libtinfo-dev
+  libtool
+0 upgraded, 8 newly installed, 0 to remove and 434 not upgraded.
+Need to get 1,732 kB of archives.
+After this operation, 4,831 kB of additional disk space will be used.
+Do you want to continue [Y/n]? 
+Get:1 </rich_text><rich_text link="webs http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</rich_text><rich_text> precise/main autotools-dev all 20120210.1ubuntu1 [42.4 kB]
+Get:2 </rich_text><rich_text link="webs http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</rich_text><rich_text> precise/main libltdl-dev i386 2.4.2-1ubuntu1 [203 kB]
+Get:3 </rich_text><rich_text link="webs http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</rich_text><rich_text> precise/main liblua5.1-0-dbg i386 5.1.4-12ubuntu1 [629 kB]
+Get:4 </rich_text><rich_text link="webs http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</rich_text><rich_text> precise/main libtinfo-dev i386 5.9-4 [93.5 kB]                            
+Get:5 </rich_text><rich_text link="webs http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</rich_text><rich_text> precise/main libreadline6-dev i386 6.2-8 [249 kB]                         
+Get:6 </rich_text><rich_text link="webs http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</rich_text><rich_text> precise/main libreadline-dev i386 6.2-8 [932 B]                           
+Get:7 </rich_text><rich_text link="webs http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</rich_text><rich_text> precise/main liblua5.1-0-dev i386 5.1.4-12ubuntu1 [212 kB]                
+Get:8 </rich_text><rich_text link="webs http://mirrors.163.com/ubuntu/">http://mirrors.163.com/ubuntu/</rich_text><rich_text> precise/main libtool i386 2.4.2-1ubuntu1 [302 kB]                         
+Fetched 1,732 kB in 13s (126 kB/s)                                                                             
+Selecting previously unselected package autotools-dev.
+(Reading database ... 146727 files and directories currently installed.)
+Unpacking autotools-dev (from .../autotools-dev_20120210.1ubuntu1_all.deb) ...
+Selecting previously unselected package libltdl-dev.
+Unpacking libltdl-dev (from .../libltdl-dev_2.4.2-1ubuntu1_i386.deb) ...
+Selecting previously unselected package liblua5.1-0-dbg.
+Unpacking liblua5.1-0-dbg (from .../liblua5.1-0-dbg_5.1.4-12ubuntu1_i386.deb) ...
+Selecting previously unselected package libtinfo-dev.
+Unpacking libtinfo-dev (from .../libtinfo-dev_5.9-4_i386.deb) ...
+Selecting previously unselected package libreadline6-dev.
+Unpacking libreadline6-dev (from .../libreadline6-dev_6.2-8_i386.deb) ...
+Selecting previously unselected package libreadline-dev.
+Unpacking libreadline-dev (from .../libreadline-dev_6.2-8_i386.deb) ...
+Selecting previously unselected package liblua5.1-0-dev.
+Unpacking liblua5.1-0-dev (from .../liblua5.1-0-dev_5.1.4-12ubuntu1_i386.deb) ...
+Selecting previously unselected package libtool.
+Unpacking libtool (from .../libtool_2.4.2-1ubuntu1_i386.deb) ...
+Processing triggers for man-db ...
+Processing triggers for install-info ...
+Setting up autotools-dev (20120210.1ubuntu1) ...
+Setting up libltdl-dev (2.4.2-1ubuntu1) ...
+Setting up liblua5.1-0-dbg (5.1.4-12ubuntu1) ...
+Setting up libtinfo-dev (5.9-4) ...
+Setting up libreadline6-dev (6.2-8) ...
+Setting up libreadline-dev (6.2-8) ...
+Setting up liblua5.1-0-dev (5.1.4-12ubuntu1) ...
+Setting up libtool (2.4.2-1ubuntu1) ...
+root@ubuntu:/etc/apt# 
+</rich_text></node></node><node name="Update Manager" prog_lang="custom-colors" readonly="False" tags="" unique_id="20"><rich_text></rich_text><node name="verupdate.py dbus-monitor" prog_lang="custom-colors" readonly="False" tags="" unique_id="21"><rich_text>[jundaf@localhost verupdate]$ ./verupdate.py 
+INFO:root:Current version: 1.2.3-1.0.xikang
+DEBUG:root:package=xikang-system-update-3.1.9-1.0.xikang3.i586.rpm
+DEBUG:root:('xikang-system-update', '3.1.9', '1.0.xikang3', '', 'i586')
+INFO:root:Current version: 1.2.3-1.0.xikang
+DEBUG:root:error_id=019 error_msg=No update available
+DEBUG:root:('019', 'No update available')
+
+[jundaf@localhost xikang-system-update]$ dbus-monitor --session 'type=signal,sender=com.xikang.VersionUpdate,interface=com.xikang.VersionUpdate'
+signal sender=org.freedesktop.DBus -&gt; dest=:1.128 serial=2 path=/org/freedesktop/DBus; interface=org.freedesktop.DBus; member=NameAcquired
+   string &quot;:1.128&quot;
+signal sender=:1.127 -&gt; dest=(null destination) serial=10 path=/; interface=com.xikang.VersionUpdate; member=LatestVersion
+   int32 0
+   string &quot;{&quot;release&quot;: &quot;1.0.xikang3&quot;, &quot;version&quot;: &quot;3.1.9&quot;, &quot;name&quot;: &quot;xikang-system-update&quot;}&quot;
+signal sender=:1.138 -&gt; dest=(null destination) serial=8 path=/; interface=com.xikang.VersionUpdate; member=LatestVersion
+   int32 0
+   string &quot;{&quot;release&quot;: &quot;1.0.xikang3&quot;, &quot;txnarr&quot;: [123456], &quot;version&quot;: &quot;3.1.9&quot;, &quot;name&quot;: &quot;xikang-system-update&quot;}&quot;
+signal sender=:1.138 -&gt; dest=(null destination) serial=11 path=/; interface=com.xikang.VersionUpdate; member=LatestVersion
+   int32 1
+   string &quot;{&quot;txnarr&quot;: [123456], &quot;error_id&quot;: &quot;019&quot;, &quot;error_msg&quot;: &quot;No update available&quot;}&quot;
+</rich_text></node></node><node name="Compile Trunk.deb" prog_lang="custom-colors" readonly="False" tags="" unique_id="5"><rich_text></rich_text><node name="Install packages" prog_lang="custom-colors" readonly="False" tags="" unique_id="6"><rich_text>libgtk2.0-dev
+libglib2.0-dev
+libxml2-dev
+libdbus-glib-1-dev
+
+libxtst-dev
+libssl-dev
+libcurl4-gnutls-dev
+libsqlite3-dev
+
+libusb-dev
+libbluetooth-dev
+libgconf2-dev
+
+
+apt-get install libglib2.0-dev libgtk2.0-dev libxml2-dev libdbus-glib-1-dev
+apt-get install libxtst-dev libssl-dev libcurl4-gnutls-dev libsqlite3-dev
+apt-get install libusb-dev libbluetooth-dev libgconf2-dev
+
+
+libgdbus-0.2
+(configure/make/make install)
+</rich_text></node><node name="Compile errors" prog_lang="custom-colors" readonly="False" tags="" unique_id="7"><rich_text scale="h2">No dbus/dbus-arch-deps.h</rich_text><rich_text>
+
+/usr/include/dbus-1.0/dbus/dbus.h:29:33: fatal error: dbus/dbus-arch-deps.h: No such file or directory
+compilation terminated.
+
+Use `pkg-config --cflags dbus-1` in Makefile instead of -I/usr/lib/dbus-1.0/include
+
+</rich_text><rich_text scale="h2">No glibconfig.h</rich_text><rich_text>
+
+/usr/include/glib-2.0/glib/gtypes.h:34:24: fatal error: glibconfig.h: No such file or directory
+compilation terminated.
+
+Use `pkg-config --cflags glib-2.0` in Makefile instead of -I/usr/lib/glib-2.0/include
+
+</rich_text><rich_text scale="h2">recompile with -fPIC</rich_text><rich_text>
+
+/usr/bin/ld: utility.o: relocation R_ARM_THM_MOVW_ABS_NC against `__stack_chk_guard' can not be used when making a shared object; recompile with -fPIC
+utility.o: could not read symbols: Bad value
+</rich_text></node><node name="Compile application" prog_lang="custom-colors" readonly="False" tags="" unique_id="8"><rich_text></rich_text><node name="AppBloodPressureBase" prog_lang="custom-colors" readonly="False" tags="" unique_id="9"><rich_text scale="h2">Service</rich_text><rich_text>
+VoiceMgr/sub_program/voicemgr_util
+InputMethod/libkeyboard-dbus
+SensorMgr/libsensormgr
+
+</rich_text><rich_text scale="h2">Application</rich_text><rich_text>
+AppManager
+AppResManager
+AcornControl
+AcornToolkit
+AppCommon
+AppWebkitBrowser
+AppBloodPressureBase</rich_text></node></node><node name="Compile service" prog_lang="custom-colors" readonly="False" tags="" unique_id="10"><rich_text scale="h2">Done</rich_text><rich_text>
+
+ConfMgr
+SystemMgr
+DataMgr
+UpdateMgr</rich_text><node name="DataMgr" prog_lang="custom-colors" readonly="False" tags="" unique_id="11"><rich_text>ConnMgr/connman-client
+libgdbus
+SystemMgr
+</rich_text></node></node><node name="Update Manager" prog_lang="custom-colors" readonly="False" tags="" unique_id="22"><rich_text>1. CommLib
+2. ConfMgr
+3. connman-client
+4. SystemMgr
+5. DataMgr (pkg-config --libs libssl)</rich_text></node></node><node name="Making package" prog_lang="custom-colors" readonly="False" tags="" unique_id="12"><rich_text></rich_text><node name="dh_make" prog_lang="custom-colors" readonly="False" tags="" unique_id="13"><rich_text scale="h2">Setting up dh_make environment
+
+Run dh_make</rich_text><rich_text>
+
+dh_make --native --single --packagename bloodpressure_1.0.0</rich_text></node><node name="edit debian files" prog_lang="custom-colors" readonly="False" tags="" unique_id="14"><rich_text scale="h2">Remove example files</rich_text><rich_text>
+
+rm *.ex *.EX
+rm README*
+
+</rich_text><rich_text scale="h2">Edit required files</rich_text><rich_text>
+
+changelog
+control
+copyright
+rules
+
+</rich_text><rich_text scale="h2">Edit Makefile</rich_text></node><node name="dpkg_buildpackage" prog_lang="custom-colors" readonly="False" tags="" unique_id="15"><rich_text>dpkg-buildpackage -us -uc</rich_text></node></node></cherrytree>

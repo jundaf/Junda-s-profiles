@@ -1,0 +1,43 @@
+﻿++ Meego Build
+
++++ Set up chroot environment
+
+    * mic-chroot meego-1.2.raw
+    * export http_proxy=http://proxy.neusoft.com:8080 (for zypper)
+    * rpm --import RPM-GPG-KEY-meego02
+
++++ Install development packages
+
+    * glib2-devel
+    * dbus-devel
+    * dbus-glib-devel
+    * libxml2-devel (zlib-devel)
+    * libfakekey-devel (libfakekey)
+    * gtk2-devel
+    * scim-devel
+    * libcurl-devel
+    * libgdbus-devel (libgdbus)
+    * ppp-devel
+    * <<GConf-dbus-devel>>
+    * sqlite-devel
+    * libusb-devel
+    * bluez-libs-devel
+    * alsa-lib-devel
+    * ncurses-devel
+    * <<WebKit-gtk-devel (WebKit-gtk)>>
+    * openldap-devel (for building <<GConf-dbus>>)
+    * clutter-gtk-devel (clutter-devel, for building fvkdb)
+    * libpcap-devel (for building xl2tpd)
+
++++ Compile source package
+
+    * Bump gettext 0.17 to 0.18
+    * fix scim-panel-vkb-gtk-0.1.5/po Makefile.in.in
+    * fix fvkbd-0.1.5/po Makefile.in.in
+    * fix <<Application/AcornControl/inc/GtkEntryIm.h (XTest.h not exist)>>
+
++++ Lack of gtk-doc
+
+    * <<BuildRequires>>: gtk-doc
+    * scim-panel-vkb-gtk
+    * fvkdb

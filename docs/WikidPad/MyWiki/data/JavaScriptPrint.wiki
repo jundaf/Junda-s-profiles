@@ -1,0 +1,7 @@
+﻿++ Java Script Print
+
+Creating a "Print this page"
+
+<<
+<a href="JavaScript:window.print();">Print this page</a>
+>>

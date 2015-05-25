@@ -1,0 +1,10 @@
+﻿++ Xikang Bashrc
+
+<<pre
+# Junda added
+export ACORN_ROOT=/usr/local/acorn
+export PATH=$ACORN_ROOT/app/bin:$ACORN_ROOT/service/bin:$PATH
+export DISPLAY=:0
+alias vi=vim
+alias cdacorn="cd $ACORN_ROOT"
+>>

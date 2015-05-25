@@ -1,0 +1,474 @@
+<?xml version="1.0" ?>
+<cherrytree><node name="Vala Tutorial" prog_lang="custom-colors" readonly="False" tags="" unique_id="1"><rich_text></rich_text><node name="Basics" prog_lang="custom-colors" readonly="False" tags="" unique_id="9"><rich_text>
+</rich_text><node name="Data Types" prog_lang="custom-colors" readonly="False" tags="" unique_id="2"><rich_text>Broadly speaking there are two types of data in Vala: reference types and value types. These names describe how instances of the types are passed around the system - a value type is copied whenever it is assigned to a new identifier, a reference type is not copied, instead the new identifier is simply a new reference to the same object. </rich_text><node name="Value Types" prog_lang="custom-colors" readonly="False" tags="" unique_id="3"><rich_text>• Byte, </rich_text><rich_text foreground="#00000000ffff" style="italic">char, uchar</rich_text><rich_text>; their names are char for historical reasons.
+• Character, </rich_text><rich_text foreground="#00000000ffff" style="italic">unichar</rich_text><rich_text>; a 32-bit Unicode character
+• Integer, </rich_text><rich_text foreground="#00000000ffff" style="italic">int, uint</rich_text><rich_text>
+• Long Integer, </rich_text><rich_text foreground="#00000000ffff" style="italic">long, ulong</rich_text><rich_text>
+• Short Integer, </rich_text><rich_text foreground="#00000000ffff" style="italic">short, ushort</rich_text><rich_text>
+• Guaranteed-size Integer, </rich_text><rich_text foreground="#00000000ffff" style="italic">int8, int16, int32, int64</rich_text><rich_text> as well as their unsigned siblings </rich_text><rich_text foreground="#00000000ffff" style="italic">uint8, uint16, uint32, uint64</rich_text><rich_text>. The numbers indicate the lengths in bits.
+• Float number, </rich_text><rich_text foreground="#00000000ffff" style="italic">float, double</rich_text><rich_text>
+• Boolean, </rich_text><rich_text foreground="#00000000ffff" style="italic">bool</rich_text><rich_text>; possible values are </rich_text><rich_text foreground="#00000000ffff" style="italic">true</rich_text><rich_text> and </rich_text><rich_text foreground="#00000000ffff" style="italic">false</rich_text><rich_text>
+• Compound, </rich_text><rich_text foreground="#00000000ffff" style="italic">struct</rich_text><rich_text>
+• Enumeration, </rich_text><rich_text foreground="#00000000ffff" style="italic">enum</rich_text><rich_text>; represented by integer values, not as classes like Java's enums
+
+</rich_text><rich_text justification="left"></rich_text><codebox char_offset="543" frame_height="340" frame_width="700" highlight_brackets="False" show_line_numbers="False" syntax_highlighting="vala" width_in_pixels="True">/* atomic types */
+unichar c = 'u';
+float percentile = 0.75f;
+const double MU_BOHR = 927.400915E-26;
+bool the_box_has_crashed = false;
+
+/* defining a struct */
+struct Vector {
+    public double x;
+    public double y;
+    public double z;
+}
+
+/* defining an enum */
+enum WindowType {
+    TOPLEVEL,
+    POPUP
+}</codebox></node><node name="String" prog_lang="custom-colors" readonly="False" tags="" unique_id="4"><rich_text scale="h2">Immutable</rich_text><rich_text>
+Vala strings are UTF-8 encoded and immutable. 
+
+</rich_text><rich_text scale="h2">Verbatim strings</rich_text><rich_text>
+These are strings in which escape sequences (such as \n) won't be interpreted, line breaks will be preserved and quotation marks don't have to be masked. They are enclosed with triple double quotation marks. Possible indentations after a line break are part of the string as well. 
+
+</rich_text><rich_text justification="left"></rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">String template</rich_text><rich_text>
+Strings prefixed with '@' are string templates. They can evaluate embedded variables and expressions prefixed with '$': 
+
+</rich_text><rich_text justification="left"></rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">Slicing</rich_text><rich_text>
+You can slice a string with [start:end]. Negative values represent positions relative to the end of the string. Starting with Vala 0.11 you can access a single byte of a string with [index].
+
+</rich_text><rich_text justification="left"></rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">Parsing from and converting to strings</rich_text><rich_text>
+
+</rich_text><rich_text justification="left"></rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">Useful IO methods</rich_text><rich_text>
+
+</rich_text><rich_text justification="left"></rich_text><rich_text>
+
+</rich_text><rich_text scale="h2">In operation</rich_text><rich_text>
+The in operation can be used to determine whether one string contains another, e.g. 
+
+</rich_text><rich_text justification="left"></rich_text><rich_text>
+</rich_text><codebox char_offset="358" frame_height="70" frame_width="700" highlight_brackets="False" show_line_numbers="False" syntax_highlighting="vala" width_in_pixels="True">string verbatim = &quot;&quot;&quot;This is a so-called &quot;verbatim string&quot;.
+Verbatim strings don't process escape sequences, such as \n, \t, \\, etc.
+They may contain quotes and may span multiple lines.&quot;&quot;&quot;;</codebox><codebox char_offset="499" frame_height="50" frame_width="700" highlight_brackets="False" show_line_numbers="False" syntax_highlighting="vala" width_in_pixels="True">int a = 6, b = 7;
+string s = @&quot;$a * $b = $(a * b)&quot;;  // =&gt; &quot;6 * 7 = 42&quot;</codebox><codebox char_offset="702" frame_height="80" frame_width="700" highlight_brackets="False" show_line_numbers="False" syntax_highlighting="vala" width_in_pixels="True">string greeting = &quot;hello, world&quot;;
+string s1 = greeting[7:12];        // =&gt; &quot;world&quot;
+string s2 = greeting[-4:-2];       // =&gt; &quot;or&quot;
+uint8 b = greeting[7];             // =&gt; 0x77</codebox><codebox char_offset="745" frame_height="100" frame_width="700" highlight_brackets="False" show_line_numbers="False" syntax_highlighting="vala" width_in_pixels="True">bool b = bool.parse(&quot;false&quot;);           // =&gt; false
+int i = int.parse(&quot;-52&quot;);               // =&gt; -52
+double d = double.parse(&quot;6.67428E-11&quot;); // =&gt; 6.67428E-11
+string s1 = true.to_string();           // =&gt; &quot;true&quot;
+string s2 = 21.to_string();             // =&gt; &quot;21&quot;</codebox><codebox char_offset="767" frame_height="80" frame_width="700" highlight_brackets="False" show_line_numbers="False" syntax_highlighting="vala" width_in_pixels="True">stdout.printf(&quot;Hello, world\n&quot;);
+stdout.printf(&quot;%d %g %s\n&quot;, 42, 3.1415, &quot;Vala&quot;);
+string input = stdin.read_line();
+int number = int.parse(stdin.read_line());</codebox><codebox char_offset="869" frame_height="40" frame_width="700" highlight_brackets="False" show_line_numbers="False" syntax_highlighting="vala" width_in_pixels="True">if (&quot;ere&quot; in &quot;Able was I ere I saw Elba.&quot;) ...
+</codebox></node><node name="Array" prog_lang="custom-colors" readonly="False" tags="" unique_id="5"><rich_text>An array is declared by giving a type name followed by [] and created by using the new operator e.g. int[] a = new int[10] to create an array of integers. The length of such an array can be obtained by the length member variable e.g. int count = a.length. Note that if you write Object[] a = new Object[10] no objects will be created, just the array to store them in. 
+
+You can slice an array with [start:end]. Slicing an array results in a new array. Modifications to this new array have no effect on the original array. 
+
+</rich_text><rich_text justification="left"></rich_text><rich_text>
+
+You can append array elements dynamically with the += operator. However, this works only for locally defined or private arrays. The array is automatically reallocated if needed. Internally this reallocation happens with sizes growing in powers of 2 for run-time efficiency reasons. However, .length holds the actual number of elements, not the internal size. 
+
+</rich_text><rich_text justification="left"></rich_text><rich_text>
+</rich_text><codebox char_offset="524" frame_height="100" frame_width="700" highlight_brackets="False" show_line_numbers="False" syntax_highlighting="vala" width_in_pixels="True">int[] a = new int[10];
+int[] b = { 2, 4, 6, 8 };
+
+int[] c = b[1:3];     // =&gt; { 4, 6 }
+</codebox><codebox char_offset="888" frame_height="100" frame_width="700" highlight_brackets="False" show_line_numbers="False" syntax_highlighting="vala" width_in_pixels="True">int[] e = {};
+e += 12;
+e += 5;
+e += 37;</codebox></node><node name="Reference Types" prog_lang="custom-colors" readonly="False" tags="" unique_id="6"><rich_text>The reference types are all types declared as a class, regardless of whether they are descended from GLib's Object or not. Vala will ensure that when you pass an object by reference the system will keep track of the number of references currently alive in order to manage the memory for you. The value of a reference that does not point anywhere is null. More on classes and their features in the section about object oriented programming.</rich_text></node><node name="Type inference" prog_lang="custom-colors" readonly="False" tags="" unique_id="7"><rich_text>Vala has a mechanism called type inference, whereby a local variable may be defined using var instead of giving a type, so long as it is unambiguous what type is meant. The type is inferred from the right hand side of the assignment. It helps reducing unnecessary redundance in your code without sacrificing static typing: 
+
+</rich_text><rich_text justification="left"></rich_text><rich_text>
+
+This only works for local variables. Type inference is especially useful for types with generic type arguments.</rich_text><codebox char_offset="325" frame_height="100" frame_width="700" highlight_brackets="False" show_line_numbers="False" syntax_highlighting="vala" width_in_pixels="True">var p = new Person();     // same as: Person p = new Person();
+var s = &quot;hello&quot;;          // same as: string s = &quot;hello&quot;;
+var l = new List&lt;int&gt;();  // same as: List&lt;int&gt; l = new List&lt;int&gt;();
+var i = 10;               // same as: int i = 10;
+</codebox></node></node><node name="Operators" prog_lang="custom-colors" readonly="False" tags="" unique_id="8"><rich_text scale="h2">+</rich_text><rich_text>
+The + operator can also concatenate strings.
+
+</rich_text><rich_text scale="h2">==</rich_text><rich_text>
+Evaluates to a bool value dependent on whether the left and right operands are equal. In the case of value types this means their values are equal, in the case of reference types that the objects are the same instance. An exception to this rule is the string type, which is tested for equality by value. 
+
+</rich_text><rich_text scale="h2">??</rich_text><rich_text>
+null coalescing operator: a ?? b is equivalent to a != null ? a : b. This operator is useful for example to provide a default value in case a reference is null.
+
+</rich_text><rich_text scale="h2">in</rich_text><rich_text>
+checks if the right operand contains the left operand. This operator works on arrays, strings, collections or any other type that has an appropriate contains() method. For strings it performs a substring search. 
+</rich_text></node><node name="Control structures" prog_lang="custom-colors" readonly="False" tags="" unique_id="10"><rich_text scale="h2">foreach</rich_text><rich_text>
+...
+
+</rich_text><rich_text style="italic">A note for C programmers: conditions must always evaluate to a Boolean value. This means that if you want to check a variable for null or 0 you must do this explicitly: if (object != null) { } or if (number != 0) { }. </rich_text></node><node name="Language Elements" prog_lang="custom-colors" readonly="False" tags="" unique_id="11"><rich_text></rich_text><node name="Methods" prog_lang="custom-colors" readonly="False" tags="" unique_id="12"><rich_text>1. No method overloading
+2. Default arguments for method parameters
+3. Basic nullable check for method parameters and return values</rich_text></node><node name="Delegates" prog_lang="custom-colors" readonly="False" tags="" unique_id="13"><rich_text style="italic">delegate void DelegateType(int a);</rich_text><rich_text>
+
+Delegates represent methods, allowing chunks of code to be passed around like objects. The example above defines a new type named DelegateType which represents methods taking an int and not returning a value. Any method that matches this signature may be assigned to a variable of this type or passed as a method argument of this type. 
+
+Delegates may also be created locally (in a Class). A member method can also be assigned to a delegate.</rich_text></node><node name="Closures" prog_lang="custom-colors" readonly="False" tags="" unique_id="14"><rich_text style="italic">(a) =&gt; { stdout.printf(&quot;%d\n&quot;, a); }</rich_text><rich_text>
+
+An anonymous method, also known as lambda expression, function literal or closure, can be defined in Vala with the =&gt; operator.  It is only useful if you assign it directly to a variable of a delegate type or pass it as a method argument to another method. 
+
+</rich_text><rich_text weight="heavy">Notice that neither parameter nor return types are explicitly given. Instead the types are inferred from the signature of the delegate it is used with. </rich_text><rich_text>
+
+</rich_text><rich_text style="italic">delegate void PrintIntFunc(int a);
+
+void main() {
+    PrintIntFunc p1 = (a) =&gt; { stdout.printf(&quot;%d\n&quot;, a); };
+    p1(10);
+
+    // Curly braces are optional if the body contains only one statement:
+    PrintIntFunc p2 = (a) =&gt; stdout.printf(&quot;%d\n&quot;, a);
+    p2(20):
+}</rich_text><rich_text>
+
+</rich_text><rich_text weight="heavy">Anonymous methods are real closures. This means you can access the local variables of the outer method within the lambda expression: </rich_text><rich_text>
+
+</rich_text><rich_text style="italic">delegate int AddOperation(int i);
+
+AddOperation curried_add(int a) {
+    return (b) =&gt; a + b;  // 'a' is an outer variable
+}
+
+void main() {
+    stdout.printf(&quot;2 + 4 = %d\n&quot;, curried_add(2)(4));
+}</rich_text><rich_text>
+
+</rich_text><rich_text weight="heavy">Currying refers to taking multiple arguments into a function that takes many arguments, resulting in a new function that takes the remaining arguments and returns a result.
+</rich_text></node><node name="Structs" prog_lang="custom-colors" readonly="False" tags="" unique_id="15"><rich_text style="italic">struct StructName {
+    public int a;
+}</rich_text><rich_text>
+
+defines a struct type, i.e. a compound value type. A Vala struct may have methods in a limited way and also may have private members, meaning the explicit public access modifier is required. 
+
+Structs are stack/inline allocated and copied on assignment. 
+</rich_text></node></node></node><node name="Object Oriented Programming" prog_lang="custom-colors" readonly="False" tags="" unique_id="16"><rich_text></rich_text><node name="Basics" prog_lang="custom-colors" readonly="False" tags="" unique_id="17"><rich_text>Vala supports four different access modifiers:
+
+</rich_text><rich_text scale="h3">public</rich_text><rich_text>
+	
+
+No restrictions to access
+
+</rich_text><rich_text scale="h3">private</rich_text><rich_text>
+	
+
+Access is limited to within the class/struct definition. This is the default if no access modifier is specified
+
+</rich_text><rich_text scale="h3">protected</rich_text><rich_text>
+	
+
+Access is limited to within the class definition and any class that inherits from the class
+
+</rich_text><rich_text scale="h3">internal</rich_text><rich_text>
+	
+
+Access is limited exclusively to classes defined within the same package</rich_text></node><node name="Construction" prog_lang="custom-colors" readonly="False" tags="" unique_id="18"><rich_text>Vala supports two slightly different construction schemes: the </rich_text><rich_text weight="heavy">Java/C#-style construction scheme</rich_text><rich_text> which we will focus on for now, and the </rich_text><rich_text weight="heavy">GObject-style construction scheme</rich_text><rich_text>.
+
+</rich_text><rich_text scale="h2">named constructors</rich_text><rich_text>
+
+Vala does not support constructor overloading for the same reasons that method overloading is not allowed, which means a class may not have multiple constructors with the same name. However, this is no problem because Vala supports named constructors.
+
+</rich_text><rich_text style="italic">public class Button : Object {
+
+    public Button() {
+    }
+
+    public Button.with_label(string label) {
+    }
+
+    public Button.from_stock(string stock_id) {
+    }
+}
+
+new Button();
+new Button.with_label(&quot;Click me&quot;);
+new Button.from_stock(Gtk.STOCK_OK);
+</rich_text></node><node name="Signals" prog_lang="custom-colors" readonly="False" tags="" unique_id="19"><rich_text style="italic">public class Test : GLib.Object {
+
+    public signal void sig(int a);
+
+    public static int main(string[] args) {
+        Test t1 = new Test();
+
+        t1.sig.connect((t, a) =&gt; {
+            stdout.printf(&quot;%d\n&quot;, a);
+        });
+
+        t1.sig(5);
+
+        return 0;
+    }
+}</rich_text><rich_text>
+
+A signal may also have multiple parameters. The signatures of the callback functions have to match the one of the signal, except that you may either leave out as many trailing parameters of the signature as you like or provide the signal source additionally as the first parameter of the callback function. Example: 
+
+</rich_text><rich_text style="italic">public class Foo : Object {
+    public signal void some_event (int x, int y, double z);
+}
+
+void on_some_event ()
+void on_some_event (int x)
+void on_some_event (int x, int y)
+void on_some_event (int x, int y, double z)
+void on_some_event (Foo source, int x, int y, double z)
+</rich_text><rich_text>
+</rich_text><rich_text style="italic">// With the following syntax you can connect signals to anonymous functions (lambdas) as well: 
+foo.some_event.connect ((source, x, y, z) =&gt; {
+    stdout.printf (&quot;%d %d %g\n&quot;, x, y, z);
+});
+</rich_text></node><node name="Properties" prog_lang="custom-colors" readonly="False" tags="" unique_id="20"><rich_text style="italic">class Person : Object {
+    private int _age = 32;  // underscore prefix to avoid name clash with property
+
+    /* Property */
+    public int age {
+        get { return _age; }
+        set { _age = value; }
+    }
+}
+</rich_text><rich_text>
+This syntax should be familiar to C# programmers. A property has a get and a set block for getting and setting its value. value is a keyword that represents the new value that should be assigned to the property. 
+
+</rich_text><rich_text style="italic">class Person : Object {
+    /* Property with standard getter and setter and default value */
+    public int age { get; set; default = 32; }
+}
+</rich_text><rich_text>
+Properties may not only have a name but also a short description (called nick) and a long description (called blurb). You can annotate these with a special attribute: 
+
+</rich_text><rich_text style="italic">class Person : Object {
+    [Description(nick = &quot;age in years&quot;, blurb = &quot;This is the person's age in years&quot;)]
+    public int age { get; set; default = 32; }
+}
+</rich_text><rich_text>
+</rich_text><rich_text scale="h2">Notify</rich_text><rich_text>
+
+Every instance of a class derived from GLib.Object has a signal called notify. This signal gets emitted every time a property of its object changes. So you can connect to this signal if you're interested in change notifications in general:
+
+</rich_text><rich_text style="italic">obj.notify.connect((s, p) =&gt; {
+    stdout.printf(&quot;Property '%s' has changed!\n&quot;, p.name);
+});
+</rich_text><rich_text>
+s is the source of the signal (obj in this example), p is the property information of type </rich_text><rich_text weight="heavy">ParamSpec</rich_text><rich_text> for the changed property. If you're only interested in change notifications of a single property you can use this syntax:
+
+</rich_text><rich_text style="italic">alice.notify[&quot;age&quot;].connect((s, p) =&gt; {
+    stdout.printf(&quot;age has changed\n&quot;);
+});
+</rich_text></node><node name="Abstract Classes" prog_lang="custom-colors" readonly="False" tags="" unique_id="21"><rich_text>There is another modifier for methods, called abstract. This modifier allows you to describe a method that is not actually implemented in the class. Instead, it must be implemented by subclasses before it can be called.
+
+A class containing abstract methods must be declared abstract as well. The result of this is to prevent any instantiation of the type. 
+
+The implementation of an abstract method must be marked with override. Properties may be abstract as well. 
+
+</rich_text><rich_text background="#e6e6e6e6fafa" style="italic">public abstract class Animal : Object {
+
+    public void eat() {
+        stdout.printf(&quot;*chomp chomp*\n&quot;);
+    }
+
+    public abstract void say_hello();
+}
+
+public class Tiger : Animal {
+
+    public override void say_hello() {
+        stdout.printf(&quot;*roar*\n&quot;);
+    }
+}
+
+public class Duck : Animal {
+
+    public override void say_hello() {
+        stdout.printf(&quot;*quack*\n&quot;);
+    }
+}
+</rich_text></node><node name="Interfaces" prog_lang="custom-colors" readonly="False" tags="" unique_id="22"><rich_text>A class in Vala may implement any number of interfaces. Each interface is a type, much like a class, but one that cannot be instantiated. By &quot;implementing&quot; one or more interfaces, a class may declare that its instances are also instances of the interface, and therefore may be used in any situation where an instance of that interface is expected. 
+
+Interfaces in Vala may not inherit from other interfaces, but they may declare other interfaces to be prerequisites, which works in roughly the same way. For example, it may be desirable to say that any class that implements a &quot;List&quot; interface must also implement a &quot;Collection&quot; interface. The syntax for this is exactly the same as for describing interface implementation in classes: 
+
+</rich_text><rich_text background="#e6e6e6e6fafa">public interface List : Collection {
+}
+
+public class ListClass : GLib.Object, Collection, List {
+}
+</rich_text><rich_text>
+There's another important difference between Vala interfaces and Java/C# interfaces: Vala interfaces may have non-abstract methods! Vala actually allows method implementations in interfaces, hence the requirement that abstract methods be declared abstract. Due to this fact Vala interfaces can act as mixins.
+</rich_text></node><node name="Polymophism" prog_lang="custom-colors" readonly="False" tags="" unique_id="23"><rich_text background="#e6e6e6e6fafa">class SuperClass : GLib.Object {
+    public virtual void method_1() {
+        stdout.printf(&quot;SuperClass.method_1()\n&quot;);
+    }
+}
+
+class SubClass : SuperClass {
+    public override void method_1() {
+        stdout.printf(&quot;SubClass.method_1()\n&quot;);
+    }
+}</rich_text><rich_text>
+
+You will probably now also have recognised that when method is declared as abstract it must also be virtual. Otherwise, it would not be possible to execute that method given an apparent instance of the type it was declared in.
+</rich_text></node><node name="Run Time Type Infomation" prog_lang="custom-colors" readonly="False" tags="" unique_id="24"><rich_text>Since Vala classes are registered at runtime and each instance carries its type information you can dynamically check the type of an object with the is operator:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">bool b = object is SomeTypeName;</rich_text><rich_text>
+
+You can get the type information of Object instances with the get_type() method:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">Type type = object.get_type();
+stdout.printf(&quot;%s\n&quot;, type.name());</rich_text><rich_text>
+
+With the typeof() operator you can get the type information of a type directly. From this type information you can later create new instances with Object.new():
+
+</rich_text><rich_text background="#e6e6e6e6fafa">Type type = typeof(Foo);
+Foo foo = (Foo) Object.new(type);
+</rich_text><rich_text>
+Which constructor will be called? It's the construct {} block that will be described in the section about gobject-style construction. </rich_text></node><node name="Dynamic Type Casting" prog_lang="custom-colors" readonly="False" tags="" unique_id="25"><rich_text>For the dynamic cast, a variable is casted by a postfix expression as DesiredTypeName. Vala will include a runtime type checking to ensure this casting is reasonable - if it is an illegal casting, null will be returned. However, this requires both the source type and the target type to be referenced class types.
+
+For example,
+
+</rich_text><rich_text background="#e6e6e6e6fafa">Button b = widget as Button;</rich_text><rich_text>
+
+If for some reason the class of the widget instance is not the Button class or one of its subclasses or does not implement the Button interface, b will be null. This cast is equivalent to:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">Button b = (widget is Button) ? (Button) widget : null;</rich_text><rich_text>
+</rich_text></node><node name="GObject-style construction" prog_lang="custom-colors" readonly="False" tags="" unique_id="26"><rich_text background="#e6e6e6e6fafa">public class Person : Object {
+
+    /* Construction properties */
+    public string name { get; construct; }
+    public int age { get; construct set; }
+
+    public Person(string name) {
+        Object(name: name);
+    }
+
+    public Person.with_age(string name, int years) {
+        Object(name: name, age: years);
+    }
+
+    construct {
+        // do anything else
+        stdout.printf(&quot;Welcome %s\n&quot;, this.name);
+    }
+}</rich_text><rich_text>
+
+With the gobject-style construction scheme each construction method only contains an Object(...) call for setting so-called construct properties. The Object(...) call takes a variable number of named arguments in the form of property: value. These properties must be declared as construct properties. They will be set to the given values and afterwards all construct {} blocks in the hierarchy from GLib.Object down to our class will be called. 
+
+Here's a summary of the various types of properties together with the nomenclature usually found in the documentation of gobject-based libraries:
+
+</rich_text><rich_text background="#e6e6e6e6fafa">    public int a { get; private set; }    // Read
+    public int b { private get; set; }    // Write
+    public int c { get; set; }            // Read / Write
+    public int d { get; set construct; }  // Read / Write / Construct
+    public int e { get; construct; }      // Read / Write-Construct-Only
+</rich_text></node></node><node name="Advanced Features" prog_lang="custom-colors" readonly="False" tags="" unique_id="27"><rich_text></rich_text><node name="Error Handling" prog_lang="custom-colors" readonly="False" tags="" unique_id="28"><rich_text scale="h2">GError</rich_text><rich_text>
+
+GError is very specifically designed to deal with recoverable runtime errors, i.e. factors that are not known until the program is run on a live system, and that are not fatal to the execution. You should not use GError for problems that can be foreseen, such as reporting that an invalid value has been passed to a method. 
+
+</rich_text><rich_text scale="h2">Checked exceptions</rich_text><rich_text>
+
+Vala errors are so-called checked exceptions, which means that errors must get handled at some point. However, if you don't catch an error the Vala compiler will only issue a warning without stopping the compilation process.
+
+</rich_text><rich_text scale="h2">Error domains</rich_text><rich_text>
+
+Errors have three components, known as &quot;domain&quot;, &quot;code&quot; and message. Messages we have already seen, it is simply a piece of text provided when the error is created. Error domains describe the type of problem, and equates to a subclass of &quot;Exception&quot; in Java or similar. In the above examples we imagined an error domain called &quot;IOError&quot;. The third part, the error code is a refinement describing the exact variety of problem encountered. Each error domain has one or more error codes - in the example there is a code called &quot;FILE_NOT_FOUND&quot;.  
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">errordomain IOError {
+    FILE_NOT_FOUND
+}</rich_text><rich_text>
+</rich_text></node><node name="Parameter Directions" prog_lang="custom-colors" readonly="False" tags="" unique_id="29"><rich_text scale="h3">'out' from the caller side</rich_text><rich_text>
+    you may pass an uninitialised variable to the method and you may expect it to be initialised after the method returns 
+</rich_text><rich_text scale="h3">'out' from callee side</rich_text><rich_text>
+    the parameter is considered uninitialised and you have to initialise it 
+</rich_text><rich_text scale="h3">'ref' from caller side</rich_text><rich_text>
+    the variable you're passing to the method has to be initialised and it may be changed or not by the method 
+</rich_text><rich_text scale="h3">'ref' from callee side</rich_text><rich_text>
+    the parameter is considered initialised and you may change it or not 
+</rich_text></node><node name="Collections" prog_lang="custom-colors" readonly="False" tags="" unique_id="30"><rich_text></rich_text></node><node name="Multi-Threading" prog_lang="custom-colors" readonly="False" tags="" unique_id="31"><rich_text></rich_text></node><node name="The Main Loop" prog_lang="custom-colors" readonly="False" tags="" unique_id="32"><rich_text scale="h2">GLib MainLoop</rich_text><rich_text>
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">void main() {
+
+    var loop = new MainLoop();
+    var time = new TimeoutSource(2000);
+
+    time.set_callback(() =&gt; {
+        stdout.printf(&quot;Time!\n&quot;);
+        loop.quit();
+        return false;
+    });
+
+    time.attach(loop.get_context());
+
+    loop.run();
+}
+</rich_text><rich_text>
+</rich_text><rich_text scale="h2">Gtk</rich_text><rich_text>
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">void main(string[] args) {
+
+    Gtk.init(ref args);
+    var time = new TimeoutSource(2000);
+
+    time.set_callback(() =&gt; {
+        stdout.printf(&quot;Time!\n&quot;);
+        Gtk.main_quit();
+        return false;
+    });
+
+    time.attach(null);
+
+    Gtk.main();
+}
+</rich_text><rich_text>
+</rich_text><rich_text scale="h2">IdleSource</rich_text><rich_text>
+</rich_text></node><node name="Asynchronous Methods" prog_lang="custom-colors" readonly="False" tags="" unique_id="33"><rich_text>Asynchronous methods are methods whose execution can be paused and resumed under the control of the programmer. They are often used in the main thread of an application where a method needs to wait for an external slow task to complete, but must not stop other processing from happening. (For example, one slow operation must not freeze the whole GUI). When the method has to wait, it gives control of the CPU back to its caller (i.e. it yields), but it arranges to be called back to resume execution when data becomes ready. 
+
+Asynchronous methods are designed for interleaving the processing of many different long-lived operations within a single thread. They do not by themselves spread the load out over different threads. However, an async method may be used to control a background thread and to wait for it to complete, or to queue operations for a background thread to process. 
+</rich_text></node><node name="Weak References" prog_lang="custom-colors" readonly="False" tags="" unique_id="34"><rich_text></rich_text></node><node name="Unowned References" prog_lang="custom-colors" readonly="False" tags="" unique_id="35"><rich_text>Normally when creating an object in Vala you are returned a reference to it. Specifically this means that as well as being passed a pointer to the object in memory, it is also recorded in the object itself that this pointer exists. Similarly, whenever another reference to the object is created, this is also recorded. As an object knows how many references there are to it, it can automatically be removed when needed. This is the basis of Vala's memory management. 
+
+Unowned references conversely are not recorded in the object they reference. This allows the object to be removed when it logically should be, regardless of the fact that there might be still references to it. The usual way to achieve this is with a method defined to return an unowned reference, e.g.:
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">class Test {
+    private Object o;
+
+    public unowned Object get_unowned_ref() {
+        this.o = new Object();
+        return this.o;
+    }
+}</rich_text><rich_text>
+
+When calling this method, in order to collect a reference to the returned object, you must expect to receive a unowned reference:
+
+</rich_text><rich_text background="#bfbfbfbfbfbf">unowned Object o = get_unowned_ref();
+</rich_text><rich_text>
+</rich_text><rich_text scale="h2">Properties</rich_text><rich_text>
+
+</rich_text><rich_text style="italic">In contrast to normal methods, properties always have unowned return value. That means you can't return a new object created within the get method. That also means, you can't use an owned return value from a method call. The somewhat irritating fact is because of that a property value is owned by the object that HAS this property. A call to obtain this property value should not steal or reproduce (by duplicating, or increasing the reference count of) the value from the object side. 
+</rich_text></node><node name="Variable-Length Arguments" prog_lang="custom-colors" readonly="False" tags="" unique_id="36"><rich_text></rich_text></node><node name="Pointers" prog_lang="custom-colors" readonly="False" tags="" unique_id="37"><rich_text>By requesting instead a pointer to an instance, you take responsibility for destroying the instance when it is no longer wanted, and therefore get greater control over how much memory is used. 
+
+ The times when you might resort to manual memory management are:
+
+• When you specifically want to optimise part of a program.
+• When you are dealing with an external library that does not implement reference counting for memory management (probably meaning one not based on gobject.) 
+
+</rich_text><rich_text background="#bfbfbfbfbfbf" style="italic">Object* o = new Object();
+
+o-&gt;method_1();
+o-&gt;data_1;
+
+delete o;</rich_text><rich_text>
+
+</rich_text><rich_text weight="heavy">The usage of reference-type pointers is equivalent to the use of unowned references. </rich_text><rich_text>
+</rich_text></node><node name="D-Bus Integration" prog_lang="custom-colors" readonly="False" tags="" unique_id="38"><rich_text></rich_text></node></node><node name="Libraries" prog_lang="custom-colors" readonly="False" tags="" unique_id="39"><rich_text></rich_text><node name="Using Libraries" prog_lang="custom-colors" readonly="False" tags="" unique_id="40"><rich_text background="#bfbfbfbfbfbf">valac --pkg gee-1.0 test.vala</rich_text><rich_text>
+
+This command means your program can use any of the definitions in the gee-1.0.vapi file, and also any in any of the packages that gee-1.0 depends on. These dependencies would be be listed in gee-1.0.deps if there were any. In this example valac is set to build all the way to binary, and will therefore incorporate information from pkg-config to link the correct libraries. This is why the pkg-config names are also used for Vala package names.
+
+Packages are generally used with namespaces, but they are not technically related. This means that even though your application is built with reference to the package, you must still include the required using statements in each file as appropriate, or else use the fully qualified names of all symbols. 
+</rich_text></node><node name="Creating A Library" prog_lang="custom-colors" readonly="False" tags="" unique_id="41"><rich_text></rich_text></node></node></node><bookmarks list="30,31,33"/></cherrytree>

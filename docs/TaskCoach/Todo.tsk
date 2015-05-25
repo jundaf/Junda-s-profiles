@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?taskcoach release="1.3.22" tskversion="36"?>
+
+<tasks>
+<task actualstartdate="2013-02-04 14:35:13.812000" creationDateTime="2013-02-04 14:35:13.812000" id="0802cd40-6e95-11e2-8c04-005056c00008" plannedstartdate="2013-02-04 14:35:13.812000" status="1" subject="更新管理">
+<task actualstartdate="2013-02-04 14:36:57.390000" creationDateTime="2013-02-04 14:36:57.390000" expandedContexts="('taskviewer',)" id="45bf8ce1-6e95-11e2-b5cd-005056c00008" plannedstartdate="2013-02-04 14:36:57.390000" status="1" subject="接口">
+<task actualstartdate="2013-02-04 14:37:04.765000" completiondate="2013-04-28 16:41:13.147000" creationDateTime="2013-02-04 14:37:04.765000" id="4a24e2d1-6e95-11e2-a5a0-005056c00008" percentageComplete="100" plannedstartdate="2013-02-04 14:37:04.765000" priority="2" status="1" subject="用Python重新实现GetLatestVersion">
+<description>
+
+
+</description>
+</task>
+<task actualstartdate="2013-02-04 14:44:34.187000" creationDateTime="2013-02-04 14:44:34.187000" id="56053db0-6e96-11e2-aba3-005056c00008" plannedstartdate="2013-02-04 14:44:34.187000" status="1" subject="在Pay请求中使用真实版本号" />
+<task actualstartdate="2013-02-04 14:38:22.515000" creationDateTime="2013-02-04 14:38:22.515000" id="787c9830-6e95-11e2-94ab-005056c00008" plannedstartdate="2013-02-04 14:38:22.515000" status="1" subject="添加GetCurrentVersion">
+<description>
+查询正在Downloading或Installing的系统版本
+
+</description>
+</task>
+<task actualstartdate="2013-02-04 14:41:15.281000" creationDateTime="2013-02-04 14:41:15.281000" id="df76980f-6e95-11e2-a8c7-005056c00008" plannedstartdate="2013-02-04 14:41:15.281000" status="1" subject="恢复GetUnupdatedAppsNum" />
+</task>
+<task actualstartdate="2013-02-04 14:45:43.484000" creationDateTime="2013-02-04 14:45:43.484000" expandedContexts="('taskviewer',)" id="7f531fc0-6e96-11e2-8e63-005056c00008" plannedstartdate="2013-02-04 14:45:43.484000" status="1" subject="Update Manager">
+<task actualstartdate="2013-02-04 14:50:08.593000" creationDateTime="2013-02-04 14:50:08.593000" id="1d578c0f-6e97-11e2-b316-005056c00008" plannedstartdate="2013-02-04 14:50:08.593000" status="1" subject="禁止自动Online特性" />
+<task actualstartdate="2013-04-16 16:38:13.046000" creationDateTime="2013-02-04 14:50:28.218000" id="290a159e-6e97-11e2-8d99-005056c00008" plannedstartdate="2013-02-04 14:50:28.218000" status="1" subject="重新设计App数据库" />
+<task actualstartdate="2013-04-16 10:50:07.265000" completiondate="2013-04-28 16:41:25.428000" creationDateTime="2013-04-16 10:50:07.265000" id="58cf8911-a640-11e2-af27-005056c00008" percentageComplete="100" plannedstartdate="2013-04-16 10:50:07.265000" priority="2" status="1" subject="添加Update Manager全局配置文件" />
+<task actualstartdate="2013-02-04 14:45:51.984000" creationDateTime="2013-02-04 14:45:51.984000" id="84641f00-6e96-11e2-90ab-005056c00008" plannedstartdate="2013-02-04 14:45:51.984000" priority="1" status="1" subject="改为DBus service">
+<description>
+从inittab中删除update manager启动条目
+</description>
+</task>
+</task>
+<task actualstartdate="2013-04-26 16:52:44.741000" completiondate="2013-05-13 09:27:03.500000" creationDateTime="2013-04-26 16:52:44.741000" expandedContexts="('taskviewer',)" id="a968674f-ae4e-11e2-9a9f-005056c00008" percentageComplete="100" plannedstartdate="2013-04-26 16:52:44.741000" status="1" subject="问题跟踪">
+<task actualstartdate="2013-04-26 16:53:04.241000" completiondate="2013-05-13 09:27:03.500000" creationDateTime="2013-04-26 16:53:04.241000" id="b507de0f-ae4e-11e2-94bd-005056c00008" percentageComplete="100" plannedstartdate="2013-04-26 16:53:04.241000" status="1" subject="3.0到3.2更新时间过长">
+<description>
+&gt;40m
+
+
+猜测应该是网络问题，因为Yum没有超时机制，此问题可以直接在命令行进行测试！
+</description>
+</task>
+</task>
+</task>
+<task actualstartdate="2013-04-25 14:32:57.100000" creationDateTime="2013-02-26 10:56:26.046000" id="1c572de1-7fc0-11e2-b528-005056c00008" plannedstartdate="2013-02-26 10:56:26.046000" priority="-1" shouldMarkCompletedWhenAllChildrenCompleted="False" status="1" subject="Programming practice">
+<task actualstartdate="2013-04-25 14:33:00.225000" creationDateTime="2013-04-07 10:23:31.671000" id="240b7670-9f2a-11e2-bf8d-005056c00008" plannedstartdate="2013-04-07 10:23:31.671000" status="1" subject="GIO: Asynchromous I/O" />
+<task actualstartdate="2013-04-25 14:33:02.303000" creationDateTime="2013-03-28 15:01:09.765000" id="44e96351-9775-11e2-8271-005056c00008" plannedstartdate="2013-03-28 15:01:09.765000" status="1" subject="GDBus: gdbus-codegen" />
+<task actualstartdate="2013-04-25 14:33:01.412000" creationDateTime="2013-03-20 10:39:00.125000" id="5202cccf-9107-11e2-b360-005056c00008" plannedstartdate="2013-03-20 10:39:00.125000" status="1" subject="抓取并分析网页" />
+<task completiondate="2013-03-05 08:46:35.609000" creationDateTime="2013-03-04 16:59:20.546000" id="cd6eb421-84a9-11e2-af09-005056c00008" percentageComplete="100" plannedstartdate="2013-03-04 16:59:20.546000" status="1" subject="Programming DBus in Vala" />
+<task completiondate="2013-03-05 08:46:36.578000" creationDateTime="2013-02-26 11:23:42.265000" id="eb9a6291-7fc3-11e2-b0c9-005056c00008" percentageComplete="100" plannedstartdate="2013-02-26 11:23:42.265000" status="1" subject="Programming JSON in Vala" />
+</task>
+<task actualstartdate="2013-01-11 10:46:49.912000" completiondate="2013-03-15 14:06:01.718000" creationDateTime="2013-01-11 10:46:49.912000" expandedContexts="('taskviewer',)" id="25ef9b80-5b99-11e2-843e-005056c00008" percentageComplete="100" plannedstartdate="2013-01-11 10:46:49.912000" status="1" subject="第三轮系统测试集成">
+<task actualstartdate="2013-01-11 10:48:11.881000" completiondate="2013-03-15 14:06:01.718000" creationDateTime="2013-01-11 10:48:11.881000" expandedContexts="('taskviewer',)" id="56cb158f-5b99-11e2-8661-005056c00008" percentageComplete="100" plannedstartdate="2013-01-11 10:48:11.881000" status="1" subject="修改BUG">
+<task actualstartdate="2013-01-11 10:48:37.928000" completiondate="2013-01-14 09:45:56.375000" creationDateTime="2013-01-11 10:48:37.928000" id="66518a80-5b99-11e2-964f-005056c00008" percentageComplete="100" plannedstartdate="2013-01-11 10:48:37.928000" status="1" subject="无最新版本BUG" />
+<task actualstartdate="2013-03-13 10:55:05.531000" completiondate="2013-03-15 14:06:01.718000" creationDateTime="2013-03-13 10:55:05.531000" id="688bd0ae-8b89-11e2-9dc0-005056c00008" percentageComplete="100" plannedstartdate="2013-03-13 10:55:05.531000" status="1" subject="GetLatestVersion Err=19">
+<description>
+TERM-620
+</description>
+</task>
+<task actualstartdate="2013-01-14 09:01:29.968000" completiondate="2013-01-15 09:05:09.343000" creationDateTime="2013-01-14 09:01:29.968000" id="ee31ef00-5de5-11e2-93ba-005056c00008" percentageComplete="100" plannedstartdate="2013-01-14 09:01:29.968000" status="1" subject="关闭xkproto调试开关" />
+</task>
+<task actualstartdate="2013-01-11 10:49:14.881000" completiondate="2013-01-15 14:57:12.187000" creationDateTime="2013-01-11 10:49:14.881000" expandedContexts="('taskviewer',)" id="7c581f0f-5b99-11e2-9907-005056c00008" percentageComplete="100" plannedstartdate="2013-01-11 10:49:14.881000" status="1" subject="开机优化">
+<task actualstartdate="2013-01-15 10:50:25.046000" completiondate="2013-01-15 14:57:12.187000" creationDateTime="2013-01-14 16:40:15.500000" id="04b0ccc0-5e26-11e2-bc4a-005056c00008" percentageComplete="100" plannedstartdate="2013-01-14 16:40:15.500000" status="1" subject="集成测试" />
+<task actualstartdate="2013-01-14 16:39:51.062000" completiondate="2013-01-14 16:40:26.203000" creationDateTime="2013-01-14 16:39:51.062000" id="f61fdb61-5e25-11e2-a752-005056c00008" percentageComplete="100" plannedstartdate="2013-01-14 16:39:51.062000" status="1" subject="单元测试" />
+</task>
+<task actualstartdate="2013-01-11 10:49:53.584000" completiondate="2013-01-18 14:08:03.391000" creationDateTime="2013-01-11 10:49:53.584000" expandedContexts="('taskviewer',)" id="9369bb00-5b99-11e2-b2b3-005056c00008" percentageComplete="100" plannedstartdate="2013-01-11 10:49:53.584000" status="1" subject="制作头包">
+<description>
+Wang He
+</description>
+<task actualstartdate="2013-01-11 10:51:03.678000" completiondate="2013-01-15 10:50:30.062000" creationDateTime="2013-01-11 10:51:03.678000" id="bd3139de-5b99-11e2-842b-005056c00008" percentageComplete="100" plannedstartdate="2013-01-11 10:51:03.678000" status="1" subject="蓝牙配置文件" />
+<task actualstartdate="2013-01-17 11:30:41.093000" completiondate="2013-01-18 14:08:03.391000" creationDateTime="2013-01-11 10:51:19.662000" id="c6b830de-5b99-11e2-a476-005056c00008" percentageComplete="100" plannedstartdate="2013-01-11 10:51:19.662000" status="1" subject="主界面配置文件" />
+</task>
+</task>
+<task actualstartdate="2013-01-21 14:24:17.093000" completiondate="2013-03-20 10:35:35.875000" creationDateTime="2013-01-21 14:24:17.328000" expandedContexts="('taskviewer',)" id="2ef114ee-6393-11e2-985f-005056c00008" percentageComplete="100" plannedstartdate="2013-01-21 14:24:17.078000" status="1" subject="Deb包管理系统研究">
+<task actualstartdate="2013-02-22 16:44:45.437000" completiondate="2013-03-20 10:35:31.656000" creationDateTime="2013-02-22 16:44:45.437000" expandedContexts="('taskviewer',)" id="1bb22acf-7ccc-11e2-a609-005056c00008" percentageComplete="100" plannedstartdate="2013-02-22 16:44:45.437000" status="1" subject="Setting up APT repository">
+<task actualstartdate="2013-03-04 16:57:25.062000" completiondate="2013-03-20 10:35:30.921000" creationDateTime="2013-03-04 16:57:25.062000" id="88993e61-84a9-11e2-ba37-005056c00008" percentageComplete="100" plannedstartdate="2013-03-04 16:57:25.062000" status="1" subject="Reprepro" />
+<task actualstartdate="2013-03-04 16:57:49.093000" completiondate="2013-03-20 10:35:31.656000" creationDateTime="2013-03-04 16:57:49.093000" id="96ec154f-84a9-11e2-8193-005056c00008" percentageComplete="100" plannedstartdate="2013-03-04 16:57:49.093000" status="1" subject="Setting up httpd" />
+</task>
+<task actualstartdate="2013-01-21 14:31:09.921000" completiondate="2013-01-30 08:52:10.765000" creationDateTime="2013-01-21 14:31:09.937000" expandedContexts="('taskviewer',)" id="24ddee0f-6394-11e2-9994-005056c00008" percentageComplete="100" plannedstartdate="2013-01-21 14:31:09.921000" status="1" subject="安装Ubuntu虚拟机">
+<task actualstartdate="2013-01-25 15:55:35.975000" completiondate="2013-01-30 08:52:10.765000" creationDateTime="2013-01-25 15:55:35.975000" id="9a1cfb6e-66c4-11e2-9181-005056c00008" percentageComplete="100" plannedstartdate="2013-01-25 15:55:35.975000" status="1" subject="安装打包的必要环境">
+<description>
+如编译工具、打包脚本等
+</description>
+</task>
+<task actualstartdate="2013-01-22 15:25:34.203000" completiondate="2013-01-23 13:54:41.921000" creationDateTime="2013-01-22 15:25:34.203000" id="e8ef24b0-6464-11e2-9048-005056c00008" percentageComplete="100" plannedstartdate="2013-01-22 15:25:34.203000" status="1" subject="安装VirtualBox" />
+<task actualstartdate="2013-01-22 15:26:08.203000" completiondate="2013-01-25 10:21:09.257000" creationDateTime="2013-01-22 15:26:08.218000" id="fd356b9e-6464-11e2-b53c-005056c00008" percentageComplete="100" plannedstartdate="2013-01-22 15:26:08.203000" status="1" subject="安装Ubuntu 12.04.1" />
+</task>
+<task actualstartdate="2013-03-04 16:54:48.171000" completiondate="2013-03-20 10:35:35.875000" creationDateTime="2013-03-04 16:54:48.171000" expandedContexts="('taskviewer',)" id="2b1593b0-84a9-11e2-8f0d-005056c00008" percentageComplete="100" plannedstartdate="2013-03-04 16:54:48.171000" priority="1" status="1" subject="Learn apt-get">
+<task actualstartdate="2013-03-04 16:55:34.015000" completiondate="2013-03-20 10:35:35.875000" creationDateTime="2013-03-04 16:55:34.015000" id="4668d0f0-84a9-11e2-9d05-005056c00008" percentageComplete="100" plannedstartdate="2013-03-04 16:55:34.015000" status="1" subject="Howto install packages" />
+<task actualstartdate="2013-03-04 16:55:51.125000" completiondate="2013-03-20 10:35:34.828000" creationDateTime="2013-03-04 16:55:51.125000" id="509b984f-84a9-11e2-9c9a-005056c00008" percentageComplete="100" plannedstartdate="2013-03-04 16:55:51.125000" status="1" subject="Howto download packages" />
+<task actualstartdate="2013-03-04 16:56:04.937000" completiondate="2013-03-20 10:35:35.375000" creationDateTime="2013-03-04 16:56:04.937000" id="58d7238f-84a9-11e2-9a90-005056c00008" percentageComplete="100" plannedstartdate="2013-03-04 16:56:04.937000" status="1" subject="Howto remove packages" />
+</task>
+<task actualstartdate="2013-03-13 11:01:19.265000" completiondate="2013-03-20 10:34:36.406000" creationDateTime="2013-03-13 11:01:19.265000" id="474f1911-8b8a-11e2-8588-005056c00008" percentageComplete="100" plannedstartdate="2013-03-13 11:01:19.265000" status="1" subject="制作DEB包指南" />
+<task completiondate="2013-02-21 16:01:53.343000" creationDateTime="2013-01-23 13:55:06.656000" expandedContexts="('taskviewer',)" id="7046f200-6521-11e2-944f-005056c00008" percentageComplete="100" plannedstartdate="2013-01-23 13:55:00" prerequisites="24ddee0f-6394-11e2-9994-005056c00008" priority="2" status="1" subject="重新编译熙康应用">
+<task actualstartdate="2013-02-04 16:01:05.281000" completiondate="2013-02-04 16:04:34.500000" creationDateTime="2013-02-04 16:01:05.281000" id="0686970f-6ea1-11e2-8131-005056c00008" percentageComplete="100" plannedstartdate="2013-02-04 16:01:05.281000" status="1" subject="CommonLib">
+<description>
+Log/Utility/Protocol
+</description>
+</task>
+<task actualstartdate="2013-02-04 16:01:24.375000" completiondate="2013-02-21 16:01:53.343000" creationDateTime="2013-02-04 16:01:24.375000" expandedContexts="('taskviewer',)" id="11e81a70-6ea1-11e2-9246-005056c00008" percentageComplete="100" plannedstartdate="2013-02-04 16:01:24.375000" status="1" subject="Application">
+<task actualstartdate="2013-02-04 16:18:58.968000" completiondate="2013-02-21 16:01:51.515000" creationDateTime="2013-02-04 16:18:58.968000" id="867e3980-6ea3-11e2-b650-005056c00008" percentageComplete="100" plannedstartdate="2013-02-04 16:18:58.968000" status="1" subject="BloodPressureBase" />
+<task actualstartdate="2013-02-21 16:00:53.546000" completiondate="2013-02-21 16:01:53.343000" creationDateTime="2013-02-21 16:00:53.546000" id="d08db8a1-7bfc-11e2-bd1e-005056c00008" percentageComplete="100" plannedstartdate="2013-02-21 16:00:53.546000" status="1" subject="AppHelp" />
+</task>
+</task>
+<task completiondate="2013-02-25 17:03:08.281000" creationDateTime="2013-01-23 13:56:08.781000" expandedContexts="('taskviewer',)" id="954e77cf-6521-11e2-8e8c-005056c00008" percentageComplete="100" plannedstartdate="2013-01-23 13:56:08.781000" prerequisites="24ddee0f-6394-11e2-9994-005056c00008" priority="2" status="1" subject="创建熙康应用Deb文件">
+<task actualstartdate="2013-02-22 16:49:39.359000" completiondate="2013-02-25 17:03:07.531000" creationDateTime="2013-02-22 16:49:39.359000" id="cae31af0-7ccc-11e2-945a-005056c00008" percentageComplete="100" plannedstartdate="2013-02-22 16:49:39.359000" status="1" subject="SystemMgr (Multiple binary)" />
+<task actualstartdate="2013-02-04 16:18:58.968000" completiondate="2013-02-25 17:03:08.281000" creationDateTime="2013-02-21 16:01:25.625000" id="e3ac968f-7bfc-11e2-9739-005056c00008" percentageComplete="100" plannedstartdate="2013-02-04 16:18:58.968000" status="1" subject="BloodPressureBase (Single binary)" />
+<task actualstartdate="2013-02-21 16:00:53.546000" completiondate="2013-02-25 17:03:06.453000" creationDateTime="2013-02-21 16:01:33.937000" id="e8a0e60f-7bfc-11e2-9ec1-005056c00008" percentageComplete="100" plannedstartdate="2013-02-21 16:00:53.546000" status="1" subject="AcornControl (Library)" />
+</task>
+<task actualstartdate="2013-01-30 09:53:01.125000" completiondate="2013-02-01 09:53:20.356000" creationDateTime="2013-01-30 09:53:01.125000" expandedContexts="('taskviewer',)" id="c7470f4f-6a7f-11e2-b36d-005056c00008" percentageComplete="100" plannedstartdate="2013-01-30 09:53:01.125000" status="1" subject="Hello 2.8 for example">
+<description>
+http://ftp.gnu.org/gnu/hello/hello-2.8.tar.gz
+</description>
+<task actualstartdate="2013-01-30 09:53:22.296000" completiondate="2013-02-01 09:53:20.356000" creationDateTime="2013-01-30 09:53:22.296000" id="d3e57f80-6a7f-11e2-8b68-005056c00008" percentageComplete="100" plannedstartdate="2013-01-30 09:53:22.296000" status="1" subject="Debian packaging" />
+<task actualstartdate="2013-01-30 09:53:31.812000" completiondate="2013-01-30 14:05:01.781000" creationDateTime="2013-01-30 09:53:31.812000" id="d9918640-6a7f-11e2-acaf-005056c00008" percentageComplete="100" plannedstartdate="2013-01-30 09:53:31.812000" status="1" subject="Ubuntu packaging">
+<description>
+With bzr-builddeb
+</description>
+</task>
+</task>
+</task>
+<task actualstartdate="2013-01-14 16:35:03.062000" completiondate="2013-01-25 15:54:39.741000" creationDateTime="2013-01-14 16:35:03.062000" expandedContexts="('taskviewer',)" id="4a768b61-5e25-11e2-ba2c-005056c00008" percentageComplete="100" plannedstartdate="2013-01-14 16:35:03.062000" status="1" subject="康体佳研究">
+<task actualstartdate="2013-01-14 16:35:36.062000" completiondate="2013-01-25 15:54:39.741000" creationDateTime="2013-01-14 16:35:36.062000" id="5e21f1e1-5e25-11e2-b7e7-005056c00008" percentageComplete="100" plannedstartdate="2013-01-14 16:35:36.062000" status="1" subject="总结文档">
+<description>
+http://10.10.18.30:6080/svn/Terminal/XIKANG_TERMINAL-V3.2/02.develop/03.coding/Source/Branches/jdf/docs/Demo/熙康益体机_技术文档_康体佳_Antidote.doc
+</description>
+</task>
+<task actualstartdate="2013-01-14 16:36:27.250000" completiondate="2013-01-22 11:59:24.421000" creationDateTime="2013-01-14 16:36:27.250000" id="7ca49d1e-5e25-11e2-b504-005056c00008" percentageComplete="100" plannedstartdate="2013-01-14 16:36:27.250000" status="1" subject="测试内置蓝牙的益体机" />
+<task actualstartdate="2013-01-18 15:36:11.997000" completiondate="2013-01-25 11:59:51.007000" creationDateTime="2013-01-18 15:36:11.997000" expandedContexts="('taskviewer',)" id="bb6fc8cf-6141-11e2-a1d5-005056c00008" percentageComplete="100" plannedstartdate="2013-01-18 15:36:11.997000" status="1" subject="康体佳应用DEMO">
+<task actualstartdate="2013-01-18 15:37:11.590000" completiondate="2013-01-25 11:59:51.007000" creationDateTime="2013-01-18 15:37:11.590000" id="def4f45e-6141-11e2-b100-005056c00008" percentageComplete="100" plannedstartdate="2013-01-18 15:37:11.590000" status="1" subject="上传至SVN" />
+</task>
+</task>
+<task actualstartdate="2013-01-23 10:20:07.125000" completiondate="2013-02-01 10:19:44.575000" creationDateTime="2013-01-23 10:20:07.140000" expandedContexts="('taskviewer',)" id="67910240-6503-11e2-b343-005056c00008" percentageComplete="100" plannedstartdate="2013-01-23 10:20:07.125000" status="1" subject="备份MeeGo软件仓库">
+<task actualstartdate="2013-01-31 14:26:54.718000" completiondate="2013-02-01 10:19:44.575000" creationDateTime="2013-01-31 14:26:54.718000" id="34e019de-6b6f-11e2-9679-005056c00008" percentageComplete="100" plannedstartdate="2013-01-31 14:26:54.718000" status="1" subject="tools repos" />
+<task actualstartdate="2013-01-23 10:20:49.968000" completiondate="2013-01-23 10:21:58.828000" creationDateTime="2013-01-23 10:20:49.968000" id="81180b00-6503-11e2-a235-005056c00008" percentageComplete="100" plannedstartdate="2013-01-23 10:20:49.968000" status="1" subject="updates/1.2.0" />
+<task actualstartdate="2013-01-23 10:21:34.562000" completiondate="2013-01-31 14:27:06.562000" creationDateTime="2013-01-23 10:21:34.562000" id="9bac8c21-6503-11e2-b34e-005056c00008" percentageComplete="100" plannedstartdate="2013-01-23 10:21:34.562000" status="1" subject="releases/1.2.0" />
+</task>
+<task actualstartdate="2013-01-30 08:53:34.609000" creationDateTime="2013-01-30 08:53:34.609000" expandedContexts="('taskviewer',)" id="7977e80f-6a77-11e2-bbac-005056c00008" plannedstartdate="2013-01-30 08:53:34.609000" priority="-1" shouldMarkCompletedWhenAllChildrenCompleted="False" status="1" subject="Linux for fun">
+<task actualstartdate="2013-05-20 09:41:47.484000" completiondate="2013-05-21 16:27:05.500000" creationDateTime="2013-05-20 09:41:47.484000" id="6f3219c0-c0ee-11e2-9a0b-005056c00008" percentageComplete="100" plannedstartdate="2013-05-20 09:41:47.484000" status="1" subject="Learn some upstart and systemd usage" />
+<task actualstartdate="2013-01-30 08:53:47.921000" completiondate="2013-02-04 09:00:40" creationDateTime="2013-01-30 08:53:47.921000" expandedContexts="('taskviewer',)" id="8167280f-6a77-11e2-a523-005056c00008" percentageComplete="100" plannedstartdate="2013-01-30 08:53:47.921000" status="1" subject="Arch for fun">
+<task actualstartdate="2013-02-01 10:49:11.012000" completiondate="2013-02-04 09:00:40" creationDateTime="2013-01-30 08:57:06.546000" id="f7caed21-6a77-11e2-b347-005056c00008" percentageComplete="100" plannedstartdate="2013-01-30 08:57:06.546000" status="1" subject="Arch virtual machine" />
+</task>
+<task actualstartdate="2013-01-30 08:54:07.500000" completiondate="2013-01-30 08:56:43.484000" creationDateTime="2013-01-30 08:54:07.500000" expandedContexts="('taskviewer',)" id="8d12acc0-6a77-11e2-a526-005056c00008" percentageComplete="100" plannedstartdate="2013-01-30 08:54:07.500000" status="1" subject="Puppy for fun">
+<task actualstartdate="2013-01-30 08:55:51.781000" completiondate="2013-01-30 08:56:43.484000" creationDateTime="2013-01-30 08:55:51.781000" id="cb3ab14f-6a77-11e2-85fb-005056c00008" percentageComplete="100" plannedstartdate="2013-01-30 08:55:51.781000" status="1" subject="Puppy 5.4 on USB" />
+</task>
+<task actualstartdate="2013-01-30 08:54:21.984000" completiondate="2013-01-30 08:55:48.968000" creationDateTime="2013-01-30 08:54:21.984000" expandedContexts="('taskviewer',)" id="95b4c200-6a77-11e2-8862-005056c00008" percentageComplete="100" plannedstartdate="2013-01-30 08:54:21.984000" status="1" subject="Slax for fun">
+<task actualstartdate="2013-01-30 08:55:28.031000" completiondate="2013-01-30 08:55:48.968000" creationDateTime="2013-01-30 08:55:28.031000" id="bd12baee-6a77-11e2-82b8-005056c00008" percentageComplete="100" plannedstartdate="2013-01-30 08:55:28.031000" status="1" subject="Slax 7.0 on USB" />
+</task>
+<task actualstartdate="2013-05-17 17:04:00.578000" completiondate="2013-05-21 16:26:58.109000" creationDateTime="2013-05-17 17:04:00.578000" id="b6e9b221-bed0-11e2-b5ce-005056c00008" percentageComplete="100" plannedstartdate="2013-05-17 17:04:00.578000" priority="2" status="1" subject="Setup Samba  Server on 176">
+<description>
+/etc/samba/smb.conf
+
+smbclient -L localhost
+
+</description>
+</task>
+<task actualstartdate="2013-05-20 15:28:13.953000" completiondate="2013-05-21 18:33:38.640000" creationDateTime="2013-05-20 15:28:13.953000" id="d4e58f11-c11e-11e2-8568-005056c00008" percentageComplete="100" plannedstartdate="2013-05-20 15:28:13.953000" status="1" subject="Setup NFS on 176">
+<description>
+/etc/exports
+
+rpcinfo -p
+
+</description>
+</task>
+</task>
+<task actualstartdate="2013-01-14 16:37:05.640000" completiondate="2013-01-18 14:31:31.931000" creationDateTime="2013-01-14 16:37:05.640000" expandedContexts="('taskviewer',)" id="93867680-5e25-11e2-8b3b-005056c00008" percentageComplete="100" plannedstartdate="2013-01-14 16:37:05.640000" status="1" subject="LDTP研究">
+<task actualstartdate="2013-01-18 08:57:41.733000" completiondate="2013-01-18 14:31:31.931000" creationDateTime="2013-01-18 08:57:41.733000" id="0fcf094f-610a-11e2-9274-005056c00008" percentageComplete="100" plannedstartdate="2013-01-18 08:57:41.733000" status="1" subject="Try LDTP 3.0 on Fedora 14 (VMware)">
+<description>
+Not work.
+
+Failed to import wnck.
+
+Failed to connect to at-spi-registryd.
+</description>
+</task>
+<task actualstartdate="2013-01-16 16:12:12.781000" completiondate="2013-01-18 14:31:29.603000" creationDateTime="2013-01-16 16:12:12.781000" id="6e89c1cf-5fb4-11e2-9adf-005056c00008" percentageComplete="100" plannedstartdate="2013-01-16 16:12:12.781000" status="1" subject="Try LDTP 3.0 on MeeGo">
+<description>
+Not work.
+
+Done installing LDTP.
+
+Done fixing bug in at-spi-registryd.
+
+Failed to read screen. (getapplist, getwindowlist)
+</description>
+</task>
+<task actualstartdate="2013-01-18 08:56:03.131000" completiondate="2013-01-18 08:58:30.557000" creationDateTime="2013-01-18 08:56:03.272000" expandedContexts="('taskviewer',)" id="d51f1480-6109-11e2-8c8b-005056c00008" percentageComplete="100" plannedstartdate="2013-01-18 08:56:03.115000" status="1" subject="Try LDTP 3.0 on Fedora 16">
+<description>
+Work
+</description>
+</task>
+</task>
+<task actualstartdate="2013-02-05 10:27:53.250000" creationDateTime="2013-02-05 10:27:53.250000" expandedContexts="('taskviewer', 'timelineviewer')" id="a4c2801e-6f3b-11e2-9537-005056c00008" plannedstartdate="2013-02-05 10:27:53.250000" priority="-1" shouldMarkCompletedWhenAllChildrenCompleted="False" status="1" subject="Firefox browser">
+<task actualstartdate="2013-02-05 15:55:42.796000" completiondate="2013-03-05 08:45:50.750000" creationDateTime="2013-02-05 15:55:42.796000" duedate="2013-03-05 16:55:00" id="70b908c0-6f69-11e2-ad5a-005056c00008" percentageComplete="100" plannedstartdate="2013-02-05 15:55:42.796000" status="1" subject="Delete old profiles" />
+<task actualstartdate="2013-02-06 10:47:06.328000" completiondate="2013-02-06 10:55:32.171000" creationDateTime="2013-02-06 10:47:06.328000" id="7e75fd80-7007-11e2-a834-005056c00008" percentageComplete="100" plannedstartdate="2013-02-06 10:47:06.328000" status="1" subject="Create Zotero account and sync" />
+<task actualstartdate="2013-02-05 10:28:07.046000" completiondate="2013-02-06 10:47:03.203000" creationDateTime="2013-02-05 10:28:07.046000" id="acfb9a61-6f3b-11e2-bc0d-005056c00008" percentageComplete="100" plannedstartdate="2013-02-05 10:28:07.046000" status="1" subject="Backup extensions (FEBE)" />
+<task actualstartdate="2013-02-05 10:28:44.296000" completiondate="2013-02-05 15:56:25.734000" creationDateTime="2013-02-05 10:28:44.296000" id="c32f8080-6f3b-11e2-ae39-005056c00008" percentageComplete="100" plannedstartdate="2013-02-05 10:28:44.296000" status="1" subject="Move default profile to E: drive" />
+<task actualstartdate="2013-02-05 10:29:59.765000" completiondate="2013-02-06 10:47:51.437000" creationDateTime="2013-02-05 10:29:59.765000" id="f02b2851-6f3b-11e2-9238-005056c00008" percentageComplete="100" plannedstartdate="2013-02-05 10:29:59.765000" status="1" subject="Backup Zotero data" />
+</task>
+<task actualstartdate="2013-02-19 16:52:08.890000" creationDateTime="2013-02-19 16:52:08.890000" expandedContexts="('taskviewer',)" id="a4c679a1-7a71-11e2-8ccd-005056c00008" plannedstartdate="2013-02-19 16:52:08.890000" status="1" subject="Reading books">
+<task actualstartdate="2013-03-04 17:00:52.328000" completiondate="2013-03-27 11:17:57.718000" creationDateTime="2013-03-04 17:00:52.328000" id="04238680-84aa-11e2-9edc-005056c00008" percentageComplete="100" plannedstartdate="2013-03-04 17:00:52.328000" status="1" subject="Vala tutorial" />
+<task actualstartdate="2013-04-25 14:13:37.147000" creationDateTime="2013-04-25 14:13:37.147000" id="442f6cb0-ad6f-11e2-98e6-005056c00008" plannedstartdate="2013-04-25 14:13:37.147000" status="1" subject="Org Mode Guide" />
+<task actualstartdate="2013-02-20 09:47:11.406000" creationDateTime="2013-02-20 09:47:11.406000" id="7180ecde-7aff-11e2-89f5-005056c00008" plannedstartdate="2013-02-20 09:47:11.406000" status="1" subject="Git User's Manual" />
+<task actualstartdate="2013-03-25 17:01:12.921000" creationDateTime="2013-03-25 17:01:12.921000" id="8b16848f-952a-11e2-9a67-005056c00008" percentageComplete="55" plannedstartdate="2013-03-25 17:01:12.921000" status="1" subject="Programming in Lua" />
+<task actualstartdate="2013-04-27 15:17:49.506000" creationDateTime="2013-04-27 15:17:49.506000" id="91324221-af0a-11e2-b251-005056c00008" plannedstartdate="2013-04-27 15:17:49.506000" status="1" subject="Gevent Tutorial">
+<description>
+http://sdiehl.github.io/gevent-tutorial/
+</description>
+</task>
+<task actualstartdate="2013-02-19 16:52:38.578000" creationDateTime="2013-02-19 16:52:38.578000" expandedContexts="('taskviewer',)" id="b6788121-7a71-11e2-84a1-005056c00008" percentageComplete="45" plannedstartdate="2013-02-19 16:52:38.578000" shouldMarkCompletedWhenAllChildrenCompleted="False" status="1" subject="Git Community Book">
+<description>
+4.Intermediate Usage
+5.Advanced Git
+6.Working with Git
+7.Internals and plumbing
+
+</description>
+</task>
+</task>
+<task actualstartdate="2013-02-06 16:34:07.406000" creationDateTime="2013-02-06 16:34:07.406000" id="f8ca5cde-7037-11e2-ba61-005056c00008" plannedstartdate="2013-02-06 16:34:07.406000" shouldMarkCompletedWhenAllChildrenCompleted="False" status="1" subject="Office desktop">
+<task actualstartdate="2013-03-04 17:02:30.343000" creationDateTime="2013-03-04 17:02:30.343000" expandedContexts="('taskviewer',)" id="3e8f6d6e-84aa-11e2-a305-005056c00008" plannedstartdate="2013-03-04 17:02:30.343000" status="1" subject="Backup data files">
+<task actualstartdate="2013-04-07 15:32:28.671000" completiondate="2013-04-07 16:19:59.578000" creationDateTime="2013-04-07 15:32:28.671000" id="4cf530f0-9f55-11e2-a561-005056c00008" percentageComplete="100" plannedstartdate="2013-04-07 15:32:28.671000" priority="1" status="1" subject="Learn to use Toucan" />
+<task actualstartdate="2013-04-07 15:33:18.656000" completiondate="2013-04-07 16:20:01.671000" creationDateTime="2013-04-07 15:33:18.656000" id="6ac04c00-9f55-11e2-ad96-005056c00008" percentageComplete="100" plannedstartdate="2013-04-07 15:33:18.656000" status="1" subject="Backup My Documents" />
+<task actualstartdate="2013-04-07 15:33:38.218000" completiondate="2013-04-16 16:17:09.093000" creationDateTime="2013-04-07 15:33:38.218000" id="7669389e-9f55-11e2-9c4e-005056c00008" percentageComplete="100" plannedstartdate="2013-04-07 15:33:38.218000" status="1" subject="Backup dotfiles (SVN)" />
+<task creationDateTime="2013-04-07 16:19:32.421000" id="e00b3f4f-9f5b-11e2-a2ba-005056c00008" plannedstartdate="2013-06-07 16:19:32.421000" status="1" subject="Backup Zotero Folder">
+<description>
+\\10.10.15.176\jundaf\Documents\Zotero
+</description>
+<recurrence count="2" unit="monthly" />
+</task>
+</task>
+<task actualstartdate="2013-02-06 16:38:48.859000" completiondate="2013-03-15 14:05:39.984000" creationDateTime="2013-02-06 16:38:48.859000" id="a08caeb0-7038-11e2-9e4e-005056c00008" percentageComplete="100" plannedstartdate="2013-02-06 16:38:48.859000" status="1" subject="Build Calibre library" />
+</task>
+<category creationDateTime="2013-02-04 16:11:45.640000" expandedContexts="('categoryviewer', 'categoryviewerinnoteeditor', 'categoryviewerintaskeditor')" icon="folder_yellow_icon" id="84359e80-6ea2-11e2-b503-005056c00008" selectedIcon="folder_yellow_open_icon" status="1" subject="Status">
+<category categorizables="c6b830de-5b99-11e2-a476-005056c00008" creationDateTime="2013-01-18 14:05:06.311000" expandedContexts="('categoryviewerinnoteeditor', 'categoryviewerintaskeditor')" icon="life_ring_icon" id="01a72b6e-6135-11e2-b631-005056c00008" selectedIcon="life_ring_icon" status="1" subject="Delegated" />
+<category categorizables="7ca49d1e-5e25-11e2-b504-005056c00008" creationDateTime="2013-01-22 11:58:59.578000" expandedContexts="('categoryviewerinnoteeditor', 'categoryviewerintaskeditor')" icon="checkmark_green_icon" id="0d2975a1-6448-11e2-b9de-005056c00008" selectedIcon="checkmark_green_icon" status="1" subject="Okay" />
+<category categorizables="0fcf094f-610a-11e2-9274-005056c00008 6e89c1cf-5fb4-11e2-9adf-005056c00008" creationDateTime="2013-01-18 14:28:29.492000" expandedContexts="('categoryviewerinnoteeditor', 'categoryviewerintaskeditor')" icon="cross_red_icon" id="45feb740-6138-11e2-b4e1-005056c00008" selectedIcon="cross_red_icon" status="1" subject="Failed" />
+</category>
+<category creationDateTime="2013-04-25 14:24:22.053000" expandedContexts="('categoryviewer', 'categoryviewerintaskeditor')" icon="folder_yellow_icon" id="c494454f-ad70-11e2-a532-005056c00008" selectedIcon="folder_yellow_open_icon" status="1" subject="Action">
+<category categorizables="4a24e2d1-6e95-11e2-a5a0-005056c00008" creationDateTime="2013-04-25 14:26:34.819000" expandedContexts="('categoryviewerintaskeditor',)" icon="led_yellow_icon" id="13b6c130-ad71-11e2-9447-005056c00008" selectedIcon="led_yellow_icon" status="1" subject="Coding" />
+<category categorizables="58cf8911-a640-11e2-af27-005056c00008" creationDateTime="2013-04-25 14:26:42.553000" expandedContexts="('categoryviewerintaskeditor',)" icon="led_yellow_icon" id="1852de8f-ad71-11e2-be41-005056c00008" selectedIcon="led_yellow_icon" status="1" subject="Testing" />
+<category categorizables="442f6cb0-ad6f-11e2-98e6-005056c00008 91324221-af0a-11e2-b251-005056c00008" creationDateTime="2013-04-25 14:24:51.881000" expandedContexts="('categoryviewer', 'categoryviewerintaskeditor')" icon="led_yellow_icon" id="d65ba98f-ad70-11e2-89f9-005056c00008" selectedIcon="led_yellow_icon" status="1" subject="Learning" />
+</category>
+<category creationDateTime="2013-05-14 09:09:21.718000" expandedContexts="('categoryviewer', 'categoryviewerintaskeditor')" icon="folder_yellow_icon" id="e8f3455e-bc32-11e2-a2c0-005056c00008" selectedIcon="folder_yellow_open_icon" status="1" subject="Task">
+<category categorizables="e00b3f4f-9f5b-11e2-a2ba-005056c00008" creationDateTime="2013-05-14 09:11:22.078000" expandedContexts="('categoryviewerintaskeditor',)" icon="cd_icon" id="30b0bfe1-bc33-11e2-9f9f-005056c00008" selectedIcon="cd_icon" status="1" subject="Backup" />
+<category categorizables="474f1911-8b8a-11e2-8588-005056c00008" creationDateTime="2013-03-13 10:51:23.828000" expandedContexts="('categoryviewer', 'categoryviewerintaskeditor')" icon="books_icon" id="e4669f40-8b88-11e2-8c2b-005056c00008" selectedIcon="books_icon" status="1" subject="Document" />
+<category categorizables="688bd0ae-8b89-11e2-9dc0-005056c00008 b507de0f-ae4e-11e2-94bd-005056c00008" creationDateTime="2013-03-13 10:52:04.281000" expandedContexts="('categoryviewerintaskeditor',)" icon="bug_icon" id="fc83428f-8b88-11e2-9604-005056c00008" selectedIcon="bug_icon" status="1" subject="Bugfix" />
+</category>
+<syncmlconfig>
+<TaskCoach-0000013c234c8103270cbc7b00c000a8004d0001>
+<spds>
+<sources>
+<TaskCoach-0000013c234c8103270cbc7b00c000a8004d0001.Tasks />
+<TaskCoach-0000013c234c8103270cbc7b00c000a8004d0001.Notes />
+</sources>
+<syncml>
+<Auth />
+<Conn />
+</syncml>
+</spds>
+</TaskCoach-0000013c234c8103270cbc7b00c000a8004d0001>
+</syncmlconfig>
+<guid>
+0000013c234c8103270cbc7b00c000a8004d0001
+</guid>
+</tasks>
